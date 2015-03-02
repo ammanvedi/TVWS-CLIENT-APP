@@ -1,0 +1,44 @@
+<!-- uploader.html template -->
+<form enctype="multipart/form-data">
+<div class="uploader">
+
+  <!-- the real input[type=file] is hidden -->
+  <input id="fip" type="file" name="file6"
+     onchange="angular.element(this).scope().sendFile(this);" style="display:none;"/>
+
+     <div class="ui teal button" ng-click="clickFileUpload()">Upload</div>
+
+
+  <div class="ui teal progress" data-percent="{{progress}}" id="example1">
+  <div class="bar"></div>
+  <div class="label">{{progress}}% Complete</div>
+</div>
+
+</div>
+</form>
+
+<table class="ui celled table" ng-model="UploadTableData">
+
+  <thead>
+    <tr>
+      <th>File</th>
+      <th>Status</th>
+      <th>Upload Progress</th>
+      <th>Completed On</th>
+      <th>Access</th>
+      <th>Info</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="(key, uploaddata) in UploadTableData">
+
+    <tr class="{{uploaddata.rowclass}}">
+      <td>{{uploaddata.filename}}</td>
+      <td>{{uploaddata.status}}</td>
+      <td>{{uploaddata.progress}}%</td>
+      <td>{{uploaddata.completedon}}</td>
+      <td>{{uploaddata.access}}</td>
+      <td>{{uploaddata.message}}</td>
+    </tr>
+
+  </tbody>
+</table>

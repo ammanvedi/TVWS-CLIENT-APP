@@ -1,0 +1,354 @@
+/* line 1, ../home.scss */
+#homepagebanner {
+  height: calc(100vh - 70px);
+  width: 100%;
+  background-image: url("/images/homepage/bgclipped.png");
+  background-position: center bottom;
+  z-index: 121;
+  background-size: cover;
+  overflow: visible;
+}
+
+/* line 12, ../home.scss */
+.menu {
+  position: fixed;
+  width: 100%;
+}
+
+/* line 16, ../home.scss */
+.normblue {
+  background-color: #3B83C0;
+}
+
+/* line 20, ../home.scss */
+.laptoppic {
+  background-image: url("/images/homepage/laptop-new.png");
+  background-size: cover;
+}
+
+/* line 25, ../home.scss */
+.ibox {
+  width: 100%;
+  margin-top: 30px;
+  height: 420px;
+}
+
+/* line 31, ../home.scss */
+.nopad .column {
+  padding: 0px !important;
+}
+
+/* line 36, ../home.scss */
+.column {
+  padding: 0px !important;
+}
+
+/* line 40, ../home.scss */
+.ornatebox {
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: RGBA(59, 131, 192, 0.9);
+}
+
+/* line 48, ../home.scss */
+.infotextabout h1 {
+  font-family: Gotham;
+  color: white;
+}
+
+/* line 54, ../home.scss */
+.infotextabout p {
+  font-family: Gotham;
+  color: white;
+}
+
+/* line 60, ../home.scss */
+.infotextabout {
+  text-align: center;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+/* line 69, ../home.scss */
+.container {
+  overflow-y: scroll;
+}
+
+/* line 73, ../home.scss */
+.timeline {
+  width: 90%;
+  height: 300px;
+  background-image: url("/images/homepage/timeline.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 30px auto;
+}
+
+/* line 83, ../home.scss */
+.spectrum {
+  width: 250px;
+  padding-bottom: 40px;
+}
+
+/* line 89, ../home.scss */
+.dividend {
+  width: 230px;
+  padding-bottom: 30px;
+}
+
+/* line 95, ../home.scss */
+.city {
+  width: 180px;
+  position: relative;
+  top: -20px;
+}
+
+/* line 102, ../home.scss */
+#homepagebannertext {
+  width: 100%;
+  text-align: center;
+  padding-top: 30px;
+}
+
+/* line 109, ../home.scss */
+.infotext h1 {
+  font-family: Gotham;
+  color: #3A9EDB;
+}
+
+/* line 115, ../home.scss */
+.infotext p {
+  font-family: Gotham;
+  color: #3A9EDB;
+}
+
+/* line 121, ../home.scss */
+.infotext {
+  text-align: center;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 129, ../home.scss */
+.sideinfo {
+  width: 100%;
+  height: 429px;
+}
+
+/* line 135, ../home.scss */
+.citybg {
+  background-image: url("/images/homepage/grad.png");
+  background-size: cover;
+  height: 450px;
+}
+
+/* line 142, ../home.scss */
+.sideinfo h1 {
+  font-family: 'futura';
+  color: white;
+  font-size: 40px;
+  position: relative;
+  left: 13%;
+  width: 100%;
+  top: 10%;
+  z-index: 99;
+}
+
+/* line 154, ../home.scss */
+.bodybutton {
+  position: relative;
+  left: 13%;
+  width: 100%;
+  top: 13%;
+  z-index: 99;
+  border: solid 1px white;
+  text-align: center;
+  max-width: 150px;
+  border-radius: 3px;
+  transition: 1s;
+}
+
+/* line 169, ../home.scss */
+.bodybutton:hover {
+  background-color: #00B6A1;
+  cursor: pointer;
+}
+
+/* line 176, ../home.scss */
+.bodybutton p {
+  padding: 5px;
+  position: relative;
+  font-family: 'Gotham';
+  font-weight: lighter;
+  color: white;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+/* line 189, ../home.scss */
+.sideinfo h2 {
+  font-family: 'Gotham';
+  position: relative;
+  font-size: 17px;
+  color: white;
+  left: 13%;
+  opacity: 0.9;
+  width: 100%;
+  top: 10%;
+  z-index: 100;
+  line-height: 25px;
+}
+
+/* line 202, ../home.scss */
+.webappimg {
+  background-image: url("/images/homepage/flt.png");
+  width: 100%;
+  height: 450px;
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position-x: 100px;
+  background-position-y: 50px;
+}
+
+/* line 213, ../home.scss */
+.paleblue {
+  background-color: #3B83C0;
+}
+
+/* line 217, ../home.scss */
+.abouttext {
+  text-align: center;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  height: 250px;
+  padding-top: 30px;
+}
+
+/* line 227, ../home.scss */
+.abouttext h1 {
+  font-family: Gotham;
+  color: white;
+  font-size: 20px;
+}
+
+/* line 234, ../home.scss */
+.abouttext p {
+  font-family: Gotham;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* line 243, ../home.scss */
+.homepageimagetop {
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 249, ../home.scss */
+.toplaptop {
+  width: 140px;
+}
+
+/* line 254, ../home.scss */
+.topdb {
+  width: 75px;
+}
+
+/* line 259, ../home.scss */
+.topphone {
+  width: 45px;
+}
+
+/* line 264, ../home.scss */
+#homepagebuttonholder {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* line 272, ../home.scss */
+.grid {
+  z-index: 80 !important;
+  margin-top: 50px !important;
+}
+
+/* line 277, ../home.scss */
+.whiterow {
+  background-color: white;
+}
+
+/* line 284, ../home.scss */
+hr {
+  background-color: #3B83C0;
+  color: red;
+  display: block;
+}
+
+/* line 290, ../home.scss */
+.bluecol {
+  background-color: #3B83C0;
+}
+
+/* line 295, ../home.scss */
+.homepageheaderbutton {
+  width: 180px;
+  height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid white;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  display: inline-block;
+  transition: 1s ease;
+  cursor: pointer;
+}
+
+/* line 311, ../home.scss */
+.homepageheaderbutton p {
+  font-family: Gotham;
+  font-size: 14px;
+  color: white;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* line 323, ../home.scss */
+.homepageheaderbutton:hover {
+  background-color: #2980B9;
+}
+
+/* line 328, ../home.scss */
+.homepageheaderbutton:first-of-type {
+  margin-right: 10px;
+}
+
+/* line 334, ../home.scss */
+#homepagebannertext p {
+  font-family: Gotham;
+  font-size: 30px;
+  color: white;
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+/* line 343, ../home.scss */
+#homepagebannertext h1 {
+  font-family: Gotham;
+  font-size: 15px;
+  color: white;
+  display: inline-block;
+  font-weight: lighter;
+  opacity: 0.8;
+  margin-top: 5px;
+}

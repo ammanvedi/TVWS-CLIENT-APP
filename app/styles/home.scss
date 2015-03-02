@@ -1,0 +1,352 @@
+#homepagebanner
+{
+  height:calc(100vh - 70px);
+  width:100%;
+  background-image:url("/images/homepage/bgclipped.png");
+  background-position: center bottom;
+  z-index: 121;
+  background-size:cover;
+  overflow:visible;
+}
+
+.menu{
+position:fixed;
+    width: 100%;
+}
+.normblue{
+    background-color: #3B83C0;
+}
+
+.laptoppic{
+  background-image:url("/images/homepage/laptop-new.png");
+  background-size:cover;
+}
+
+.ibox{
+  width:100%;
+  margin-top:30px;
+  height:420px;
+}
+
+.nopad .column
+{
+  padding:0px !important;
+}
+
+.column {
+  padding: 0px !important;
+}
+
+.ornatebox{
+  width:100%;
+  height:500px;
+  margin: 0 auto;
+  border-radius:5px;
+  background-color:RGBA(59, 131, 192, 0.9);
+}
+
+.infotextabout h1
+{
+  font-family:Gotham;
+  color:white;
+}
+
+.infotextabout p
+{
+  font-family:Gotham;
+  color:white;
+}
+
+.infotextabout
+{
+  text-align:center;
+  width:80%;
+  display:block;
+  margin:0 auto;
+ 	margin-top:30px;
+}
+
+.container{
+    overflow-y: scroll;
+}
+
+.timeline
+{
+	width:90%;
+	height:300px;
+	background-image:url("/images/homepage/timeline.png");
+	background-size:contain;
+	background-repeat:no-repeat;
+	margin:30px auto;
+}
+
+.spectrum
+{
+	width:250px;
+	padding-bottom:40px;
+}
+
+.dividend
+{
+	width:230px;
+	padding-bottom:30px;
+}
+
+.city
+{
+	width:180px;
+	position:relative;
+	top:-20px;
+}
+
+#homepagebannertext
+{
+  width:100%;
+  text-align:center;
+  padding-top:30px;
+}
+
+.infotext h1
+{
+  font-family:Gotham;
+  color:#3A9EDB;
+}
+
+.infotext p
+{
+  font-family:Gotham;
+  color:#3A9EDB;
+}
+
+.infotext
+{
+  text-align:center;
+  width:80%;
+  display:block;
+  margin:0 auto;
+}
+
+.sideinfo{
+  width:100%;
+  height:429px;
+    
+}
+
+.citybg
+{
+    background-image:url("/images/homepage/grad.png");
+    background-size:cover;
+    height:450px;
+}
+
+.sideinfo h1{
+    font-family: 'futura';
+    color:white;
+    font-size: 40px;
+    position:relative;
+    left: 13%;
+    width:100%;
+    top:10%;
+    z-index: 99;
+    
+}
+
+.bodybutton
+{
+        position:relative;
+    left: 13%;
+    width:100%;
+    top:13%;
+    z-index: 99;
+    border: solid 1px white;
+    text-align: center;
+    max-width: 150px;
+        border-radius: 3px;
+    transition:1s;
+    
+}
+
+.bodybutton:hover
+{
+    background-color: #00B6A1;
+    cursor:pointer;
+}
+
+
+.bodybutton p{
+    
+    padding: 5px;
+    position:relative;
+        font-family: 'Gotham';
+    font-weight: lighter;
+    color: white;
+    padding-top:9px;
+    padding-bottom:9px;
+
+    
+}
+
+.sideinfo  h2{
+    font-family: 'Gotham';
+        position:relative;
+    font-size: 17px;
+    color: white;
+    left: 13%;
+    opacity: 0.9;
+    width:100%;
+    top:10%;
+    z-index: 100;
+    line-height: 25px;
+}
+
+.webappimg
+{
+  background-image:url("/images/homepage/flt.png");
+  width:100%;
+  height:450px;
+  background-size:90%;
+  background-repeat:no-repeat;
+  background-position-x: 100px;
+  background-position-y: 50px;
+}
+
+.paleblue{
+  background-color:#3B83C0;
+}
+
+.abouttext
+{
+  text-align:center;
+  width:80%;
+  display:block;
+  margin:0 auto;
+  height:250px;
+  padding-top:30px;
+}
+
+.abouttext h1
+{
+  font-family:Gotham;
+  color:white;
+  font-size:20px;
+}
+
+.abouttext p
+{
+  font-family:Gotham;
+  color:white;
+  margin-bottom:20px;
+
+}
+
+
+.homepageimagetop
+{
+  display:block;
+  margin:0 auto;
+}
+
+.toplaptop
+{
+  width:140px;
+}
+
+.topdb
+{
+  width:75px;
+}
+
+.topphone
+{
+  width:45px;
+}
+
+#homepagebuttonholder
+{
+  width:100%;
+  height:40px;
+  text-align:center;
+  margin-top:20px;
+}
+
+.grid{
+  z-index:80 !important;
+  margin-top:50px !important;
+}
+
+.whiterow
+{
+  background-color:white;
+}
+
+
+
+hr{
+  background-color:#3B83C0;
+  color: red;
+  display:block;
+}
+
+.bluecol
+{
+  background-color:#3B83C0;
+}
+
+.homepageheaderbutton
+{
+    width:180px;
+    height:40px;
+    text-align:center;
+    border-radius:5px;
+    border: 1px solid white;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    display:inline-block;
+    transition:1s ease;
+    cursor:pointer;
+}
+
+
+.homepageheaderbutton p
+{
+  font-family: Gotham;
+  font-size:14px;
+  color:white;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.homepageheaderbutton:hover
+{
+  background-color:#2980B9;
+}
+
+.homepageheaderbutton:first-of-type
+{
+  margin-right:10px;
+}
+
+
+#homepagebannertext p
+{
+  font-family:Gotham;
+  font-size:30px;
+  color:white;
+  display:inline-block;
+  margin-bottom:0px;
+}
+
+#homepagebannertext h1
+{
+  font-family:Gotham;
+  font-size:15px;
+  color:white;
+  display:inline-block;
+  font-weight:lighter;
+  opacity:0.8;
+  margin-top:5px;
+}

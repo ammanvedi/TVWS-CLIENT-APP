@@ -1,0 +1,424 @@
+@font-face {
+  font-family: 'Gotham';
+  src: url("/styles/fonts/Gotham-Book.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'futura';
+  src: url("/styles/fonts/Futura-Bold.ttf") format("truetype");
+}
+/* line 14, ../main.scss */
+.sidebarcontent {
+  z-index: 100;
+}
+
+/* line 19, ../main.scss */
+.fchannelreading {
+  min-height: 50px !important;
+  height: 50px !important;
+}
+
+/* line 26, ../main.scss */
+#piechart {
+  width: 100px;
+  height: 100px;
+}
+
+/* line 33, ../main.scss */
+.highcharts-container text {
+  display: none;
+}
+
+/* line 39, ../main.scss */
+#chart1 {
+  width: calc(100% - 280px);
+  height: 200px;
+  position: absolute;
+  bottom: 120px;
+  right: 0;
+  z-index: 99;
+}
+
+/* line 49, ../main.scss */
+.graphnodata {
+  width: calc(100% - 280px);
+  height: 200px;
+  position: absolute;
+  bottom: 120px;
+  right: 0;
+  z-index: 99;
+  background: -moz-linear-gradient(top, rgba(78, 191, 155, 0) 0%, rgba(1, 2, 2, 0.62) 99%, rgba(0, 0, 0, 0.62) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(78, 191, 155, 0)), color-stop(99%, rgba(1, 2, 2, 0.62)), color-stop(100%, rgba(0, 0, 0, 0.62)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(78, 191, 155, 0) 0%, rgba(1, 2, 2, 0.62) 99%, rgba(0, 0, 0, 0.62) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(78, 191, 155, 0) 0%, rgba(1, 2, 2, 0.62) 99%, rgba(0, 0, 0, 0.62) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(78, 191, 155, 0) 0%, rgba(1, 2, 2, 0.62) 99%, rgba(0, 0, 0, 0.62) 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(78, 191, 155, 0) 0%, rgba(1, 2, 2, 0.62) 99%, rgba(0, 0, 0, 0.62) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004ebf9b', endColorstr='#9e000000',GradientType=0 );
+  /* IE6-9 */
+  text-align: center;
+}
+
+/* line 69, ../main.scss */
+.graphnodata p {
+  font-family: "Gotham";
+  font-size: 12px;
+  color: white;
+  width: 200px;
+  max-width: 300px;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+/* line 85, ../main.scss */
+#mapbottombar {
+  background-color: #3B83C0;
+  width: 100%;
+  height: 120px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 99;
+}
+
+/* line 93, ../main.scss */
+#mapsidebar {
+  background-color: #2B212F;
+  width: 280px;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  z-index: 100;
+  transition: 1s;
+  left: 0;
+  padding-left: 55px;
+}
+
+/* line 105, ../main.scss */
+.marker {
+  width: 30px;
+  height: 30px;
+  background-color: #3B83C0;
+  cursor: pointer;
+  border-radius: 15px;
+  border: 3px solid white;
+  -webkit-box-shadow: 0px 0px 13px 0px rgba(50, 50, 50, 0.7);
+  -moz-box-shadow: 0px 0px 13px 0px rgba(50, 50, 50, 0.7);
+  box-shadow: 0px 0px 13px 0px rgba(50, 50, 50, 0.7);
+}
+
+/* line 120, ../main.scss */
+.marker #datasetinfo {
+  pointer-events: none;
+  background-color: #000;
+}
+
+/* line 126, ../main.scss */
+#xicon {
+  transition: 1s;
+}
+
+/* line 131, ../main.scss */
+.tilted {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* line 140, ../main.scss */
+.loadbox {
+  height: 100px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+/* line 157, ../main.scss */
+.vcenter {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* line 169, ../main.scss */
+.loadbox i {
+  display: inline-block;
+}
+
+/* line 175, ../main.scss */
+#pageloading {
+  height: inherit;
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  background-color: #2F6EB2;
+  z-index: 150;
+}
+
+/* line 186, ../main.scss */
+.sidebar_button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: solid 1px white;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+/* line 198, ../main.scss */
+.sidebar_button i {
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+  top: 20%;
+}
+
+/* line 207, ../main.scss */
+.bottombar_button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: solid 1px white;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+/* line 220, ../main.scss */
+.bottombar_button i {
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+  top: 20%;
+}
+
+/* line 230, ../main.scss */
+#mapsidetoolbar {
+  background-color: #2F6EB2;
+  width: 50px;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  z-index: 100;
+}
+
+/* line 239, ../main.scss */
+map {
+  height: 100%;
+  cursor: pointer;
+}
+
+/* line 244, ../main.scss */
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* line 251, ../main.scss */
+.row {
+  padding-bottom: 0px !important;
+}
+
+/* line 256, ../main.scss */
+.menu a {
+  height: 100% !important;
+  padding-top: 28px !important;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* line 263, ../main.scss */
+#biglogobox {
+  background-image: url("/images/biglogo.png");
+  width: 50%;
+  height: 250px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  background-position: center bottom;
+  position: relative;
+}
+
+/* line 277, ../main.scss */
+#logobox {
+  background-image: url("/images/smalllogo.png");
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  top: -10px;
+  left: -3px;
+  display: inline-block;
+}
+
+/* line 291, ../main.scss */
+.toppaddedrow {
+  padding-top: 60px !important;
+}
+
+/* line 296, ../main.scss */
+.bottompaddedrow {
+  padding-bottom: 60px !important;
+}
+
+/* line 301, ../main.scss */
+.menu {
+  height: 70px !important;
+  margin: 0px !important;
+  -webkit-box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.55) !important;
+  -moz-box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.55) !important;
+  box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.55) !important;
+  border-radius: 0px !important;
+  background-color: #3B83C0;
+  z-index: 120 !important;
+  overflow: hidden;
+}
+
+/* line 314, ../main.scss */
+.ng-scope {
+  min-height: 100vh;
+}
+
+/* Space out content a bit */
+/* line 319, ../main.scss */
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+/* line 326, ../main.scss */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+/* line 334, ../main.scss */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  /* Make the masthead heading the same height as the navigation */
+}
+/* line 338, ../main.scss */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* line 346, ../main.scss */
+.container {
+  width: 100%;
+  margin: 0px;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Custom page footer */
+/* line 354, ../main.scss */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* line 360, ../main.scss */
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+/* line 365, ../main.scss */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* line 369, ../main.scss */
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+/* line 376, ../main.scss */
+.marketing {
+  margin: 40px 0;
+}
+/* line 379, ../main.scss */
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* line 384, ../main.scss */
+.padder {
+  width: 100%;
+  height: 40px;
+}
+
+/* line 392, ../main.scss */
+.lightbluecol {
+  background-color: #3A9EDB;
+}
+
+/* line 397, ../main.scss */
+.darkbluecol {
+  background-color: #3769C0;
+}
+
+/* line 402, ../main.scss */
+.realdarkblue {
+  background-color: #4083B8;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  /* line 413, ../main.scss */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Space out the masthead */
+  /* line 420, ../main.scss */
+  .header {
+    margin-bottom: 30px;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  /* line 424, ../main.scss */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
