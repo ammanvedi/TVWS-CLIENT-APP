@@ -1,6 +1,8 @@
 var app = angular.module('clientAngularApp');
 
 
+
+
 app.directive('mapsidebar', [ 'SidebarHelper', 'StateManager', "GraphHelper" , function(SidebarHelper, StateManager, GraphHelper)  {
 
     return {
@@ -12,7 +14,7 @@ app.directive('mapsidebar', [ 'SidebarHelper', 'StateManager', "GraphHelper" , f
 
       link: function(scope, elem, attrs, ctrl) {
 
-              var chart = new Highcharts.Chart(SidebarHelper.sidebarChartConfig);
+            SidebarHelper.PIECHART = new Highcharts.Chart(SidebarHelper.sidebarChartConfig);
 
 
         //console.log(google.maps
@@ -29,6 +31,7 @@ app.directive('mapsidebar', [ 'SidebarHelper', 'StateManager', "GraphHelper" , f
         google.maps.event.addListener(SidebarHelper.utility.autocomplete, 'place_changed', function () {
             
             SidebarHelper.deleteOverlays();
+            SidebarHelper.clearFreeChannels();
             var thisplace = SidebarHelper.utility.autocomplete.getPlace();
             SidebarHelper.utility.currentposition = thisplace.geometry.location;
             SidebarHelper.getMap().setCenter(thisplace.geometry.location);
@@ -59,20 +62,39 @@ app.directive('uploader', [ 'MeasureSpaceAPIService','$interval' , function(Meas
       controller: ['$scope', '$interval', function($scope, $interval){
 
       $scope.UploadTableData = new Object();
+      $scope.uploadtable = $('table');
+      $scope.uploadbar = $('.progress');
+      $scope.uploadbutton = $('#submitbutton');
+
+      $scope.uploadtable.hide();
+      $scope.uploadbar.hide();
+
 
       $scope.clickFileUpload = function()
       {
         angular.element('#fip').trigger('click');
       }
 
+      $scope.makeButtonLoad = function()
+      {
+        $scope.uploadbutton.addClass("loading");
+        $scope.uploadbutton.addClass("disabled");
+      }
+
+      $scope.makeButtonUnload = function()
+      {
+        $scope.uploadbutton.removeClass("loading");
+        $scope.uploadbutton.removeClass("disabled");
+      }
+
       $scope.adddefaultupload = function(fname)
       {
         $scope.UploadTableData[fname] = {
                                           filename: fname,
-                                          status : "-",
+                                          status : "<i class=\"notched circle loading icon\"></i>",
                                           progress : 0,
-                                          completedon: "-",
-                                          access: "-",
+                                          completedon: "<i class=\"notched circle loading icon\"></i>",
+                                          access: "<i class=\"notched circle loading icon\"></i>",
                                           message: "File is uploading to the server.",
                                           rowclass:""
                                           };
@@ -136,6 +158,11 @@ app.directive('uploader', [ 'MeasureSpaceAPIService','$interval' , function(Meas
 
         $form.ajaxSubmit({
           type: 'POST',
+          beforeSubmit: function(arr, $form, options){
+            $scope.uploadtable.fadeIn();
+            $scope.uploadbar.fadeIn();
+            $scope.makeButtonLoad();
+          },
           uploadProgress: function(event, position, total, percentComplete) {
 
             $scope.$apply(function() {
@@ -147,6 +174,7 @@ app.directive('uploader', [ 'MeasureSpaceAPIService','$interval' , function(Meas
           },
           error: function(event, statusText, responseText, form) {
             $form.removeAttr('action');
+            $scope.makeButtonUnload();
           },
           success: function(responseText, statusText, xhr, form) {
 
@@ -155,7 +183,7 @@ app.directive('uploader', [ 'MeasureSpaceAPIService','$interval' , function(Meas
               console.log(responseText);
               $scope.trackid = responseText.trackingid;
               $scope.startpolling();
-
+              $scope.makeButtonUnload();
             $form.removeAttr('action');
           },
         });
@@ -186,6 +214,7 @@ app.directive('uploader', [ 'MeasureSpaceAPIService','$interval' , function(Meas
 
         scope.pollUploadStatus = function(dsid)
         {
+          console.log("polling");
           MeasureSpaceAPIService.getUploadStatus(scope.trackid, scope.uploadComplete, scope.uploadFailed, scope.inProcessing);
         }
 
@@ -197,7 +226,14 @@ app.directive('uploader', [ 'MeasureSpaceAPIService','$interval' , function(Meas
           scope.updateUploadMessageTable(scope.workingfname, "Processing completed successfully.");
           scope.updateCOTable(scope.workingfname, new Date(parseInt(data.CompletedOn*1000)).toString());
           scope.passrow(scope.workingfname);
+          scope.setAccessURL(scope.workingfname, data.DatasetID);
+
           $interval.cancel(Status);
+        }
+
+        scope.setAccessURL = function(fname, dsid)
+        {
+          scope.UploadTableData[fname].access = "<a href=\"/#/map/" + dsid + "\">View</a>";
         }
 
         scope.uploadFailed = function(data)

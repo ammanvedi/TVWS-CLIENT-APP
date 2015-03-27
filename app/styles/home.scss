@@ -1,12 +1,31 @@
 #homepagebanner
 {
   height:calc(100vh - 70px);
+  max-height: 600px;
   width:100%;
   background-image:url("/images/homepage/bgclipped.png");
   background-position: center bottom;
   z-index: 121;
   background-size:cover;
   overflow:visible;
+}
+
+.mapimg
+{
+  background-image: url('/images/homepage/map.png');
+  height: 90%;
+  width: 40%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  float: left;
+}
+
+.homerightbox
+{
+  width: 40%;
+  height: 90%;
+  float: left;
+
 }
 
 .menu{

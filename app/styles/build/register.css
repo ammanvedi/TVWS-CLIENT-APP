@@ -1,0 +1,145 @@
+/* line 1, ../register.scss */
+.contain {
+  width: 100%;
+  height: 100vh;
+  background: #2f6eb2;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #2f6eb2 29%, #1b3f5b 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(29%, #2f6eb2), color-stop(100%, #1b3f5b));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #2f6eb2 29%, #1b3f5b 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #2f6eb2 29%, #1b3f5b 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #2f6eb2 29%, #1b3f5b 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #2f6eb2 29%, #1b3f5b 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f6eb2', endColorstr='#1b3f5b',GradientType=0 );
+  /* IE6-9 */
+  text-align: center;
+}
+
+/* line 17, ../register.scss */
+.logoheader {
+  background-image: url("/images/biglogo.png");
+  width: 300px;
+  height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: inline-block;
+}
+
+/* line 30, ../register.scss */
+.signupbox {
+  width: 300px;
+  height: 400px;
+  display: inline-block;
+  transition: 1s;
+}
+
+/* line 38, ../register.scss */
+.inputTooltip {
+  position: absolute;
+  width: 150px;
+  height: 40px;
+  background-color: #000;
+  opacity: 0.5;
+  padding: 5px;
+  border-radius: 3px;
+  transition: 1s;
+  opacity: 0.0;
+}
+
+/* line 52, ../register.scss */
+.lefttooltip {
+  left: -170px;
+}
+
+/* line 57, ../register.scss */
+.righttooltip {
+  left: -170px;
+}
+
+/* line 63, ../register.scss */
+.inputTooltip p {
+  color: white;
+  font-size: 10px;
+}
+
+/* line 69, ../register.scss */
+.lefttooltip i {
+  position: absolute;
+  left: 132px;
+  top: 5px;
+}
+
+/* line 77, ../register.scss */
+.righttooltip i {
+  position: absolute;
+  left: 132px;
+  top: 5px;
+}
+
+/* line 84, ../register.scss */
+.signupbox .input {
+  width: 90%;
+  padding-bottom: 10px;
+}
+
+/* line 90, ../register.scss */
+.vertdivider {
+  width: 1px;
+  background-color: #fff;
+  opacity: 0.5;
+  height: 300px;
+  display: inline-block;
+  transition: 1s;
+}
+
+/* line 100, ../register.scss */
+.signupbox .button {
+  margin: 0 auto;
+  width: 90%;
+}
+
+/* line 106, ../register.scss */
+.loginbox {
+  width: 300px;
+  top: 10%;
+  position: relative;
+  display: inline-block;
+}
+
+/* line 115, ../register.scss */
+.loginbox h1 {
+  color: white;
+}
+
+/* line 120, ../register.scss */
+.signupbox h1 {
+  color: white;
+}
+
+/* line 125, ../register.scss */
+.loginbox .input {
+  width: 90%;
+  padding-bottom: 10px;
+}
+
+/* line 131, ../register.scss */
+.loginbox .button {
+  margin: 0 auto;
+  width: 90%;
+}
+
+/* line 137, ../register.scss */
+.allbox {
+  width: 650px;
+  margin: 0 auto;
+  height: 400px;
+  text-align: center;
+}

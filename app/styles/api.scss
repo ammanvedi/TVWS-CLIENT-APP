@@ -1,0 +1,70 @@
+
+
+.vertmenu
+{
+ margin-top: 20px !important;
+ float: left;
+ margin-left: 20px !important;
+}
+
+.apiheader
+{
+	float: left;
+	width: 100%;
+	height: 100vh;
+	background-image: url('/images/homepage/api.png');
+	margin-top: 0px;
+	padding-top: 0px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 0px -50px;
+
+
+}
+
+.headergrad
+{
+	width: 100%;
+	height: 100%;
+background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 99%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(99%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 99%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 99%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 99%,rgba(0,0,0,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 99%,rgba(0,0,0,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+opacity: 0.8;
+}
+
+.apicontent
+{
+	margin-top: 20px;
+	margin-left: 20px;
+	max-width: 800px;
+	min-width: 300px;
+	background-color: #fff;
+	border-radius: 5px;
+	-webkit-box-shadow: rgba(39, 41, 43, 0.14902) 0px 0px 0px 1px, rgba(0, 0, 0, 0.0470588) 0px 1px 2px 0px;
+	float: left;
+}
+
+pre
+{
+	max-width: 550px;
+}
+
+.mainview
+{
+	overflow: visible;
+	display: block;
+	height: auto !important;
+}
+
+
+.container
+{
+	overflow: visible;
+	height: auto !important;
+}
+
+

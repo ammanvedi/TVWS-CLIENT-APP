@@ -6,9 +6,226 @@
   src: url('/styles/fonts/Gotham-Book.ttf') format('truetype');
 }
 
+
+
 @font-face {
   font-family: 'futura';
   src: url('/styles/fonts/Futura-Bold.ttf') format('truetype');
+}
+
+@keyframes my_animation {
+  from {
+    max-height: 90px !important;
+    opacity: 1;
+    left: 0;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+    left: -50px !important;
+  }
+}
+
+@-webkit-keyframes my_animation {
+  from {
+    max-height: 90px !important;
+    opacity: 1;
+    left: 0;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+    left: -50px !important;
+  }
+}
+
+@-moz-keyframes my_animation {
+  from {
+    max-height: 90px !important;
+    opacity: 1;
+    left: 0;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+    left: -50px !important;
+  }
+}
+
+.metaitem h1
+{
+  width: 50%;
+  float: left;
+  font-size: 10px;
+  margin: 0px;
+  color: white;
+
+}
+
+.metaitem p
+{
+  width: 35%;
+  float: right;
+  color: white;
+  text-align: center;
+}
+
+.metaitem
+{
+  width: 100%;
+  height: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid white;
+}
+
+.metadata
+{
+text-align: left;
+padding-left: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+
+
+.pointmetadata
+{
+padding-left: 10px;
+position: relative;
+overflow: hidden;
+}
+
+.pointmetadata p
+{
+  color: white;
+}
+
+.cranimate.ng-enter
+{
+      -webkit-transition:0.5s linear all;
+    -moz-transition:0.5s linear all;
+    -o-transition:0.5s linear all;
+    transition:0.5s linear all;
+  -webkit-animation: fadeInRight 1s;
+  -moz-animation: fadeInRight 1s;
+  -ms-animation: fadeInRight 1s;
+  animation: fadeInRight 1s;
+
+  max-height: 0px !important;
+}
+
+.cranimate.ng-enter-active
+{
+  -webkit-animation: fadeInRight 1s;
+  -moz-animation: fadeInRight 1s;
+  -ms-animation: fadeInRight 1s;
+  animation: fadeInRight 1s;
+  max-height: 50px !important;
+}
+
+.cranimate.ng-leave
+{
+ -webkit-animation:0.5s my_animation;
+  -moz-animation:0.5s my_animation;
+  -o-animation:0.5s my_animation;
+  animation:0.5s my_animation;
+}
+
+.sidebarheader
+{
+  width: 100%;
+  height: 35px;
+  background-color: #2F6EB2;
+  border-left: 4px solid #3B83C0;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.sidebarheader p
+{
+  width: 50%;
+  float: left;
+  font-weight: bold;
+  padding-top: 10px;
+  color: white;
+}
+
+.sidebarheader .optionsbox
+{
+  width: 30%;
+  float: right;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+
+
+.sidebarheader .optionsbox i
+{
+  cursor: pointer;
+  float: right;
+}
+
+.fchannels
+{
+  position: relative;
+  overflow: hidden;
+}
+
+.fchannelreading{
+  min-height: 50px !important;
+  height: 50px !important;
+  overflow: hidden;
+  width: 100%;
+  background-color: #3D3D3A;
+}
+
+.channelnumholder
+{
+  width: 20%;
+  float: left;
+}
+
+.channelnum
+{
+  text-align: center;
+}
+
+.channelnum p
+{
+
+}
+
+.rangeholder
+{
+  width: 70%;
+  float: left;
+}
+
+.rangestop
+{
+  width: 40%;
+  float: left;
+  text-align: center;
+}
+
+.rangestop p
+{
+  margin:0;
+  font-weight: bold;
+}
+
+.rangearrow
+{
+  width: 20%;
+  float: left;
+  text-align: center;
+}
+
+.rangearrow i
+{
+  display: inline-block;
 }
 
 .sidebarcontent
@@ -16,25 +233,75 @@
   z-index:100; 
 }
 
-.fchannelreading{
-  min-height: 50px !important;
-  height: 50px !important;
+.ptextholder
+{
+  text-align: center;
+  width: 120px;
+  float: right;
+  display: block;
+}
+
+.percentdetailtext
+{
+
+}
+
+.sidebarcollapse
+{
+  height: 0px !important;
+  overflow: hidden;
+  padding: 0px !important;
+
+}
+
+.searchbox
+{
+  padding:20px;
+  padding-left: 15px;
+}
+
+#thresholdslider
+{
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.percenttext
+{
+  color: white;
+  font-size: 40px;
 }
 
 
+.piechartholder
+{
+ width: 100%;
+ height: 160px;
+position: relative;
+overflow: hidden;
+
+}
+
+.cholder
+{
+width: 100px;
+overflow: hidden;
+display: block;
+float: left;
+}
 
 #piechart
 {
   width: 100px;
   height: 100px;
+  float: left;
 
 }
-
-.highcharts-container text
-{
-  display: none;
-}
-
+ 
+ 
 
 #chart1
 {
@@ -44,12 +311,43 @@
     bottom: 120px; 
     right: 0; 
     z-index: 99;
+    transition:1s;
+}
+
+.sidebarnodata
+{
+    width:calc(100% + 10px); 
+    position: absolute;
+    display: inline-block;
+left: -10px;
+    top: 0px;
+    height: 200px;
+    z-index: 99;
+    background-color: RGBA(43, 33, 47, 0.9);
+    text-align: center;
+}
+
+.sidebarnodata p
+{
+    top: 40px;
+    font-family: "Gotham";
+    font-size: 12px;
+    color:white;
+    width: 200px;
+    max-width: 300px;
+    margin:0 auto;
+    position: relative;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 5px;
+    padding-top:7px;
+    padding-bottom:7px;
 }
 
 .graphnodata
 {
     width:calc(100% - 280px); 
-    height:200px; 
+    height:150px; 
     position: absolute;
     bottom: 120px; 
     right: 0; 
@@ -62,6 +360,7 @@
     background: linear-gradient(to bottom,  rgba(78,191,155,0) 0%,rgba(1,2,2,0.62) 99%,rgba(0,0,0,0.62) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004ebf9b', endColorstr='#9e000000',GradientType=0 ); /* IE6-9 */
     text-align: center;
+    transition:1s;
 
 
 }
@@ -92,14 +391,15 @@
 }
 #mapsidebar{
     background-color: #2B212F;
-    width: 280px;
+    width: 285px;
     height: 100vh;
     position: absolute;
     top:0px;
     z-index: 100;
     transition:1s;
     left:0;
-    padding-left:55px;
+    padding-left:50px;
+    overflow-y:scroll;
 }
 
 .marker
@@ -241,6 +541,13 @@ map{
     cursor:pointer;
 }
 
+br
+{
+  display: block;
+  height: 2px;
+  line-height: 2px;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -253,12 +560,16 @@ map{
 	padding-bottom: 0px !important;
 }
 
-.menu a{
+.navmenu a{
   height:100% !important;
+  max-height: 70px !important;
+  min-height: 70px !important;
   padding-top:28px !important;
   min-width:80px;
   text-align:center;
 }
+
+
 
 #biglogobox
 {
@@ -298,7 +609,17 @@ map{
 	padding-bottom:60px !important;
 }
 
-.menu
+#userdrop
+{
+  padding-top: 28px;
+  margin-right: 20px;
+  display: block;
+  min-height: 70px !important;
+  max-height: 70px !important;
+}
+
+
+.navmenu
 {
   height:70px !important;
   margin:0px !important;
@@ -308,12 +629,10 @@ map{
   border-radius:0px !important;
   background-color: #3B83C0;
   z-index:120 !important;
-  overflow:hidden;
+
 }
 
-.ng-scope {
-    min-height: 100vh;
-}
+
 
 /* Space out content a bit */
 body {

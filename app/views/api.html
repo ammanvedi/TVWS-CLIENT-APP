@@ -1,0 +1,143 @@
+<link rel="stylesheet" href="styles/build/api.css">
+
+<div class="apiheader">
+	<div class="headergrad"></div>
+</div>
+
+<div class="ui vertical menu vertmenu">
+  <div class="item">
+    <div class="ui input"><input type="text" placeholder="Search..."></div>
+  </div>
+  <div class="item" ng-repeat="(key, value) in apidata">
+  	<i class="home icon"></i> {{key}}
+  		  <div class="menu">
+	      <a class="active item" ng-repeat="(key, value) in apidata[key]">{{key}}</a>
+	      </div>
+
+  </div>
+  
+ 
+</div>
+
+
+<div class="apicontent">
+
+<!-- NGREPEAT THE BEGIN SECTIONS -->
+	
+<div class="ui basic segment" ng-repeat="(k, v) in apidata['Begin']">
+	<h1>{{k}}</h1>
+	<div ng-repeat="(key, value) in apidata['Begin'][k]">
+
+		<div ng-if="value.Type == 'Heading'">
+			  	<h3>{{value.Text}}</h3>
+		</div>
+
+		<div ng-if="value.Type == 'Code'">
+			  	<pre>{{value.Text}}</pre>
+		</div>
+
+		<div ng-if="value.Type == 'Body'">
+			  	<p>{{value.Text}}</p>
+		</div>
+	</div>
+
+</div>
+
+
+<!-- NGREPEAT THE ENDPOINT SECTIONS -->
+
+<div class="ui basic segment" ng-repeat="(k, v) in apidata['Endpoints']">
+	<h1>{{k}}</h1>
+	<div ng-repeat="(key, value) in apidata['Endpoints'][k]">
+
+	<h2>{{key}}</h2>
+
+
+	<table class="ui very padded table">
+
+  <tbody>
+
+    <tr>
+      <td><b>Endpoint</b></td>
+      <td>{{value.Endpoint}}</td>
+    </tr>
+
+    <tr>
+      <td><b>Example</b></td>
+      <td>{{value.ExampleQuery}}</td>
+    </tr>
+
+    <tr>
+      <td><b>Method</b></td>
+      <td>{{value.Method}}</td>
+    </tr>
+
+    <tr>
+      <td><b>Description</b></td>
+      <td>{{value.Description}}</td>
+    </tr>
+
+    <tr>
+    	<td><b>Parameters</b></td>
+    	<td>			
+    	<table class="ui basic table">
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>DataType</th>
+			      <th>Example</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+
+			    <tr ng-repeat="(paramkey, paramval) in value['parameters']">
+			      <td>{{paramval.name}}</td>
+			      <td>{{paramval.datatype}}</td>
+			      <td>{{paramval.example}}</td>
+			    </tr>
+
+
+			  </tbody>
+			</table>
+		</td>
+
+    </tr>
+
+    <tr>
+      <td><b>Accept Encoding</b></td>
+      <td>{{value.AcceptEncoding}}</td>
+    </tr>
+
+    <tr>
+      <td><b>Response Code</b></td>
+      <td>{{value.ResponseHTTPCode}}</td>
+    </tr>
+
+    <tr>
+      <td><b>Response</b></td>
+      <td>{{value.ResponseDescription}}</td>
+    </tr>
+
+    <tr>
+      <td><b>Example Response</b></td>
+      <td><pre>{{value.ExampleResponse}}</pre></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+

@@ -6,10 +6,11 @@ app.service( 'MeasureSpaceAPIService', ['$http', function($http){
 
   return{
     APIKEY: "n-a",
-    APIURL: "http://178.62.0.152:4000",
+    APIURL: "https://api.measurespace.io",
     getUploadStatus: function(trackid, comp, fail, inprogress){
-      $http.get(this.APIURL + '/measurements/track/' + trackid).
+      $http.get(this.APIURL + '/upload/track/' + trackid).
         success(function(data, status, headers, config) {
+          console.log(data);
           if(data.Completed)
           {
             //according to server the task was completed successfully
@@ -90,6 +91,89 @@ app.service( 'MeasureSpaceAPIService', ['$http', function($http){
         error(function(data, status, headers, config){
           console.log("Angular Http get failed");
         });
+    },
+    getDatasetByID: function(dsid, complete, failure)
+    {
+        $http.get(this.APIURL + '/datasets/' + dsid + '/meta').
+        success(function(data, status, headers, config){
+
+          if(data.QueryError)
+          {
+            failure(data);
+            return;
+          }
+          data.DatasetID = parseInt(dsid);
+          complete(data);
+
+        }).
+        error(function(data, status, headers, config){
+          console.log("Angular Http get failed");
+          failure(data);
+        });
+    },
+    registerUser: function(pemail, ppassword, pfname, psname, success, failure)
+    {
+        $http({
+          method: 'POST',
+          url: this.APIURL + '/register',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          data: $.param({sname : psname, fname : pfname, email : pemail, password : ppassword})
+          }).
+        success(function(data, status, headers, config){
+
+          if(data.QueryError)
+          {
+            failure(data);
+            return;
+          }
+          success(data);
+
+        }).
+        error(function(data, status, headers, config){
+          console.log("Angular Http get failed");
+          failure(data);
+        });
+    },
+    loginUser: function(username, password, success, failure)
+    {
+        $http({
+          method: 'POST',
+          url: this.APIURL + '/login',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          data: $.param({uname : username, pword : password})
+          }).
+        success(function(data, status, headers, config){
+
+          if(data.QueryError)
+          {
+            failure(data);
+            return;
+          }
+          success(data);
+
+        }).
+        error(function(data, status, headers, config){
+          console.log("Angular Http get failed");
+          failure(data);
+        });
+    },
+    getDatasetsForUser: function(userid, complete, failure)
+    {
+        $http.get(this.APIURL + '/user/' + userid + '/datasets').
+        success(function(data, status, headers, config){
+
+          if(data.QueryError)
+          {
+            failure(data);
+            return;
+          }
+
+          complete(data);
+
+        }).
+        error(function(data, status, headers, config){
+          console.log("Angular Http get failed");
+        });
     }
   }
 
@@ -114,17 +198,17 @@ app.service('StateManager', [function(){
       },
       setNODATA: function()
       {
-          console.log("setting State  : NODATA");
+          //console.log("setting State  : NODATA");
           SM.SM_STATE = SM.SM_NODATA;
       },
       setHEATMAPPING: function()
       {
-          console.log("setting State  : HEATMAPPING");
+          //console.log("setting State  : HEATMAPPING");
           SM.SM_STATE = SM.SM_HEATMAPPING;
       },
       setSEARCHING: function()
       {
-          console.log("setting State  : SEARCHING");
+          //console.log("setting State  : SEARCHING");
           SM.resetDROPCOUNT();
           SM.SM_STATE = SM.SM_SEARCHING;
       },
@@ -176,7 +260,7 @@ app.service('StateManager', [function(){
 }]);
 
 
-app.service('HeatmapHelper', [function(){
+app.service('HeatmapHelper', [ function(){
 
   var HH = {
       HEATMAPCACHE:{},
@@ -185,6 +269,9 @@ app.service('HeatmapHelper', [function(){
       rawReadings:[],
       fulldataset:[],
       heatmapdatachannels:[],
+      channelassignments:[],
+      overallmax:0,
+      overallmin:0,
       graphvisible: true,
       graphinfotext: "Find Dataset to View it's Data.",
       cacheAndRemoveHeatmap: function()
@@ -193,27 +280,115 @@ app.service('HeatmapHelper', [function(){
           HH.HEATMAPCACHE[HH.DATASET.DatasetID] = {
                                                             Rawdata : HH.rawReadings,
                                                             Normdata : HH.fulldataset,
-                                                            Channels : HH.heatmapdatachannels
+                                                            Channels : HH.heatmapdatachannels,
+                                                            ovmax: HH.overallmax,
+                                                            ovmin: HH.overallmin
                                                         }   
         HH.heatmap.setMap(null);
-          console.log("CLEARING FROM SERVICE");
+          //console.log("CLEARING FROM SERVICE");
       },
       toggleGraphNodata: function()
         {
             if(HH.graphvisible)
             {
                 $(".graphnodata").fadeOut("fast");
+                $(".sidebarnodata").fadeOut("fast");
+                $("#channelsmapmover").fadeIn("fast");
             }
             else
             {
                 $(".graphnodata").fadeIn("fast");
+                $(".sidebarnodata").fadeIn("fast");
+                $("#channelsmapmover").fadeOut("fast");
             }
 
             HH.graphvisible = !HH.graphvisible;
+        },
+        calculatePercentageOccupancy: function(thresh)
+        {
+          //console.log(HH.rawReadings);
+          //find point count for frequency FPC
+          //iterate through points for channel
+          //if power reading is less than threshold, then it is unoccupied, increase freecount by 1
+          //calc the percentage, (100*freecount) / fpc
+          var FPC = 0;
+          var occupiedcount = 0;
+          var PERCENTAGES = new Array();
+          for(channelid in HH.rawReadings)
+          {
+            FPC = HH.rawReadings[channelid].length
+            for(key in HH.rawReadings[channelid])
+            {
+              if(HH.rawReadings[channelid][key].CombinedPower > thresh)
+              {
+                occupiedcount ++;
+              }
+            }
+            //console.log(freecount);
+            PERCENTAGES.push({cid:channelid, PO : ((occupiedcount*100) / FPC)});
+            occupiedcount = 0;
+          }
+
+          return PERCENTAGES;
         }
   }
 
   return HH;
+
+
+}]);
+
+app.service("CookieService", ['ipCookie', '$rootScope',function(ipCookie, $rootScope){
+
+  this.storeUserData = function(usrdata)
+  {
+    this.LoggedIn = true;
+    ipCookie("TVWS", usrdata)
+  }
+
+  this.isLoggedIn = function()
+  {
+    return this.LoggedIn;
+  }
+
+  this.setLoggedIn = function()
+  {
+    this.LoggedIn = true;
+    $rootScope.LoggedIn = true;
+    $rootScope.ForeName = ipCookie("TVWS").ForeName;
+    $rootScope.UserID = ipCookie("TVWS").UserID;
+  }
+
+  this.setLoggedOut = function()
+  {
+    this.LoggedIn = false;
+    $rootScope.LoggedIn = false;
+    $rootScope.ForeName = null;
+    $rootScope.UserID = -1;
+  }
+
+  this.Logout = function()
+  {
+    ipCookie.remove("TVWS");
+    this.setLoggedOut();
+  }
+
+  this.getToken = function()
+  {
+    return ipCookie("TVWS").Token;
+  }
+
+
+  this.setLoggedOut();
+
+  if(ipCookie("TVWS") != undefined)
+  {
+    //no cookie exists for the user, which is ok
+    //but the system is logged in
+    this.setLoggedIn();
+
+  }
+
 
 
 }]);
@@ -267,8 +442,15 @@ app.service("GraphHelper", [function(){
                     {
                         "display":"none"
                     }
-                }
-                
+                },
+               tooltip: {
+                    enabled: true,
+                    headerFormat: '',
+                    pointFormat: 'Channel {point.x} <br/> {point.y} dBm <b></b>'
+                  }
+
+
+
             },
             series: [],
             title: {
@@ -308,8 +490,16 @@ app.service("GraphHelper", [function(){
                         {
                             "color":"#fff"
                         },
-                        text: "Combined Power (dB)"
+                        text: "Power (dBm)"
                     }
+                    ,
+                plotLines: [{
+                  color: 'red', // Color value
+                  dashStyle: 'longdashdot', // Style of the plot line. Default to solid
+                  value: 3, // Value of where the line will appear
+                  width: 2 // Width of the line    
+                }]
+
                    },
             loading: false
        
@@ -338,23 +528,28 @@ app.service("GraphHelper", [function(){
     },
     clearGraph: function()
     {
-      console.log("should clear graph");
+      //console.log("should clear graph");
       delete GH.chartConfig.xAxis.categories;
       GH.chartConfig.series = [];
     },
     setSeriesData: function(CategoryData)
     {
+        //console.log(GH.chartConfig);
         GH.chartConfig.series = new Array();
         GH.chartConfig.series[0] = new Object();
         GH.chartConfig.series[0].data = CategoryData;
         GH.chartConfig.series[0].color = "#fff";
-        GH.chartConfig.series[0].name = "Combined Power"
+        GH.chartConfig.series[0].name = "Power"
         GH.chartConfig.loading = false;
 
     },
     setCategories: function(catdata)
     {
       GH.chartConfig.xAxis.categories = catdata;
+    },
+    setThresholdLine: function(val)
+    {
+      GH.chartConfig.yAxis.plotLines[0].value = val;
     }
 
   }
@@ -371,6 +566,8 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
     MAPVIEW:{},
     utility:{},
     OVERLAYS:[],
+    PIECHART:{},
+    PERCENTOCCUPIED:0,
     sidebarChartConfig: {
                 chart: 
                 {
@@ -378,7 +575,13 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
                   plotBackgroundColor: null,
                   plotBorderWidth: null,
                   plotShadow: false,
-                  backgroundColor:''
+                  backgroundColor:'',
+                  colors:['#000', '#fff']
+                },
+                colors:['#e74c3c', '#2ecc71'],
+                credits:
+                {
+                  enabled: false
                 },
                 title: 
                 {
@@ -411,18 +614,7 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
                 }
                 ]
       },
-      FreeChannels:[
-          {
-            cnum: "1",
-            topend: "994",
-            lowend: "990"
-          },
-          {
-            cnum: "2",
-            topend: "996",
-            lowend: "999"
-          }
-      ],
+      FreeChannels:[],
     setMap: function(mapobj)
     {
       this.MAP = mapobj;
@@ -445,7 +637,7 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
         {
             //clear any heatmaps that are currently active
             HeatmapHelper.cacheAndRemoveHeatmap();
-            console.log("SHOULD CLEAR UN-EXITED HEATMAPS");
+            //console.log("SHOULD CLEAR UN-EXITED HEATMAPS");
             //also should toggle the graph view 
             GraphHelper.clearGraph();
             HeatmapHelper.toggleGraphNodata();
@@ -477,6 +669,7 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
     },
     failedDrawing: function(errdata)
     {
+      console.log("ERROR : Failed To Draw Heatmaps");
       console.log(errdata);
     },
     showOverlays: function()
@@ -492,18 +685,83 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
       {
         svc.OVERLAYS[ok].setMap(null);
       }
-       console.log("map is");
-      console.log(svc.MAP);
+       //console.log("map is");
+      //console.log(svc.MAP);
     },
     deleteOverlays: function()
     {
       svc.clearOverlays();
       svc.OVERLAYS = [];
+    },
+    setFreeChannels: function(FC)
+    {
+      svc.FreeChannels = FC;
+    },
+    determineFreeChannels: function(threshold, nearpointindex)
+    {
+      var free = new Array();
+      for(channelID in HeatmapHelper.rawReadings)
+      {
+        if(HeatmapHelper.rawReadings[channelID][nearpointindex].CombinedPower < threshold)
+        {
+          free.push(channelID);
+        }
+      }
+      var fullfree = new Array();
+      for(freechannelID in free)
+      {
+        for(idx in HeatmapHelper.channelassignments)
+        {
+          if(HeatmapHelper.channelassignments[idx].ChannelID == free[freechannelID])
+          {
+            fullfree.push(HeatmapHelper.channelassignments[idx]);
+          }
+        }
+      }
+
+      svc.setFreeChannels(fullfree);
+      //update pie chart
+      //svc.updateFreeChannelChart(fullfree, DC);
+    },
+    clearFreeChannels: function()
+    {
+      svc.FreeChannels = [];
+    },
+    UpdateOccupancy: function(threshold, CurrentDisplayChannel)
+    {
+      var percentages = HeatmapHelper.calculatePercentageOccupancy(threshold);
+      //console.log(svc.PIECHART);
+      //console.log(percentages);
+      for(arrkey in percentages)
+      {
+        //console.log(percentages[arrkey].cid, CurrentDisplayChannel);
+        if(percentages[arrkey].cid == CurrentDisplayChannel)
+        {
+          svc.updatePieChart(percentages[arrkey].PO, 100 - percentages[arrkey].PO);
+          break;
+        }
+      }
+
+
+    },
+    updatePieChart: function(positive, negative)
+    {
+      svc.PERCENTOCCUPIED = positive;
+      //console.log("updating pie chart");
+      svc.PIECHART.series[0].setData([]);
+      svc.PIECHART.series[0].setData([
+                                      ['FreeChannels', positive],
+                                      ['OccupiedChannels', negative]
+                                     ]
+                                     );
+
     }
+
       
   }
 
   return svc;
+    
 
 
 }]);

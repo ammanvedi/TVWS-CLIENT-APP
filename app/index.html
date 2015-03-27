@@ -5,12 +5,6 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.js"></script>
     <script type="text/javascript" src="bower_components/semantic-ui/dist/semantic.min.js"></script>
@@ -18,40 +12,52 @@
     <link rel="stylesheet" href="bower_components/semantic-ui/dist/semantic.min.css">
     <link rel="stylesheet" href="bower_components/semantic-ui/dist/semantic.min.js">
     <link rel="stylesheet" href="styles/build/main.css">
-    <!-- endbuild -->
+
   </head>
   <body ng-app="clientAngularApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
 
-    <!-- Add your site or application content here -->
     <div class="container">
-      <div class="ui blue inverted menu">
-        <a class="active item">
+      <div class="ui blue inverted menu navmenu" style="z-index:1500 !important;">
+        <a class="active item" href="/#/">
           <div id="logobox"></div>
         </a>
         <a class="item">
            About
         </a>
-        <a class="item">
+        <a class="item" href="/#/map">
            Database
         </a>
-        <a class="item">
+        <a class="item" href="/#/upload">
+          Upload
+        </a>
+        <a class="item" href="/#/api">
            API
         </a>
         <a class="item">
           Blog
         </a>
-        <a class="item right">
+
+
+        <a ng-if="LoggedIn == false" class="item right" href="/#/register">
           Sign Up
         </a>
+
+
+    <div ng-if="LoggedIn == true" class="ui simple dropdown item right" id="userdrop" style="z-index:1500 !important;">
+      <i class="dropdown icon" style="z-index:1500 !important;"></i>
+      {{ForeName}}
+      <div class="menu" style="z-index:1500 !important;">
+        <div class="item"><a style="color:#000;" href="/#/me">My Home</a></div>
+        <div class="item"><a style="color:#000;" href="/#/logout">Log Out</a></div>
+      </div>
+    </div>
+
+
       </div>
 
-      <div ng-view=""></div>
+      <div ng-view="" class="mainview" style="z-index:1400 !important;"></div>
 
       <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
       </div>
     </div>
 
@@ -67,21 +73,14 @@
        ga('send', 'pageview');
     </script>
 
-    <!-- build:js(.) scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
-
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-cookie/angular-cookie.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/ng-file-upload/angular-file-upload-shim.min.js"></script>
     <script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
@@ -89,10 +88,7 @@
     <script type="text/javascript" src="bower_components/ngmap/build/scripts/ng-map.js"></script>
     <script type="text/javascript" src="bower_components/highcharts-ng/dist/highcharts-ng.min.js"></script>
     <script type="text/javascript" src="scripts/custommarker.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/services.js"></script>
         <script src="scripts/directives.js"></script>
@@ -100,6 +96,10 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/upload.js"></script>
         <script src="scripts/controllers/map.js"></script>
-        <!-- endbuild -->
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/userhome.js"></script>
+        <script src="scripts/controllers/logout.js"></script>
+        <script src="scripts/controllers/api.js"></script>
 </body>
 </html>

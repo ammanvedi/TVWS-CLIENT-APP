@@ -1,0 +1,144 @@
+.contain
+{
+	width: 100%;
+	height: 100vh;
+	background: rgb(47,110,178); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(47,110,178,1) 29%, rgba(27,63,91,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(29%,rgba(47,110,178,1)), color-stop(100%,rgba(27,63,91,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(47,110,178,1) 29%,rgba(27,63,91,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(47,110,178,1) 29%,rgba(27,63,91,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(47,110,178,1) 29%,rgba(27,63,91,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(47,110,178,1) 29%,rgba(27,63,91,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f6eb2', endColorstr='#1b3f5b',GradientType=0 ); /* IE6-9 */
+
+	text-align: center;
+}
+
+.logoheader
+{
+	background-image: url('/images/biglogo.png');
+	width: 300px;
+	height: 60px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin: 0 auto;
+	margin-top: 50px;
+	display: inline-block;
+
+}
+
+.signupbox
+{
+	width: 300px;
+	height: 400px;
+	display:inline-block;
+	transition:1s;
+}
+
+.inputTooltip
+{
+	position: absolute;
+
+	width: 150px;
+	height: 40px;
+	background-color: #000;
+	opacity: 0.5;
+	padding: 5px;
+	border-radius: 3px;
+	transition:1s;
+	opacity: 0.0;
+}
+
+.lefttooltip
+{
+	left: -170px;
+}
+
+.righttooltip
+{
+	left: -170px;
+}
+
+
+.inputTooltip p
+{
+	color: white;
+	font-size: 10px;
+}
+
+.lefttooltip i
+{
+	position: absolute;
+	left: 132px;
+	top: 5px;
+}
+
+
+.righttooltip i
+{
+	position: absolute;
+	left: 132px;
+	top: 5px;
+}
+
+.signupbox .input
+{
+	width: 90%;
+	padding-bottom: 10px;
+}
+
+.vertdivider
+{
+	width: 1px;
+	background-color: #fff;
+	opacity: 0.5;
+	height: 300px;
+	display: inline-block;
+	transition:1s;
+}
+
+.signupbox .button
+{
+	margin: 0 auto;
+	width: 90%;
+}
+
+.loginbox
+{
+	width: 300px;
+	top: 10%;
+	position: relative;
+	display: inline-block;
+
+}
+
+.loginbox h1
+{
+	color: white;
+}
+
+.signupbox h1
+{
+	color: white;
+}
+
+.loginbox .input
+{
+	width: 90%;
+	padding-bottom: 10px;
+}
+
+.loginbox .button
+{
+	margin: 0 auto;
+	width: 90%;
+}
+
+.allbox
+{
+	width: 650px;
+	margin: 0 auto;
+	height: 400px;
+	text-align: center;
+
+}

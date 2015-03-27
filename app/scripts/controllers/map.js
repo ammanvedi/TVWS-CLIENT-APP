@@ -7,7 +7,7 @@
  * Controller of the clientAngularApp
  */
 angular.module('clientAngularApp')
-  .controller('MapCtrl',["MeasureSpaceAPIService","SidebarHelper", "StateManager", "HeatmapHelper", "GraphHelper" ,'$scope', function (MeasureSpaceAPIService, SidebarHelper, StateManager , HeatmapHelper, GraphHelper ,$scope) {
+  .controller('MapCtrl',["MeasureSpaceAPIService","SidebarHelper", "StateManager", "HeatmapHelper", "GraphHelper" ,'$scope', "$routeParams", '$location', 'CookieService',function (MeasureSpaceAPIService, SidebarHelper, StateManager , HeatmapHelper, GraphHelper ,$scope, $routeParams, $location, CookieService) {
 
       
 
@@ -21,32 +21,84 @@ angular.module('clientAngularApp')
     $scope.xAxisCategories = null
     $scope.sidebarChartConfig = SidebarHelper.sidebarChartConfig;
     $scope.FreeChannels = SidebarHelper.FreeChannels;
+    $scope.ThresholdMin = -100;
+    $scope.ThresholdMax = -40;
+    $scope.ThresholdVal = -60;
+    $scope.PERCENTOCCUPIED = 0;
+    $scope.pointcount = 0;
+    $scope.markeratlon = 0.0;
+    $scope.markeratlat = 0.0;
+    $scope.nearestpointofreference = 0.0;
     
     $scope.$watch(function(){return HeatmapHelper.graphinfotext}, function(){$scope.git = HeatmapHelper.graphinfotext});
     $scope.$watch(function(){return GraphHelper.chartConfig}, function(){$scope.chartConfig = GraphHelper.chartConfig});
     $scope.$watch(function(){return SidebarHelper.sidebarChartConfig}, function(){$scope.sidebarChartConfig = SidebarHelper.sidebarChartConfig});
     $scope.$watch(function(){return SidebarHelper.FreeChannels}, function(){$scope.FreeChannels = SidebarHelper.FreeChannels});
+    $scope.$watch(function(){return SidebarHelper.PERCENTOCCUPIED}, function(){$scope.PERCENTOCCUPIED = SidebarHelper.PERCENTOCCUPIED});
     
 
 
     $scope.togglesidebar = function()
     {
-        console.log( $('#mapsidebar').css("left"));
+        //console.log( $('#mapsidebar').css("left"));
         if( $('#mapsidebar').css("left") == "0px")
         {
             $('#mapsidebar').animate({ "left": "-500px" }, "fast");
             $('#xicon').removeClass("tilted");
+            $('#chart1').css("width", "100%");
+            $('#chart1').css("padding-left", "50px");
+            $('.graphnodata').css("padding-left", "50px");
+            $('.graphnodata').css("width", "100%");
+            GraphHelper.chartConfig.options.chart.width = parseInt($( window ).width()) - 50;
+            GraphHelper.chartConfig.options.marginLeft = 50;
+                        $('#chart1').highcharts().redraw();
+                                    $('#chart1').highcharts().reflow();
+
+
         }else
         {
             $('#mapsidebar').animate({ "left": "0px" }, "fast" );
             $('#xicon').addClass("tilted");
+            $('#chart1').css("width", "calc(100% - 280px)");
+            $('.graphnodata').css("width", "calc(100% - 280px)");
+            $('#chart1').css("padding-left", "0px");
+            $('.graphnodata').css("padding-left", "0px");
+            GraphHelper.chartConfig.options.chart.width = parseInt($( window ).width()) -280;
+            console.log(parseInt($( '#chart1' ).width()));
+            $('#chart1').highcharts().redraw();
+                                    $('#chart1').highcharts().reflow();
+            //$('.highcharts-container').css("width", "calc(100% - 280px)");
+        }
+
+    }
+
+    $scope.togglesidebarsection = function(collapse)
+    {
+        //passes the class of the element that should be collapsed
+        $('.' + collapse).toggleClass("sidebarcollapse");
+    }
+
+    $scope.sidebarclicked = function(event)
+    {
+        console.log(event.target.attributes.getNamedItem("close-attr").value);
+        $scope.togglesidebarsection(event.target.attributes.getNamedItem("close-attr").value);
+
+    }
+
+    $scope.ThresholdUpdate = function()
+    {
+        if(StateManager.isHEATMAPPING())
+        {
+            GraphHelper.setThresholdLine($scope.ThresholdVal);
+            SidebarHelper.determineFreeChannels($scope.ThresholdVal, $scope.NPI);
+            SidebarHelper.UpdateOccupancy($scope.ThresholdVal, $scope.displaychannel);
         }
 
     }
 
     $scope.togglegraph = function()
     {
-        console.log( $('#chart1').css("left"));
+        //console.log( $('#chart1').css("left"));
         
         if( $('#chart1').css("bottom") == "120px")
         {
@@ -78,10 +130,13 @@ angular.module('clientAngularApp')
         if($scope.graphvisible)
         {
             $(".graphnodata").fadeOut("fast");
+            //sidebarnodata
+            $(".sidebarnodata").fadeOut("fast");
         }
         else
         {
             $(".graphnodata").fadeIn("fast");
+            $(".sidebarnodata").fadeIn("fast");
         }
         
         $scope.graphvisible = !$scope.graphvisible;
@@ -90,12 +145,14 @@ angular.module('clientAngularApp')
 
     $scope.convertAPItoHeatmap = function(APIDATA, conversiondone)
     {
-
+      $scope.pointcount = APIDATA[Object.keys(APIDATA)[0]].length;
       var heatmapchannels = {}
-      var min = 100000.0;
-      var max = -100000000.0;
+      $scope.overallmin = 100000.0;
+      $scope.overallmax = -100000000.0;
       var channelkey;
       var readingkey;
+      var min = 100000.0;
+      var max = -100000000.0;
 
       for(channelkey in APIDATA)
       {
@@ -113,8 +170,22 @@ angular.module('clientAngularApp')
           }
         }
 
-        console.log(min);
-        console.log(max);
+        if(min < $scope.overallmin)
+          {
+            $scope.overallmin = min;
+          }
+
+        if(max > $scope.overallmax)
+          {
+            $scope.overallmax = max;
+          }
+
+        //console.log(min);
+        //console.log(max);
+
+        HeatmapHelper.overallmin = $scope.overallmin;
+        HeatmapHelper.overallmax = $scope.overallmax;
+
 
         heatmapchannels[channelkey] = new Array();
 
@@ -131,7 +202,7 @@ angular.module('clientAngularApp')
       }
 
         conversiondone(heatmapchannels);
-        console.log(heatmapchannels);
+        //console.log(heatmapchannels);
     }
 
     $scope.findNearPointIndex = function(lon, lat)
@@ -155,7 +226,8 @@ angular.module('clientAngularApp')
                 }
             }
         }
-
+        $scope.nearestpointofreference = smallestdist;
+        $scope.NPI = closestidx;
         $scope.buildSpectrumAtPoint(closestidx);
     }
 
@@ -177,11 +249,12 @@ angular.module('clientAngularApp')
 
         for(var key in HeatmapHelper.rawReadings)
         {
-            $scope.xAxisCategories[GraphHelper.getCategories().indexOf(parseInt(key))] = HeatmapHelper.rawReadings[key][indexpoint].CombinedPower;
+            //key is actually channelid, need to convert channel id to channel number for displayon graph.
+            $scope.xAxisCategories[ GraphHelper.getCategories().indexOf( $scope.ChannelLookup[parseInt(key)] ) ] = HeatmapHelper.rawReadings[key][indexpoint].CombinedPower;
         }
 
         GraphHelper.setSeriesData($scope.xAxisCategories);
-        GraphHelper.moveChartBandToChannel($scope.displayChannel);
+        GraphHelper.moveChartBandToChannel($scope.ChannelLookup[parseInt($scope.displaychannel)]);
         $scope.$apply();
     }
 
@@ -190,6 +263,7 @@ angular.module('clientAngularApp')
         StateManager.setHEATMAPPING();
         HeatmapHelper.graphinfotext = "move the marker to view point data";
         $scope.displaychannel = HeatmapHelper.heatmapdatachannels[0];
+        $scope.datachannelcount = HeatmapHelper.heatmapdatachannels.length;
         HeatmapHelper.fulldataset = hmdata;
         $scope.HMCACHE = new Object();
         HeatmapHelper.heatmap = $scope.map.heatmapLayers.vizlayer;
@@ -198,6 +272,8 @@ angular.module('clientAngularApp')
             data: $scope.HMCACHE[$scope.displaychannel],
             radius: 25
         });
+        $scope.map.setCenter(new google.maps.LatLng($scope.DATASET.Lat, $scope.DATASET.Lon));
+        $scope.map.markers[0].setPosition(new google.maps.LatLng($scope.DATASET.Lat, $scope.DATASET.Lon));
         HeatmapHelper.heatmap.setMap($scope.map);
         $scope.map.heatmapLayers.vizlayer.setMap($scope.map);
     }
@@ -240,7 +316,7 @@ angular.module('clientAngularApp')
             HeatmapHelper.heatmap.setData($scope.HMCACHE[channelid]);
         }
         
-        GraphHelper.moveChartBandToChannel(parseInt($scope.displaychannel));
+        GraphHelper.moveChartBandToChannel($scope.ChannelLookup[parseInt($scope.displaychannel)]);
         
     }
 
@@ -253,6 +329,7 @@ angular.module('clientAngularApp')
 
     $scope.gotReadingsFail = function(readingserror)
     {
+        console.log("ERROR :: Getting readings Failed");
     }
 
     $scope.gotDataset = function(rawdatas)
@@ -261,6 +338,7 @@ angular.module('clientAngularApp')
 
     $scope.gotDatasetFail = function(datas)
     {
+        console.log("ERROR :: Getting dataset Failed");
     }
 
     $scope.markerPositionChanged = function(event)
@@ -270,11 +348,14 @@ angular.module('clientAngularApp')
         {
             $scope.findNearPointIndex(event.latLng.lng(), event.latLng.lat());
             StateManager.increaseDROPCOUNT();
+            $scope.markeratlon = event.latLng.lng();
+            $scope.markeratlat = event.latLng.lat();
         }
     }
 
     $scope.gotRegionFail = function()
     {
+        console.log("ERROR :: Getting region Failed");
     }
     
 
@@ -283,21 +364,32 @@ angular.module('clientAngularApp')
     {
         //got the regions successfully
         //set up the graph
-        $scope.channelassignments = datas;
+        $scope.ChannelLookup = new Object();
+        HeatmapHelper.channelassignments = datas;
         var xaxis = new Array();
-        for(var k in $scope.channelassignments)
+        for(var k in HeatmapHelper.channelassignments)
         {
-            xaxis.push($scope.channelassignments[k].ChannelID);
+            xaxis.push(HeatmapHelper.channelassignments[k].ChannelNumber);
+            $scope.ChannelLookup[HeatmapHelper.channelassignments[k].ChannelID] = HeatmapHelper.channelassignments[k].ChannelNumber;
         }
         //set to graph
+        //console.log(xaxis);
         GraphHelper.setCategories(xaxis);
+
         
         //check the cache, otherwise make the API call
-        console.log(HeatmapHelper.HEATMAPCACHE);
+        //console.log(HeatmapHelper.HEATMAPCACHE);
+
+        //either way augment the url of the request to the dataset id so the link can be easily shared
+
+        $location.search("DatasetID", $scope.DATASET.DatsetID);
+
         if(HeatmapHelper.HEATMAPCACHE[$scope.DATASET.DatasetID])
         {
             HeatmapHelper.rawReadings = HeatmapHelper.HEATMAPCACHE[$scope.DATASET.DatasetID].Rawdata;
             HeatmapHelper.heatmapdatachannels = HeatmapHelper.HEATMAPCACHE[$scope.DATASET.DatasetID].Channels;
+            $scope.overallmin = HeatmapHelper.HEATMAPCACHE[$scope.DATASET.DatasetID].ovmin;
+            $scope.overallmax = HeatmapHelper.HEATMAPCACHE[$scope.DATASET.DatasetID].ovmax;
             //$scope.fulldataset = HeatmapHelper.HEATMAPCACHE[$scope.DATASET.DatasetID].Normdata;
             $scope.putHeatmap(HeatmapHelper.HEATMAPCACHE[$scope.DATASET.DatasetID].Normdata);
         }else
@@ -318,7 +410,7 @@ angular.module('clientAngularApp')
         if(StateManager.isHEATMAPPING())
         {
             
-            console.log("DC IS --> " + StateManager.getDROPCOUNT());
+            //console.log("DC IS --> " + StateManager.getDROPCOUNT());
             if(StateManager.getDROPCOUNT() > 0)
             {
                 HeatmapHelper.graphinfotext = "Find Dataset to View it's Data."
@@ -327,6 +419,7 @@ angular.module('clientAngularApp')
             }
 
             StateManager.setSEARCHING();
+            SidebarHelper.clearFreeChannels();
 
             HeatmapHelper.graphinfotext = "Find Dataset to View it's Data."
 
@@ -358,14 +451,14 @@ angular.module('clientAngularApp')
 
     $scope.markerHover = function(event)
     {
-        console.log("hover");
+        //console.log("hover");
         //console.log(event);
         $scope.drawHoverInfo([event.evt.pageX, event.evt.pageY], event.arg.dataset, event.evt.fromElement);
     }
 
     $scope.markerHoverExit = function(event)
     {
-        console.log("hoverexit");
+        //console.log("hoverexit");
         //console.log(event);
         $scope.removeHoverInfo();
     }
@@ -376,10 +469,10 @@ angular.module('clientAngularApp')
       }
       else {
         event.alreadyCalled_ = true;
-          console.log(evt);
+          //console.log(evt);
         if(evt["arg"]["dataset"])
         {
-            console.log("here");
+            //console.log("here");
           SidebarHelper.clearOverlays();
           $scope.removeHoverInfo();
           HeatmapHelper.DATASET = $scope.DATASET = evt["arg"]["dataset"] 
@@ -388,20 +481,55 @@ angular.module('clientAngularApp')
       }
     }
 
+    $scope.loadURLDataset = function(dsid)
+    {
+        MeasureSpaceAPIService.getDatasetByID(dsid, $scope.loadedURLDataset, $scope.failedLoadURLDataset);
+
+    }
+
+    $scope.loadedURLDataset = function(data)
+    {
+        //set the scope's dataset to the dataset info
+        //console.log(data);
+        //save in the scope
+        HeatmapHelper.DATASET = $scope.DATASET = data;
+        //get the datset of channels for the region
+        $scope.getRegionDataset(data.Lon, data.Lat);
+    }
+
+    $scope.failedLoadURLDataset = function(data)
+    {
+
+    }
+
     $scope.getRegionDataset = function(lon, lat)
     {
         MeasureSpaceAPIService.getRegionChannelSet(lon, lat, $scope.gotRegion, $scope.gotRegionFail)
     }
 
     $scope.$on('mapInitialized', function(event, map) {
+        
         $scope.map = map;
+
+
         SidebarHelper.setMap(map);
         google.maps.event.addListener($scope.map.markers[0],'dragend',$scope.markerPositionChanged);
         google.maps.event.addListener($scope.map,'markerclick',$scope.mapClicked);
         google.maps.event.addListener($scope.map,'markerhover',$scope.markerHover);
         google.maps.event.addListener($scope.map,'markerhoverexit',$scope.markerHoverExit);
-        setTimeout(function(){$scope.togglePageLoading();},2000)
+        setTimeout(function(){$scope.togglePageLoading();},2000);
+        $("#channelsmapmover").fadeOut("fast");
         event.stopPropagation();
+
+        //console.log($routeParams);
+        //check for route params
+        //load map if one is predent (DatasetID)
+        if($routeParams.DatasetID)
+        {
+            //load this dataset
+            $scope.loadURLDataset($routeParams.DatasetID);
+        }
+
     });
 
 

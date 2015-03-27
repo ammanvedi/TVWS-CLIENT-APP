@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="styles/build/userhome.css">
+
+<div class="userheader">
+	
+	
+</div>
+
+<div class="tableholder">
+	<table class="ui celled table segment" >
+	  <thead>
+	    <tr>
+	      <th>Uploaded</th>
+	      <th>Region</th>
+	      <th>Start Date</th>
+	      <th>End Date</th>
+	      <th>Data Points</th>
+	      <th>Channels</th>
+	      <th>Latitude</th>
+	      <th>Longitude</th>
+	      <th>View</th>
+	    </tr>
+	  </thead>
+	  <tbody >
+	    <tr ng-repeat="(key, dataset) in userDatasets" class="userdatasetrow">
+	      <td>{{dataset.DateCreated * 1000 | amCalendar}}</td>
+	      <td>{{dataset.Placename}}</td>
+	      <td>{{dataset.StartTime * 1000 | amCalendar}}</td>
+	      <td>{{dataset.EndTime * 1000 | amCalendar}}</td>
+	      <td>{{dataset.DataPointCount}}</td>
+	      <td>{{dataset.ChannelCount}}</td>
+	      <td>{{dataset.Lat.toFixed(3)}}</td>
+	      <td>{{dataset.Lon.toFixed(3)}}</td>
+	      <td><a href="/#/map/{{dataset.DatasetID}}">→</a></td>
+	    </tr>
+	  </tbody>
+	</table>
+</div>

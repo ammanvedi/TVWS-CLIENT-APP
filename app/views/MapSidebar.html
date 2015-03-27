@@ -1,15 +1,181 @@
 <!-- <div ng-model="datas">{{datas.data}}</div> -->
-<div class="sidebarcontent">
+<div class="sidebarcontent" ng-click="sidebarclicked($event)">
 
-<div class="ui icon input">
-  <input type="text" id="pac-input" placeholder="find somewhere...">
-  <i class="search icon"></i>
+<div class="sidebarheader">
+	<p>
+		SEARCH
+	</p>
+	<div class="optionsbox">
+		<i class="white remove circle icon" close-attr="searchbox"></i>
+		<i class="white help circle icon"></i>
+	</div>
 </div>
-<div id="piechart" ></div>
+<br/>
+
+<div class="searchbox">
+	<div class="ui icon input">
+	  <input type="text" id="pac-input" placeholder="find somewhere...">
+	  <i class="search icon"></i>
+	</div>
+</div>
+
+<div class="sidebarheader">
+	<p>
+		DATASET
+	</p>
+	<div class="optionsbox">
+		<i class="white remove circle icon" close-attr="metadata"></i>
+		<i class="white help circle icon"></i>
+	</div>
+</div>
+
+<br/>
+
+<div class="metadata">
+<div class="sidebarnodata"><p class="">{{git}}</p></div>
+<br/>
+	<div class="metaitem">
+		<h1>MIN POWER</h1>
+		<p>{{overallmin}}&nbsp;Dbm</p>
+	</div>
+
+	<div class="metaitem">
+		<h1>MAX POWER</h1>
+		<p>{{overallmax}}&nbsp;Dbm</p>
+	</div>
+
+	<div class="metaitem">
+		<h1>SAMPLES</h1>
+		<p>{{pointcount}}</p>
+	</div>
+
+	<div class="metaitem">
+		<h1>ITU CHANNELS : </h1>
+		<p>{{datachannelcount}}</p>
+	</div>
+
+<br/>
+
+</div>
+
+<div class="sidebarheader">
+	<p>
+		MARKER
+	</p>
+	<div class="optionsbox">
+		<i class="white remove circle icon" close-attr="pointmetadata"></i>
+		<i class="white help circle icon"></i>
+	</div>
+</div>
+
+<br/>
+
+<div class="pointmetadata">
+<div class="sidebarnodata"><p class="">{{git}}</p></div>
+<br/>
+
+
+	<div class="metaitem">
+		<h1>LATITUDE </h1>
+		<p>{{markeratlat.toFixed(3)}}</p>
+	</div>
+
+	<div class="metaitem">
+		<h1>LONGITUDE</h1>
+		<p>{{markeratlon.toFixed(3)}}</p>
+	</div>
+
+	<div class="metaitem">
+		<h1>NEAREST DATA POINT</h1>
+		<p>{{nearestpointofreference.toFixed(3)}}m</p>
+	</div>
+
+<br/>
+</div>
+
+
+<div class="sidebarheader">
+	<p>
+		OCCUPANCY
+	</p>
+	<div class="optionsbox">
+		<i class="white remove circle icon" close-attr="piechartholder"></i>
+		<i class="white help circle icon"></i>
+	</div>
+</div>
+
+<br/>
+
+<div class="piechartholder">
+<div class="sidebarnodata"><p class="">{{git}}</p></div>
+<br/>
+<div class="cholder">
+	<div id="piechart" ></div>
+</div>
+	<div class="ptextholder">
+		<div class="percenttext">
+			{{PERCENTOCCUPIED.toFixed(1)}}%
+		</div>
+		<div class="percentdetailtext" style="color:white;">occupied <br/> in channel {{ChannelLookup[displaychannel]}} @ threshold {{ThresholdVal}}</div>
+	</div>
+</div>
+
+<div class="sidebarheader">
+	<p>
+		THRESHOLD
+	</p>
+	<div class="optionsbox">
+		<i class="white remove circle icon" close-attr="thslider"></i>
+		<i class="white help circle icon"></i>
+	</div>
+</div>
+
+<br/>
+<div class="thslider">
+	<input id="thresholdslider" type="range" min="{{overallmin}}" max="{{overallmax}}" ng-model="ThresholdVal" ng-change="ThresholdUpdate()" step="0.5"/>
+</div>
+<!--
+<div style="color:white;">
+	{{ThresholdVal}}
+</div>
+-->
+
+
+<div class="sidebarheader">
+	<p>
+		FREE CHANNELS
+	</p>
+	<div class="optionsbox">
+		<i class="white remove circle icon" close-attr="fchannels"></i>
+		<i class="white help circle icon"></i>
+	</div>
+</div>
+
+<br/>
 
 <div class="fchannels">
-	<div  ng-repeat="n in FreeChannels" class="fchannelreading">
-	  <p>{{n}}</p>
+<div class="sidebarnodata"><p class="">{{git}}</p></div>
+	<div  ng-repeat="n in FreeChannels" class="fchannelreading cranimate" >
+
+		<div class="channelnumholder">
+			<div class="channelnum">
+				<p>{{n.ChannelNumber}}</p>
+			</div>
+		</div>
+		<div class="rangeholder">
+			<div class="rangestop">
+				<p>{{n.LowEnd}}</p>
+				<p>MHz</p>
+			</div>
+			<div class="rangearrow">
+				<i class="long arrow right icon"></i>
+			</div>
+			<div class="rangestop">
+				<p>{{n.UpEnd}}</p>
+				<p>MHz</p>
+			</div>
+		</div>
+
 	</div>
 </div>
 

@@ -11,13 +11,14 @@
 angular
   .module('clientAngularApp', [
     'ngAnimate',
-    'ngCookies',
+    'ipCookie',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'angularFileUpload',
     'ngMap',
-    'highcharts-ng'
+    'highcharts-ng',
+    'angularMoment'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -28,13 +29,35 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
-      }).when('/upload', {
+      })
+      .when('/upload', {
         templateUrl: 'views/Upload.html',
         controller: 'UploadCtrl'
       })
-      .when('/map', {
+      .when('/map/:DatasetID?', {
         templateUrl: 'views/map.html',
-        controller: 'MapCtrl'
+        controller: 'MapCtrl',
+        reloadOnSearch: false
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .when('/me', {
+        templateUrl: 'views/userhome.html',
+        controller: 'UserHomeCtrl'
+      })
+      .when('/logout', {
+        templateUrl: 'views/logout.html',
+        controller: 'LogoutCtrl'
+      })
+      .when('/api', {
+        templateUrl: 'views/api.html',
+        controller: 'APICtrl'
       })
       .otherwise({
         redirectTo: '/'

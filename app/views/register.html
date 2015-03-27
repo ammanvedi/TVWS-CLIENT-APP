@@ -1,0 +1,79 @@
+
+<link rel="stylesheet" href="styles/build/register.css">
+<div class="contain">
+
+<div class="logoheader">
+</div>
+<div class="allbox">
+	<div class="signupbox">
+			<h1>Sign Up</h1>
+			<div class="ui input" id="fname">
+				<div class="inputTooltip lefttooltip" id="fnameerr">
+					<p>Your Name Should Not Contain Spaces, or be empty</p>
+					<i class="chevron big right icon"></i>
+				</div>
+			  <input type="text" name="fname" placeholder="First Name">
+			</div>
+
+			<div class="ui input" id="sname">
+				<div class="inputTooltip lefttooltip" id="snameerr">
+					<p>Your Surname Should Not Contain Spaces, or be empty</p>
+					<i class="chevron big right icon"></i>
+				</div>
+			  <input type="text" name="sname" placeholder="Second Name">
+			</div>
+
+			<div class="ui input" id="email">
+				<div class="inputTooltip lefttooltip" id="emailerr">
+					<p>Please Enter A Valid Email</p>
+					<i class="chevron big right icon"></i>
+				</div>
+			  <input type="text" name="email" placeholder="Email">
+			</div>
+
+			<div class="ui input" id="password">
+				<div class="inputTooltip lefttooltip" id="passworderr">
+					<p>Password Cannot Contain Spaces, or be empty</p>
+					<i class="chevron big right icon"></i>
+				</div>
+			  <input type="password" name="password" placeholder="Password">
+			</div>
+
+			<div class="ui input" id="passwordverify">
+				<div class="inputTooltip lefttooltip" id="passwordverifyerr">
+					<p>Password Does Not Match</p>
+					<i class="chevron big right icon"></i>
+				</div>
+			  <input type="password" name="passwordverify" placeholder="Repeat Password">
+			</div>
+
+			<div class="ui green basic inverted right labeled icon button" ng-click="registerUser()">
+			  <i class="right arrow icon"></i>
+			  Create Account
+			</div>
+	</div>
+
+	<div class="vertdivider"></div>
+
+	<div class="loginbox vcenter">
+			<h1>Log In</h1>
+			<div class="ui input">
+				<div class="inputTooltip righttooltip" id="loginusernameerr">
+					<p>UserName or password Incorrect</p>
+					<i class="chevron big right icon"></i>
+				</div>
+			  <input type="text" name="uname" placeholder="Email">
+			</div>
+
+			<div class="ui input">
+			  <input type="password" name="loginpass" placeholder="Password">
+			</div>
+			<div class="ui green basic inverted right labeled icon button" ng-click="loginUser()">
+			  <i class="right arrow icon"></i>
+			  Log In
+			</div>
+			</div>
+	</div>
+</div>
+
+</div>

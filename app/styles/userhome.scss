@@ -1,0 +1,39 @@
+#a{
+	
+}
+
+.userheader
+{
+	width: 100%;
+	min-height: 200px;
+	max-height: 200px;
+	background-color: RGBA(78, 191, 155, 1);
+}
+
+.tableholder
+{
+	min-height: 300px;
+	max-width: 922px !important;
+	min-width: 922px !important;
+	margin: 0 auto;
+}
+
+tr
+{
+
+	min-height: 100px !important;
+	max-height: 100px !important;
+	height: 50px !important;
+	padding: 0px !important;
+}
+
+.container
+{
+	overflow-y:scroll !important;
+	height: auto !important;
+}
+
+.mainview
+{
+	overflow: scroll !important;
+}

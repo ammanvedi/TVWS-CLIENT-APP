@@ -1,4 +1,3 @@
-'use strict';
 
 /**
  * @ngdoc function
@@ -8,6 +7,6 @@
  * Controller of the clientAngularApp
  */
 angular.module('clientAngularApp')
-  .controller('UploadCtrl', ['$upload', '$scope','MeasureSpaceAPIService', 'CookieService',function ($upload, $scope, MeasureSpaceAPIService, CookieService) {
+  .controller('LoginCtrl', ['$scope','MeasureSpaceAPIService', 'CookieService',function ( $scope, MeasureSpaceAPIService, CookieService) {
 console.log($scope);
   }]);

@@ -8,6 +8,6 @@
  * Controller of the clientAngularApp
  */
 angular.module('clientAngularApp')
-  .controller('HomeCtrl', function () {
+  .controller('HomeCtrl', ['CookieService',function (CookieService) {
     console.log("this is being called from homectrl");
-  });
+  }]);

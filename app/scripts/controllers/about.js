@@ -8,7 +8,7 @@
  * Controller of the clientAngularApp
  */
 angular.module('clientAngularApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('AboutCtrl', 'CookieService', function ($scope, CookieService) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
