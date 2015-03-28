@@ -440,7 +440,7 @@
 
 /* line 475, ../main.scss */
 #pageloading {
-  height: inherit;
+  height: 100vh;
   position: absolute;
   top: 70px;
   width: 100%;
