@@ -38,7 +38,7 @@ app.service( 'MeasureSpaceAPIService', ['$http', function($http){
     },
     getDatasetsNear: function(nearlon, nearlat, complete, failure)
     {
-      $http.get(this.APIURL + '/datasets/near/' + nearlon + '/' + nearlat).
+      $http.get(this.APIURL + '/datasets/near/' + nearlon + '/' + nearlat + '/5000').
         success(function(data, status, headers, config){
 
           if(data.QueryError)
@@ -762,6 +762,8 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
 
   return svc;
     
-
-
 }]);
+
+
+
+

@@ -9,7 +9,7 @@
 angular.module('clientAngularApp')
   .controller('MapCtrl',["MeasureSpaceAPIService","SidebarHelper", "StateManager", "HeatmapHelper", "GraphHelper" ,'$scope', "$routeParams", '$location', 'CookieService',function (MeasureSpaceAPIService, SidebarHelper, StateManager , HeatmapHelper, GraphHelper ,$scope, $routeParams, $location, CookieService) {
 
-      
+
 
     $scope.HMCACHE = {}
     $scope.rawReadings = []
@@ -114,6 +114,7 @@ angular.module('clientAngularApp')
     $scope.togglePageLoading = function()
     {
         $("#pageloading").fadeOut("fast");
+        
     }
     
     $scope.toggleMapLoading = function()
@@ -303,7 +304,6 @@ angular.module('clientAngularApp')
         }
 
     }
-
     $scope.switchHeatmap = function(channelid)
     {
         $scope.displaychannel = channelid;
@@ -510,7 +510,7 @@ angular.module('clientAngularApp')
     $scope.$on('mapInitialized', function(event, map) {
         
         $scope.map = map;
-
+        console.log("init");
 
         SidebarHelper.setMap(map);
         google.maps.event.addListener($scope.map.markers[0],'dragend',$scope.markerPositionChanged);

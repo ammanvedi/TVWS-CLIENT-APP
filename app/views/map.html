@@ -61,15 +61,7 @@
 
 </div>
 
-<div id="channelsmapmover" style="
-            position:absolute;
-            top:0px;
-           padding:5px;
-           margin-top:5px;
-            left:40%;
-            border-radius:10px;
-            background-color:RGBA(61, 61, 58, 0.9);
-            z-index:1000;">
+<div id="channelsmapmover">
 
 
     <div class="bottombar_button" style="display:block !important;" ng-click="IncrementHeatmap()">
@@ -78,7 +70,7 @@
 
 
     <div class="bottombar_button" style="display:block !important; width:200px; color:white;" ng-click="IncrementHeatmap()">
-        <p style="position:relative; top:5px;">Heatmap Of Channel {{ChannelLookup[displaychannel]}}</p>
+        <p style="position:relative; top:5px;">Normalised Heatmap Of Channel {{ChannelLookup[displaychannel]}}</p>
     </div>
 
     <div class="bottombar_button" style="display:block !important;" ng-click="DecrementHeatmap()">
