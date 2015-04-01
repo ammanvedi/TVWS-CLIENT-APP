@@ -10,6 +10,7 @@
 angular.module('clientAngularApp')
   .controller('UserHomeCtrl', ['$rootScope', '$scope', '$location', 'CookieService', 'MeasureSpaceAPIService',function ($rootScope, $scope, $location, CookieService, MeasureSpaceAPIService) {
     console.log("this is being called from user homectrl");
+    console.log($rootScope);
 
     $scope.userDatasets = [];
     $scope.date = new Date();

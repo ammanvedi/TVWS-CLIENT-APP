@@ -1,4 +1,7 @@
 <!-- uploader.html template -->
+  <div id="nodta" ng-if="UID == -1">
+      Seems you are not logged in! you can still upload data <br/>  <a href="/#/register">Registering</a> will allow you to track any measurements more easily!
+    </div>
 
 <h1 id="uploadinfo">Upload your spectrum readings and visualise them, accepted formats can be found in the <a href="/#/api">API docs</a></h1>
 <form enctype="multipart/form-data" id="uploadform">

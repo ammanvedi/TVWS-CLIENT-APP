@@ -29,6 +29,7 @@ angular.module('clientAngularApp')
     $scope.markeratlon = 0.0;
     $scope.markeratlat = 0.0;
     $scope.nearestpointofreference = 0.0;
+    $scope.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     
     $scope.$watch(function(){return HeatmapHelper.graphinfotext}, function(){$scope.git = HeatmapHelper.graphinfotext});
     $scope.$watch(function(){return GraphHelper.chartConfig}, function(){$scope.chartConfig = GraphHelper.chartConfig});
@@ -431,7 +432,18 @@ angular.module('clientAngularApp')
 
     $scope.drawHoverInfo = function(location, dataset, el)
     {
-        var divstr = '<div id="datasetinfo" style="z-index:1500;height:100px;width:100px;position: absolute;left:' + (location[0]+ 10) +'px;top:' + (location[1] + 10) +'px;">' + JSON.stringify(dataset) +'</div>'
+        console.log(moment);
+        var d = new Date(dataset.StartTime *1000)
+
+        var divstr = '<div id="datasetinfo" style="z-index:1500;position: absolute;left:' + 
+        (location[0]+ 10) +'px;top:' + 
+        (location[1] + 10) +'px;"> <span id="datespan">' + 
+        d.getDate() + ' ' + $scope.months[d.getMonth()]+ ' ' + d.getFullYear() + ' </br>@ ' +
+        d.getHours() +' : ' + d.getMinutes() + ' ' +'</span> <br/>' +
+        '<span id="rangespan"><span id="titlespan">Range (MHz) : </span>' + dataset.LF  + ' → ' + dataset.HF +' </span><br/>' +
+        '<span id="channelspan"><span id="titlespan">Channels : </span>' + dataset.ChannelCount + ' </span><br/>' +
+        '<span id="poitcountspan"><span id="titlespan">Points : </span>' + dataset.PointCount +
+        '</span></div>'
         //console.log("passedel");
         //console.log(el);
         //var todiv = $(el);

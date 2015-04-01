@@ -6,30 +6,47 @@
   line-height: 500px;
 }
 
-/* line 8, ../upload.scss */
+/* line 7, ../upload.scss */
+#nodta {
+  padding-top: 10px;
+  max-height: 80px !important;
+  min-height: 80px !important;
+  text-align: center;
+  font-size: 20px;
+  background-color: #35BDB2;
+  color: white;
+}
+
+/* line 18, ../upload.scss */
+#nodta a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* line 24, ../upload.scss */
 .container {
   overflow: scroll !important;
 }
 
-/* line 13, ../upload.scss */
+/* line 29, ../upload.scss */
 .loading {
   display: inline-block !important;
   position: static;
 }
 
-/* line 19, ../upload.scss */
+/* line 35, ../upload.scss */
 .spacer {
   width: 100%;
   height: 20px;
   display: inline-block;
 }
 
-/* line 27, ../upload.scss */
+/* line 43, ../upload.scss */
 .mainview {
   overflow: scroll;
 }
 
-/* line 33, ../upload.scss */
+/* line 49, ../upload.scss */
 #uploadinfo {
   padding-top: 50px;
   margin-top: 0px;
@@ -43,60 +60,60 @@
   padding-bottom: 30px;
 }
 
-/* line 47, ../upload.scss */
+/* line 63, ../upload.scss */
 #uploadinfo a {
   color: #15A89D;
   text-decoration: underline;
 }
 
-/* line 53, ../upload.scss */
+/* line 69, ../upload.scss */
 .progress {
   display: inline-block;
   padding-top: 100px;
 }
 
-/* line 64, ../upload.scss */
+/* line 80, ../upload.scss */
 .bar {
   height: 20px;
   background-color: #3B83C0;
 }
 
-/* line 69, ../upload.scss */
+/* line 85, ../upload.scss */
 td {
   background-color: #fff;
 }
 
-/* line 74, ../upload.scss */
+/* line 90, ../upload.scss */
 .ng-scope {
   background-color: RGBA(47, 110, 178, 1);
   overflow: scroll;
 }
 
-/* line 80, ../upload.scss */
+/* line 96, ../upload.scss */
 .ng-scope {
   min-height: 100vh;
 }
 
-/* line 85, ../upload.scss */
+/* line 101, ../upload.scss */
 uploader {
   display: block;
   overflow: scroll;
 }
 
-/* line 91, ../upload.scss */
+/* line 107, ../upload.scss */
 #uploadform {
   width: 500px;
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 98, ../upload.scss */
+/* line 114, ../upload.scss */
 #uploadtable {
   width: 700px;
   margin: 0 auto;
 }
 
-/* line 104, ../upload.scss */
+/* line 120, ../upload.scss */
 .table {
   -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);

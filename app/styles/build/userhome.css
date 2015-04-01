@@ -1,4 +1,59 @@
 /* line 5, ../userhome.scss */
+.headerinfo {
+  width: 500px;
+  height: 150px;
+  margin: 0 auto;
+  padding-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+/* line 16, ../userhome.scss */
+.headerinfo h1 {
+  float: left;
+  width: 49%;
+}
+
+/* line 24, ../userhome.scss */
+.headerinfo .infodivider {
+  width: 1px;
+  height: 100%;
+  background-color: #fff;
+  float: left;
+}
+
+/* line 32, ../userhome.scss */
+#nodta {
+  text-align: center;
+  font-size: 20px;
+}
+
+/* line 38, ../userhome.scss */
+#nodta a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* line 44, ../userhome.scss */
+.headerinfo .headermeta {
+  width: 49%;
+  float: left;
+  text-align: center;
+}
+
+/* line 52, ../userhome.scss */
+.headerinfo .headermeta h1 {
+  width: 100%;
+  font-size: 50px;
+  margin-bottom: 0px;
+}
+
+/* line 59, ../userhome.scss */
+.headerinfo .headermeta p {
+  width: 100%;
+}
+
+/* line 64, ../userhome.scss */
 .userheader {
   width: 100%;
   min-height: 200px;
@@ -6,15 +61,16 @@
   background-color: RGBA(78, 191, 155, 1);
 }
 
-/* line 13, ../userhome.scss */
+/* line 72, ../userhome.scss */
 .tableholder {
   min-height: 300px;
   max-width: 922px !important;
   min-width: 922px !important;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
-/* line 21, ../userhome.scss */
+/* line 81, ../userhome.scss */
 tr {
   min-height: 100px !important;
   max-height: 100px !important;
@@ -22,13 +78,13 @@ tr {
   padding: 0px !important;
 }
 
-/* line 30, ../userhome.scss */
+/* line 90, ../userhome.scss */
 .container {
   overflow-y: scroll !important;
   height: auto !important;
 }
 
-/* line 36, ../userhome.scss */
+/* line 96, ../userhome.scss */
 .mainview {
   overflow: scroll !important;
 }

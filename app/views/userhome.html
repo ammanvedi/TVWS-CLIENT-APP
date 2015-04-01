@@ -1,8 +1,14 @@
 <link rel="stylesheet" href="styles/build/userhome.css">
 
 <div class="userheader">
-	
-	
+	<div class="headerinfo">
+		<h1>{{ForeName}} {{SurName}}</h1>
+		<div class="infodivider"></div>
+		<div class="headermeta">
+		<h1 ng-model="userDatasets">{{userDatasets.length}}</h1>
+		<p>Datasets</p>
+		</div>
+	</div>
 </div>
 
 <div class="tableholder">
@@ -15,12 +21,13 @@
 	      <th>End Date</th>
 	      <th>Data Points</th>
 	      <th>Channels</th>
-	      <th>Latitude</th>
-	      <th>Longitude</th>
+	      <th>Low End</th>
+	      <th>High End</th>
 	      <th>View</th>
 	    </tr>
 	  </thead>
 	  <tbody >
+
 	    <tr ng-repeat="(key, dataset) in userDatasets" class="userdatasetrow">
 	      <td>{{dataset.DateCreated * 1000 | amCalendar}}</td>
 	      <td>{{dataset.Placename}}</td>
@@ -28,10 +35,14 @@
 	      <td>{{dataset.EndTime * 1000 | amCalendar}}</td>
 	      <td>{{dataset.DataPointCount}}</td>
 	      <td>{{dataset.ChannelCount}}</td>
-	      <td>{{dataset.Lat.toFixed(3)}}</td>
-	      <td>{{dataset.Lon.toFixed(3)}}</td>
+	      <td>{{dataset.LF}} MHz</td>
+	      <td>{{dataset.HF}} MHz</td>
 	      <td><a href="/#/map/{{dataset.DatasetID}}">→</a></td>
 	    </tr>
+
 	  </tbody>
 	</table>
+	<div id="nodta" class="ui teal inverted segment" ng-if="userDatasets.length == 0">
+  		Seems you have not uploaded any data yet! <br/> check out the <a href="/#/api">API docs</a> and head over to the <a href="/#/upload">upload</a> page.
+		</div>
 </div>

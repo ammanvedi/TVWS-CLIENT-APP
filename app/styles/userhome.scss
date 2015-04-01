@@ -2,6 +2,65 @@
 	
 }
 
+.headerinfo
+{
+	width: 500px;
+	height: 150px;
+	margin: 0 auto;
+	padding-top: 20px;
+	text-align: center;
+	color: white;
+
+}
+
+.headerinfo h1
+{
+	float: left;
+	width: 49%;
+
+
+}
+
+.headerinfo .infodivider
+{
+	width: 1px;
+	height: 100%;
+	background-color: #fff;
+	float: left;
+}
+
+#nodta
+{
+	text-align: center;
+	font-size: 20px;
+}
+
+#nodta a
+{
+	color: white;
+	text-decoration: underline;
+}
+
+.headerinfo .headermeta
+{
+	width: 49%;
+	float: left;
+	text-align: center;
+
+}
+
+.headerinfo .headermeta h1
+{
+width: 100%;
+font-size: 50px;
+margin-bottom: 0px;
+}
+
+.headerinfo .headermeta p
+{
+width: 100%;
+}
+
 .userheader
 {
 	width: 100%;
@@ -16,6 +75,7 @@
 	max-width: 922px !important;
 	min-width: 922px !important;
 	margin: 0 auto;
+	margin-top: 20px;
 }
 
 tr

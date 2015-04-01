@@ -343,6 +343,7 @@ app.service("CookieService", ['ipCookie', '$rootScope',function(ipCookie, $rootS
   this.storeUserData = function(usrdata)
   {
     this.LoggedIn = true;
+    console.log(usrdata);
     ipCookie("TVWS", usrdata)
   }
 
@@ -356,6 +357,7 @@ app.service("CookieService", ['ipCookie', '$rootScope',function(ipCookie, $rootS
     this.LoggedIn = true;
     $rootScope.LoggedIn = true;
     $rootScope.ForeName = ipCookie("TVWS").ForeName;
+    $rootScope.SurName = ipCookie("TVWS").Surname;
     $rootScope.UserID = ipCookie("TVWS").UserID;
   }
 
@@ -364,6 +366,7 @@ app.service("CookieService", ['ipCookie', '$rootScope',function(ipCookie, $rootS
     this.LoggedIn = false;
     $rootScope.LoggedIn = false;
     $rootScope.ForeName = null;
+    $rootScope.SurName = null;
     $rootScope.UserID = -1;
   }
 

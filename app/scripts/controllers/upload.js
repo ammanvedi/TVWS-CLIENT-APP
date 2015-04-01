@@ -8,6 +8,7 @@
  * Controller of the clientAngularApp
  */
 angular.module('clientAngularApp')
-  .controller('UploadCtrl', ['$upload', '$scope','MeasureSpaceAPIService', 'CookieService',function ($upload, $scope, MeasureSpaceAPIService, CookieService) {
+  .controller('UploadCtrl', ['$rootScope', '$upload', '$scope','MeasureSpaceAPIService', 'CookieService',function ($rootScope, $upload, $scope, MeasureSpaceAPIService, CookieService) {
 console.log($scope);
+console.log($rootScope);
   }]);

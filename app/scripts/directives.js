@@ -52,15 +52,17 @@ app.directive('mapsidebar', [ 'SidebarHelper', 'StateManager', "GraphHelper" , f
 
 
 
-app.directive('uploader', [ 'MeasureSpaceAPIService','$interval' , function(MeasureSpaceAPIService, $interval)  {
+app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' , function($rootScope, MeasureSpaceAPIService, $interval)  {
 
     return {
       restrict: 'E',
       scope: {
         action: '@'
       },
-      controller: ['$scope', '$interval', function($scope, $interval){
-
+      controller: ['$rootScope', '$scope', '$interval', function($rootScope, $scope, $interval){
+        console.log("UD");
+        console.log($rootScope.UserID);
+        $scope.UID = $rootScope.UserID;
       $scope.UploadTableData = new Object();
       $scope.uploadtable = $('table');
       $scope.uploadbar = $('.progress');
