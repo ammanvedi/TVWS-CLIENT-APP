@@ -115,6 +115,7 @@ angular.module('clientAngularApp')
     $scope.togglePageLoading = function()
     {
         $("#pageloading").fadeOut("fast");
+
         
     }
     
@@ -278,6 +279,8 @@ angular.module('clientAngularApp')
         $scope.map.markers[0].setPosition(new google.maps.LatLng($scope.DATASET.Lat, $scope.DATASET.Lon));
         HeatmapHelper.heatmap.setMap($scope.map);
         $scope.map.heatmapLayers.vizlayer.setMap($scope.map);
+
+
     }
     
     $scope.IncrementHeatmap = function()
@@ -324,7 +327,11 @@ angular.module('clientAngularApp')
     $scope.gotReadings = function(readings)
     {
         HeatmapHelper.rawReadings = readings;
+        console.log("rawread");
+        console.log(JSON.stringify(readings));
         HeatmapHelper.heatmapdatachannels = Object.keys(readings);
+        console.log("datachannels");
+        console.log(JSON.stringify(Object.keys(readings)));  
         $scope.convertAPItoHeatmap(readings, $scope.putHeatmap);
     }
 
@@ -344,6 +351,8 @@ angular.module('clientAngularApp')
 
     $scope.markerPositionChanged = function(event)
     {
+        console.log(event);
+        console.log(StateManager.isHEATMAPPING());
         //should find near point index if we actually have data
         if(StateManager.isHEATMAPPING())
         {
@@ -507,6 +516,8 @@ angular.module('clientAngularApp')
         HeatmapHelper.DATASET = $scope.DATASET = data;
         //get the datset of channels for the region
         $scope.getRegionDataset(data.Lon, data.Lat);
+
+
     }
 
     $scope.failedLoadURLDataset = function(data)
@@ -519,12 +530,19 @@ angular.module('clientAngularApp')
         MeasureSpaceAPIService.getRegionChannelSet(lon, lat, $scope.gotRegion, $scope.gotRegionFail)
     }
 
+    $scope.mousedwn = function(evt)
+    {
+        console.log(evt);
+    }
+
     $scope.$on('mapInitialized', function(event, map) {
         
         $scope.map = map;
-        console.log("init");
 
+        console.log("init")
         SidebarHelper.setMap(map);
+        document.addEventListener("mousedown", $scope.mousedwn);
+        document.addEventListener("mouseup", $scope.mousedwn);
         google.maps.event.addListener($scope.map.markers[0],'dragend',$scope.markerPositionChanged);
         google.maps.event.addListener($scope.map,'markerclick',$scope.mapClicked);
         google.maps.event.addListener($scope.map,'markerhover',$scope.markerHover);
@@ -538,8 +556,10 @@ angular.module('clientAngularApp')
         //load map if one is predent (DatasetID)
         if($routeParams.DatasetID)
         {
+
             //load this dataset
             $scope.loadURLDataset($routeParams.DatasetID);
+
         }
 
     });

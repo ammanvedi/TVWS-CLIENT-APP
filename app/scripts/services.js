@@ -314,10 +314,10 @@ app.service('HeatmapHelper', [ function(){
           var FPC = 0;
           var occupiedcount = 0;
           var PERCENTAGES = new Array();
-          for(channelid in HH.rawReadings)
+          for(var channelid in HH.rawReadings)
           {
             FPC = HH.rawReadings[channelid].length
-            for(key in HH.rawReadings[channelid])
+            for(var key in HH.rawReadings[channelid])
             {
               if(HH.rawReadings[channelid][key].CombinedPower > thresh)
               {
@@ -337,13 +337,13 @@ app.service('HeatmapHelper', [ function(){
 
 
 }]);
-
+    
 app.service("CookieService", ['ipCookie', '$rootScope',function(ipCookie, $rootScope){
 
-  this.storeUserData = function(usrdata)
+   this.storeUserData = function(usrdata)
   {
     this.LoggedIn = true;
-    console.log(usrdata);
+    console.log(JSON.stringify(usrdata));
     ipCookie("TVWS", usrdata)
   }
 
@@ -354,20 +354,21 @@ app.service("CookieService", ['ipCookie', '$rootScope',function(ipCookie, $rootS
 
   this.setLoggedIn = function()
   {
-    this.LoggedIn = true;
+  this.LoggedIn = true;
     $rootScope.LoggedIn = true;
     $rootScope.ForeName = ipCookie("TVWS").ForeName;
     $rootScope.SurName = ipCookie("TVWS").Surname;
     $rootScope.UserID = ipCookie("TVWS").UserID;
   }
 
-  this.setLoggedOut = function()
+this.setLoggedOut = function()
   {
     this.LoggedIn = false;
     $rootScope.LoggedIn = false;
     $rootScope.ForeName = null;
     $rootScope.SurName = null;
     $rootScope.UserID = -1;
+
   }
 
   this.Logout = function()
@@ -378,11 +379,13 @@ app.service("CookieService", ['ipCookie', '$rootScope',function(ipCookie, $rootS
 
   this.getToken = function()
   {
+    if(ipCookie("TVWS") === undefined)
+      return null;
     return ipCookie("TVWS").Token;
   }
 
-
-  this.setLoggedOut();
+   
+   this.setLoggedOut();
 
   if(ipCookie("TVWS") != undefined)
   {
@@ -399,7 +402,7 @@ app.service("CookieService", ['ipCookie', '$rootScope',function(ipCookie, $rootS
 
 app.service("GraphHelper", [function(){
 
-  GH = {
+  var GH = {
     chartConfig: {
             options: {
                 chart: 
@@ -658,7 +661,7 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
     drawDatasetMarkers: function(data)
     {
       //console.log(svc.MAP);
-      for(dskey in data)
+      for(var dskey in data)
       {
           var overlay = new CustomMarker(
             new google.maps.LatLng(data[dskey].Lat, data[dskey].Lon),
@@ -677,14 +680,14 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
     },
     showOverlays: function()
     {
-      for(ok in svc.OVERLAYS)
+      for(var ok in svc.OVERLAYS)
       {
         svc.OVERLAYS[ok].setMap(svc.MAP);
       }
     },
     clearOverlays: function()
     {
-      for(ok in svc.OVERLAYS)
+      for(var ok in svc.OVERLAYS)
       {
         svc.OVERLAYS[ok].setMap(null);
       }
@@ -703,7 +706,7 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
     determineFreeChannels: function(threshold, nearpointindex)
     {
       var free = new Array();
-      for(channelID in HeatmapHelper.rawReadings)
+      for(var channelID in HeatmapHelper.rawReadings)
       {
         if(HeatmapHelper.rawReadings[channelID][nearpointindex].CombinedPower < threshold)
         {
@@ -711,9 +714,9 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
         }
       }
       var fullfree = new Array();
-      for(freechannelID in free)
+      for(var freechannelID in free)
       {
-        for(idx in HeatmapHelper.channelassignments)
+        for(var idx in HeatmapHelper.channelassignments)
         {
           if(HeatmapHelper.channelassignments[idx].ChannelID == free[freechannelID])
           {
@@ -735,7 +738,7 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
       var percentages = HeatmapHelper.calculatePercentageOccupancy(threshold);
       //console.log(svc.PIECHART);
       //console.log(percentages);
-      for(arrkey in percentages)
+      for(var arrkey in percentages)
       {
         //console.log(percentages[arrkey].cid, CurrentDisplayChannel);
         if(percentages[arrkey].cid == CurrentDisplayChannel)

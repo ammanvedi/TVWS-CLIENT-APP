@@ -87,33 +87,29 @@ td {
 .ng-scope {
   background-color: RGBA(47, 110, 178, 1);
   overflow: scroll;
-}
-
-/* line 96, ../upload.scss */
-.ng-scope {
   min-height: 100vh;
 }
 
-/* line 101, ../upload.scss */
+/* line 98, ../upload.scss */
 uploader {
   display: block;
   overflow: scroll;
 }
 
-/* line 107, ../upload.scss */
+/* line 104, ../upload.scss */
 #uploadform {
   width: 500px;
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 114, ../upload.scss */
+/* line 111, ../upload.scss */
 #uploadtable {
   width: 700px;
   margin: 0 auto;
 }
 
-/* line 120, ../upload.scss */
+/* line 117, ../upload.scss */
 .table {
   -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);

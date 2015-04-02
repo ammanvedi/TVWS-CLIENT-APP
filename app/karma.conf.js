@@ -16,30 +16,9 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
     "https://maps.googleapis.com/maps/api/js?key=AIzaSyA1t67Aa6hyiIiZGebHPfGpJVc2UX8773o&libraries=visualization,geometry,places",
-    'bower_components/angular/angular.js',
+      'scripts/build/lib/lib.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-cookies/angular-cookies.js',
-      'bower_components/angular-sanitize/angular-sanitize.js',
-      'bower_components/angular-route/angular-route.js',
-      "https://rawgithubusercontent.com/velesin/jasmine-jquery/master/lib/jasmine-jquery.js",
-
-
-"bower_components/angular-animate/angular-animate.js",
-"bower_components/angular-cookie/angular-cookie.min.js",
-"http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.js",
-"https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.js",
-"bower_components/hc/highcharts.src.js",
-"bower_components/moment/moment.js",
-"bower_components/angular-moment/angular-moment.js",
-"bower_components/ng-file-upload/angular-file-upload-shim.min.js",
-"bower_components/ng-file-upload/angular-file-upload.min.js",
-"https://maps.googleapis.com/maps/api/js?key=AIzaSyA1t67Aa6hyiIiZGebHPfGpJVc2UX8773o&libraries=visualization,geometry,places",
-"bower_components/ngmap/build/scripts/ng-map.js",
-"bower_components/highcharts-ng/dist/highcharts-ng.min.js",
-"scripts/custommarker.js",
-      'scripts/*.js',
-      'scripts/**/*.js',
+      'scripts/build/client/client.concat.js',
       'test/tests.js'
 
     ],

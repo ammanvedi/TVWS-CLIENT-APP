@@ -1,5 +1,43 @@
 <link rel="stylesheet" href="styles/build/api.css">
 
+      <div class="ui blue inverted menu navmenu" style="z-index:1500 !important;">
+        <a class="active item" href="/#/">
+          <div id="logobox"></div>
+        </a>
+        <a class="item" href="/#/#about">
+           About
+        </a>
+        <a class="item" href="/#/map">
+           Database
+        </a>
+        <a class="item" href="/#/upload">
+          Upload
+        </a>
+        <a class="item" href="/#/api">
+           API
+        </a>
+
+
+
+        <a ng-if="LoggedIn == false" class="item right" href="/#/register">
+          Sign Up
+        </a>
+
+
+    <div ng-if="LoggedIn == true" class="ui simple dropdown item right" id="userdrop" style="z-index:1500 !important;">
+      <i class="dropdown icon" style="z-index:1500 !important;"></i>
+      {{ForeName}}
+      <div class="menu" style="z-index:1500 !important;">
+        <div class="item"><a style="color:#000;" href="/#/me">My Home</a></div>
+        <div class="item"><a style="color:#000;" href="/#/logout">Log Out</a></div>
+      </div>
+    </div>
+
+
+      </div>
+
+      <div class="menughost"></div>
+
 <div class="apiheader">
 	<div class="headergrad"></div>
 </div>
