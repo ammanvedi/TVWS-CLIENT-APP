@@ -88,6 +88,12 @@ padding-left: 10px;
   overflow: hidden;
   position: relative;
   display: block;
+
+   width: 100%;
+ height: 180px;
+position: relative;
+overflow: hidden;
+display: block;
 }
 
 
@@ -95,6 +101,12 @@ padding-left: 10px;
 .pointmetadata
 {
 padding-left: 10px;
+position: relative;
+overflow: hidden;
+display: block;
+
+ width: 100%;
+ height: 180px;
 position: relative;
 overflow: hidden;
 display: block;
@@ -144,11 +156,18 @@ display: block;
   border-left: 4px solid #3B83C0;
   text-align: left;
   padding-left: 10px;
+  display: block;
 }
 
 .thslider
 {
   display: block;
+
+   width: 100%;
+ height: 70px;
+position: relative;
+overflow: hidden;
+display: block;
 }
 
 .sidebarheader p
@@ -158,6 +177,7 @@ display: block;
   font-weight: bold;
   padding-top: 10px;
   color: white;
+  margin-bottom: 0px;
 }
 
 .sidebarheader .optionsbox
@@ -181,6 +201,11 @@ display: block;
   position: relative;
   overflow: hidden;
   display: block;
+
+   width: 100%;
+position: relative;
+overflow: hidden;
+display: block;
 }
 
 .fchannelreading{
