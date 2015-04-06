@@ -658,8 +658,8 @@ angular.module('clientAngularApp')
          */
 
         $scope.mapClicked = function(evt) {
-                if (event.alreadyCalled_) {} else {
-                    event.alreadyCalled_ = true;
+                if (evt.alreadyCalled_) {} else {
+                    evt.alreadyCalled_ = true;
                     //console.log(evt);
                     if (evt["arg"]["dataset"]) {
                         //console.log("here");

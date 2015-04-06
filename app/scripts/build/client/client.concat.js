@@ -165,7 +165,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
 
             }).
             error(function(data, status, headers, config) {
-                console.log("Angular Http get failed");
+                //console.log("Angular Http get failed");
             });
 
         },
@@ -2428,8 +2428,8 @@ angular.module('clientAngularApp')
          */
 
         $scope.mapClicked = function(evt) {
-                if (event.alreadyCalled_) {} else {
-                    event.alreadyCalled_ = true;
+                if (evt.alreadyCalled_) {} else {
+                    evt.alreadyCalled_ = true;
                     //console.log(evt);
                     if (evt["arg"]["dataset"]) {
                         //console.log("here");
