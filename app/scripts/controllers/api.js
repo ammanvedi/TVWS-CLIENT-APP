@@ -1,12 +1,13 @@
 
 
 /**
- * @ngdoc function
- * @name clientAngularApp.controller:HomeCtrl
+ * @ngdoc controller
+ * @name clientAngularApp.controller.APICtrl
  * @description
- * # HomeCtrl
- * Controller of the clientAngularApp
+ * Controller to mediate display of the API Documentation
  */
+
+
 angular.module('clientAngularApp')
   .controller('APICtrl', ['$rootScope', '$scope','MeasureSpaceAPIService', function ($rootScope, $scope, MeasureSpaceAPIService) {
 console.log($scope);

@@ -1,13 +1,12 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name clientAngularApp.controller:HomeCtrl
+ * @ngdoc controller
+ * @name clientAngularApp.controller.HomeCtrl
  * @description
- * # HomeCtrl
- * Controller of the clientAngularApp
+ * Controller to mediate the display of the homepage
  */
 angular.module('clientAngularApp')
   .controller('HomeCtrl', ['CookieService',function (CookieService) {
-    console.log("this is being called from homectrl");
+
   }]);

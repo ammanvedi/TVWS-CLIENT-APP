@@ -1,0 +1,111 @@
+<h1><code ng:non-bindable="">SidebarHelper</code>
+<div><span class="hint">service in module <code ng:non-bindable="">clientAngularApp.service</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="clientangularapp-service-sidebarhelper-page"><p>Service that ties together sidebar directive functionality and main controller functionality
+includes all aspects of sidebar including its internal displayed data and control of the HighCharts
+instance that represtents the occupancy pie chart. </p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_updateoccupancy">UpdateOccupancy(threshold, CurrentDisplayChannel)</h3>
+<div class="updateoccupancy"><div class="updateoccupancy-page"><p>Set the pie chart in the sidebar to display the information regarding occupancy in the observed channel</p>
+</div><h5 id="methods_updateoccupancy_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>threshold</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="updateoccupancy-page"><ul>
+<li>the current threshold as specified by the user (slider)</li>
+</ul>
+</div></td></tr><tr><td>CurrentDisplayChannel</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="updateoccupancy-page"><ul>
+<li>Channel being observed</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_clearfreechannels">clearFreeChannels()</h3>
+<div class="clearfreechannels"><div class="clearfreechannels-page"><p>clear the local represenation of the free channels as determined by the threshold slider</p>
+</div></div>
+</li>
+<li><h3 id="methods_clearoverlays">clearOverlays()</h3>
+<div class="clearoverlays"><div class="clearoverlays-page"><p>iterate through the local markers and clear them from the map instance</p>
+</div></div>
+</li>
+<li><h3 id="methods_deleteoverlays">deleteOverlays()</h3>
+<div class="deleteoverlays"><div class="deleteoverlays-page"><p>iterate through the local markers and clear them completley from the array </p>
+</div></div>
+</li>
+<li><h3 id="methods_determinefreechannels">determineFreeChannels(threshold, nearpointindex)</h3>
+<div class="determinefreechannels"><div class="determinefreechannels-page"><p>Using the supplied threshold determine which channels can be considred as &quot;free&quot; i.e. below the threshold</p>
+</div><h5 id="methods_determinefreechannels_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>threshold</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="determinefreechannels-page"><ul>
+<li>the current threshold as specified by the user (slider)</li>
+</ul>
+</div></td></tr><tr><td>nearpointindex</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="determinefreechannels-page"><ul>
+<li>index within the readings of the current observed point</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_drawdatasetmarkers">drawDatasetMarkers(data)</h3>
+<div class="drawdatasetmarkers"><div class="drawdatasetmarkers-page"><p>From API response draw the overlays that represent the datasets that resulted from a geo
+based search</p>
+</div><h5 id="methods_drawdatasetmarkers_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="drawdatasetmarkers-page"><ul>
+<li>the return value from the API service</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_faileddrawing">failedDrawing(errdata)</h3>
+<div class="faileddrawing"><div class="faileddrawing-page"><p>Function to deal with the failure of drawing datasets to the map, following an API screen</p>
+</div><h5 id="methods_faileddrawing_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>errdata</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="faileddrawing-page"><ul>
+<li>the return value from the API service</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getmap">getMap()</h3>
+<div class="getmap"><div class="getmap-page"><p>Get the internal map object so it is accessible across the view</p>
+</div><h5 id="methods_getmap_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getmap-page"><p>mapobj - the map object inside the Helper</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getmapview">getMapView()</h3>
+<div class="getmapview"><div class="getmapview-page"><p>Get the internal mapView object</p>
+</div><h5 id="methods_getmapview_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getmapview-page"><p>mapv - the map view internally</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_setfreechannels">setFreeChannels(FreeChannels)</h3>
+<div class="setfreechannels"><div class="setfreechannels-page"><p>Set the internal state of free channels, so they can be drawn to the sidebar</p>
+</div><h5 id="methods_setfreechannels_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>FreeChannels</td><td><a href="" class="label type-hint type-hint-number">Number[]</a></td><td><div class="setfreechannels-page"><ul>
+<li>the array of free channel values</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setmap">setMap(mapobj)</h3>
+<div class="setmap"><div class="setmap-page"><p>Set the internal map object so it is accessible across the view</p>
+</div><h5 id="methods_setmap_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>mapobj</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setmap-page"><ul>
+<li>the map object to pass</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setmapview">setMapView(mapv)</h3>
+<div class="setmapview"><div class="setmapview-page"><p>Set the internal mapView object so it is accessible across the view</p>
+</div><h5 id="methods_setmapview_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>mapv</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setmapview-page"><ul>
+<li>the map view to set</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_showdatasetsnear">showDatasetsNear()</h3>
+<div class="showdatasetsnear"><div class="showdatasetsnear-page"><p>Show datasets near the current location, if already displaying aheatmap then this
+function uses the heatmap helper to cache it</p>
+</div></div>
+</li>
+<li><h3 id="methods_showoverlays">showOverlays()</h3>
+<div class="showoverlays"><div class="showoverlays-page"><p>iterate through the local markers and display them on the map instance</p>
+</div></div>
+</li>
+<li><h3 id="methods_updatepiechart">updatePieChart(positive, negative)</h3>
+<div class="updatepiechart"><div class="updatepiechart-page"><p>Set the pie chart data struture to the information regarding occupancy in the observed channel</p>
+</div><h5 id="methods_updatepiechart_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>positive</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="updatepiechart-page"><ul>
+<li>percentage positive</li>
+</ul>
+</div></td></tr><tr><td>negative</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="updatepiechart-page"><ul>
+<li>percentage negative</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

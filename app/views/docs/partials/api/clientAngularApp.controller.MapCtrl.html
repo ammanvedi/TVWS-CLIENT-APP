@@ -1,0 +1,214 @@
+<h1><code ng:non-bindable="">MapCtrl</code>
+<div><span class="hint">service in module <code ng:non-bindable="">clientAngularApp.controller</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="clientangularapp-controller-mapctrl-page"><p>Controller to mediate display of the visualisation</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_decrementheatmap">DecrementHeatmap()</h3>
+<div class="decrementheatmap"><div class="decrementheatmap-page"><p>Show the heatmap of preceeding channel</p>
+</div></div>
+</li>
+<li><h3 id="methods_incrementheatmap">IncrementHeatmap()</h3>
+<div class="incrementheatmap"><div class="incrementheatmap-page"><p>Show the heatmap of the next available channel</p>
+</div></div>
+</li>
+<li><h3 id="methods_backtosearch">backToSearch()</h3>
+<div class="backtosearch"><div class="backtosearch-page"><p>System is currently showing a heatmap use this function in order to switch it back to the search mode</p>
+</div></div>
+</li>
+<li><h3 id="methods_buildspectrumatpoint">buildSpectrumAtPoint(indexpoint)</h3>
+<div class="buildspectrumatpoint"><div class="buildspectrumatpoint-page"><p>using the nearest index create the graph data at the marker point</p>
+</div><h5 id="methods_buildspectrumatpoint_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>indexpoint</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="buildspectrumatpoint-page"><ul>
+<li>index of the nearest datapoint within the dataset</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_convertapitoheatmap">convertAPItoHeatmap(APIDATA, conversiondone)</h3>
+<div class="convertapitoheatmap"><div class="convertapitoheatmap-page"><p>convert the data from the API call into a normalised google maps heatmap.</p>
+</div><h5 id="methods_convertapitoheatmap_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>APIDATA</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="convertapitoheatmap-page"><ul>
+<li>data recieved from the api (channel readings)</li>
+</ul>
+</div></td></tr><tr><td>conversiondone</td><td><a href="" class="label type-hint type-hint-function">Function</a></td><td><div class="convertapitoheatmap-page"><ul>
+<li>callback to fire when the conversion is done</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_drawhoverinfo">drawHoverInfo(location, dataset, el)</h3>
+<div class="drawhoverinfo"><div class="drawhoverinfo-page"><p>When displaying search results their hoover callback is this function. 
+gets the dataset information and displays it in an overlay div at the hover position</p>
+</div><h5 id="methods_drawhoverinfo_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>location</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="drawhoverinfo-page"><ul>
+<li>location at which the hover occurred</li>
+</ul>
+</div></td></tr><tr><td>dataset</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="drawhoverinfo-page"><ul>
+<li>dataset data for related hover</li>
+</ul>
+</div></td></tr><tr><td>el</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="drawhoverinfo-page"><ul>
+<li>element that fired the hover</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_failedloadurldataset">failedLoadURLDataset(data)</h3>
+<div class="failedloadurldataset"><div class="failedloadurldataset-page"><p>function called if the get request to the api for the preload of a dataset was unsuccessful </p>
+</div><h5 id="methods_failedloadurldataset_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="failedloadurldataset-page"><ul>
+<li>dataset error data returned by the api</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_findnearpointindex">findNearPointIndex(lon, lat)</h3>
+<div class="findnearpointindex"><div class="findnearpointindex-page"><p>cbased on a longitude and a latitude of a marker position calculate the closest datapoint to the position
+uses google maps geometry function</p>
+</div><h5 id="methods_findnearpointindex_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>lon</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="findnearpointindex-page"><ul>
+<li>longitude</li>
+</ul>
+</div></td></tr><tr><td>lat</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="findnearpointindex-page"><ul>
+<li>latitude</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getregiondataset">getRegionDataset(lon, lat)</h3>
+<div class="getregiondataset"><div class="getregiondataset-page"><p>function to get the set of channels related to a particular region via the API </p>
+</div><h5 id="methods_getregiondataset_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>lon</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getregiondataset-page"><ul>
+<li>longitude</li>
+</ul>
+</div></td></tr><tr><td>lat</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getregiondataset-page"><ul>
+<li>latitude</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_gotdatasetfail">gotDatasetFail(datas)</h3>
+<div class="gotdatasetfail"><div class="gotdatasetfail-page"><p>Failure callback function if the api failed to get dataset</p>
+</div><h5 id="methods_gotdatasetfail_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>datas</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="gotdatasetfail-page"><ul>
+<li>error data returned by the api</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_gotreadings">gotReadings(readings)</h3>
+<div class="gotreadings"><div class="gotreadings-page"><p>Callnack to fire on successfully getting dataset readings
+saves the data into the systems internal state</p>
+</div><h5 id="methods_gotreadings_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>readings</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="gotreadings-page"><ul>
+<li>readings returned by the api</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_gotreadingsfail">gotReadingsFail(readingserror)</h3>
+<div class="gotreadingsfail"><div class="gotreadingsfail-page"><p>Failure callback function if the api failed to get dataset readings</p>
+</div><h5 id="methods_gotreadingsfail_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>readingserror</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="gotreadingsfail-page"><ul>
+<li>error data returned by the api</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_gotregion">gotRegion(data)</h3>
+<div class="gotregion"><div class="gotregion-page"><p>region data for the dataset was recieved from the api, this is the initial stage of the dataset display,
+this function initiates the call to get the heatmap data, either from the APi or from the local cache</p>
+</div><h5 id="methods_gotregion_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="gotregion-page"><ul>
+<li>data for the channel</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_gotregionfail">gotRegionFail()</h3>
+<div class="gotregionfail"><div class="gotregionfail-page"><p>Failure callback function if the api failed to get channel for the local region</p>
+</div></div>
+</li>
+<li><h3 id="methods_loadurldataset">loadURLDataset(dsid)</h3>
+<div class="loadurldataset"><div class="loadurldataset-page"><p>function that is called if the map page is loaded with a dataset id parameter, which means it should pre-load a datasets data</p>
+</div><h5 id="methods_loadurldataset_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dsid</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="loadurldataset-page"><ul>
+<li>the dataset id to get</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_loadedurldataset">loadedURLDataset(data)</h3>
+<div class="loadedurldataset"><div class="loadedurldataset-page"><p>function called if the get request to the api for the preload of a dataset was successful </p>
+</div><h5 id="methods_loadedurldataset_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="loadedurldataset-page"><ul>
+<li>dataset data returned by the api</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_mapclicked">mapClicked(event)</h3>
+<div class="mapclicked"><div class="mapclicked-page"><p>Event callback to fire on the map clicked event </p>
+</div><h5 id="methods_mapclicked_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="mapclicked-page"><ul>
+<li>full dom event click</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_markerhover">markerHover(event)</h3>
+<div class="markerhover"><div class="markerhover-page"><p>When displaying search results this is the callback function that is fired on hover</p>
+</div><h5 id="methods_markerhover_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="markerhover-page"><ul>
+<li>full dom event of hover</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_markerhoverexit">markerHoverExit(event)</h3>
+<div class="markerhoverexit"><div class="markerhoverexit-page"><p>When displaying search results this is the callback function that is fired on hover exit so that the overlay can be cleaned up </p>
+</div><h5 id="methods_markerhoverexit_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="markerhoverexit-page"><ul>
+<li>full dom event of hover exit</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_markerpositionchanged">markerPositionChanged(GoogleMapsEventObject)</h3>
+<div class="markerpositionchanged"><div class="markerpositionchanged-page"><p>callback to fire when the user moves the marker position, updates the graph with nearest point data</p>
+</div><h5 id="methods_markerpositionchanged_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>GoogleMapsEventObject</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="markerpositionchanged-page"><ul>
+<li>marker event</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_putheatmap">putHeatmap(hmdata)</h3>
+<div class="putheatmap"><div class="putheatmap-page"><p>given normalised heatmap data place the data on the google map</p>
+</div><h5 id="methods_putheatmap_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>hmdata</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="putheatmap-page"><ul>
+<li>heatmap data (Weighted google maps heatmap data)</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_removehoverinfo">removeHoverInfo()</h3>
+<div class="removehoverinfo"><div class="removehoverinfo-page"><p>remove the hover div </p>
+</div></div>
+</li>
+<li><h3 id="methods_sidebarclicked">sidebarclicked(event)</h3>
+<div class="sidebarclicked"><div class="sidebarclicked-page"><p>click handler for the sidebar </p>
+</div><h5 id="methods_sidebarclicked_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-object">Object </a></td><td><div class="sidebarclicked-page"><ul>
+<li>the event from the click</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_sidebarclicked">sidebarclicked(event)</h3>
+<div class="sidebarclicked"><div class="sidebarclicked-page"><p>click handler for the sidebar </p>
+</div><h5 id="methods_sidebarclicked_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-object">Object </a></td><td><div class="sidebarclicked-page"><ul>
+<li>the event from the click</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_switchheatmap">switchHeatmap(CahnnelID)</h3>
+<div class="switchheatmap"><div class="switchheatmap-page"><p>Switch the heatmap data that is currently being displayed to the the data for a given ITU channel. Also switch the graph indicator</p>
+</div><h5 id="methods_switchheatmap_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>CahnnelID</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="switchheatmap-page"><ul>
+<li>The ITU channel ID to show</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_togglegraphnodata">toggleGraphNodata()</h3>
+<div class="togglegraphnodata"><div class="togglegraphnodata-page"><p>show or hide the overlays that show that there is no data present</p>
+</div></div>
+</li>
+<li><h3 id="methods_togglepageloading">togglePageLoading()</h3>
+<div class="togglepageloading"><div class="togglepageloading-page"><p>show or hide the page loading overlay</p>
+</div></div>
+</li>
+<li><h3 id="methods_togglegraph">togglegraph()</h3>
+<div class="togglegraph"><div class="togglegraph-page"><p>controller for the showing and hiding of the graph</p>
+</div></div>
+</li>
+<li><h3 id="methods_togglesidebar">togglesidebar()</h3>
+<div class="togglesidebar"><div class="togglesidebar-page"><p>hide the sidebar</p>
+</div></div>
+</li>
+<li><h3 id="methods_togglesidebarsection">togglesidebarsection(classname)</h3>
+<div class="togglesidebarsection"><div class="togglesidebarsection-page"><p>toggle a sidebar section</p>
+</div><h5 id="methods_togglesidebarsection_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>classname</td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="togglesidebarsection-page"><ul>
+<li>the classname of the section to collapse</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

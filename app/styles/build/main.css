@@ -401,7 +401,7 @@
 }
 
 /* line 432, ../main.scss */
-.menu {
+.ui .blue .inverted .menu {
   position: fixed;
   width: 100%;
 }

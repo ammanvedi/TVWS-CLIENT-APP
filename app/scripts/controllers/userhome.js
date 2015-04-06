@@ -1,11 +1,8 @@
-'use strict';
-
 /**
- * @ngdoc function
- * @name clientAngularApp.controller:HomeCtrl
+ * @ngdoc controller
+ * @name clientAngularApp.controller.UserHomeCtrl
  * @description
- * # HomeCtrl
- * Controller of the clientAngularApp
+ * Controller to mediate display of the user's homepage   
  */
 angular.module('clientAngularApp')
   .controller('UserHomeCtrl', ['$rootScope', '$scope', '$location', 'CookieService', 'MeasureSpaceAPIService',function ($rootScope, $scope, $location, CookieService, MeasureSpaceAPIService) {

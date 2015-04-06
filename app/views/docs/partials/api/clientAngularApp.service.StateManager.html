@@ -1,0 +1,69 @@
+<h1><code ng:non-bindable="">StateManager</code>
+<div><span class="hint">service in module <code ng:non-bindable="">clientAngularApp.service</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="clientangularapp-service-statemanager-page"><p>Service used to maintain an overall state of the mapping application so it can be accessed between directives
+and the map controller, states are ;
+   0 -&gt; System has no data stored internally (including no cached data)
+   1 -&gt; System is in search mode and ispladisplaying potential datasets
+   2 -&gt; System is displaying a heatmap</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getdropcount">getDROPCOUNT()</h3>
+<div class="getdropcount"><div class="getdropcount-page"><p>find out the number of times the marker has been dropped on this particular 
+dataset, used for triggering UI elements</p>
+</div><h5 id="methods_getdropcount_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getdropcount-page"><p>the number of times the marker has been dropped</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getstate">getState()</h3>
+<div class="getstate"><div class="getstate-page"><p>get the system state as an integer </p>
+</div><h5 id="methods_getstate_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getstate-page"><p>state</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_increasedropcount">increaseDROPCOUNT()</h3>
+<div class="increasedropcount"><div class="increasedropcount-page"><p>Increase the dropcount, called when the user moves the marker to a new position</p>
+</div></div>
+</li>
+<li><h3 id="methods_isheatmapping">isHEATMAPPING()</h3>
+<div class="isheatmapping"><div class="isheatmapping-page"><p>determine if the system state is HEATMAPPING</p>
+</div><h5 id="methods_isheatmapping_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="isheatmapping-page"><p>returns a boolean 0,1 representing the outcome</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_isnodata">isNODATA()</h3>
+<div class="isnodata"><div class="isnodata-page"><p>determine if the system state is NODATA</p>
+</div><h5 id="methods_isnodata_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="isnodata-page"><p>returns a boolean 0,1 representing the outcome</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_issearching">isSEARCHING()</h3>
+<div class="issearching"><div class="issearching-page"><p>determine if the system state is SEARCHING</p>
+</div><h5 id="methods_issearching_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="issearching-page"><p>returns a boolean 0,1 representing the outcome</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_resetdropcount">resetDROPCOUNT()</h3>
+<div class="resetdropcount"><div class="resetdropcount-page"><p>reset the dropcount to 0, called when a new dataset is loaded or the current is unloaded</p>
+</div></div>
+</li>
+<li><h3 id="methods_setheatmapping">setHEATMAPPING()</h3>
+<div class="setheatmapping"><div class="setheatmapping-page"><p>set the system state to HEATMAPPING</p>
+</div></div>
+</li>
+<li><h3 id="methods_setnodata">setNODATA()</h3>
+<div class="setnodata"><div class="setnodata-page"><p>set the system state to NODATA</p>
+</div></div>
+</li>
+<li><h3 id="methods_setsearching">setSEARCHING()</h3>
+<div class="setsearching"><div class="setsearching-page"><p>set the system state to SEARCHING</p>
+</div></div>
+</li>
+<li><h3 id="methods_setstate">setState(state)</h3>
+<div class="setstate"><div class="setstate-page"><p>set the system state via an integer </p>
+</div><h5 id="methods_setstate_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>state</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="setstate-page"><ul>
+<li>the state to set</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

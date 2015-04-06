@@ -6,14 +6,14 @@
  * @description
  * # clientAngularApp
  *
- * Main module of the application.
+ * Main module of the application, including routing and initial dependency injection 
  */
 angular
   .module('clientAngularApp', [
     'ngAnimate',
     'ipCookie',
     'ngResource',
-    'ngRoute',
+    'ngRoute',    
     'ngSanitize',
     'angularFileUpload',
     'ngMap',
@@ -26,10 +26,6 @@ angular
         templateUrl: 'views/Home.html',
         controller: 'HomeCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
       .when('/upload', {
         templateUrl: 'views/Upload.html',
         controller: 'UploadCtrl'
@@ -38,14 +34,10 @@ angular
         templateUrl: 'views/map.html',
         controller: 'MapCtrl',
         reloadOnSearch: false
-      })
+      }) 
       .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
-      })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
       })
       .when('/me', {
         templateUrl: 'views/userhome.html',
@@ -59,7 +51,12 @@ angular
         templateUrl: 'views/api.html',
         controller: 'APICtrl'
       })
+      .when('/docs', {
+        templateUrl: '/views/docs/index.html',
+        controller: ''
+      })
       .otherwise({
         redirectTo: '/'
+
       });
   });

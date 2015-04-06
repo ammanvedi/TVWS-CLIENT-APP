@@ -1,14 +1,12 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name clientAngularApp.controller:HomeCtrl
+ * @ngdoc controller
+ * @name clientAngularApp.controller.UploadCtrl
  * @description
- * # HomeCtrl
- * Controller of the clientAngularApp
+ * Controller to mediate display of the Upload page
  */
 angular.module('clientAngularApp')
   .controller('UploadCtrl', ['$rootScope', '$upload', '$scope','MeasureSpaceAPIService', 'CookieService',function ($rootScope, $upload, $scope, MeasureSpaceAPIService, CookieService) {
-console.log($scope);
-console.log($rootScope);
+
   }]);

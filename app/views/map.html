@@ -3,7 +3,7 @@
     <i class="huge white notched circle loading icon"></i>
     </div>
 </div>
-<div style="width:100%; height:100%; position:relative; z-index:120; margin-top:70px !important;" ng-controller="MapCtrl">
+<div style="width:100%; height:100%; position:relative; z-index:120;" ng-controller="MapCtrl">
 <div style="height:100vh; z-index:120;">
 <map style="height:100% !important;" zoom="11"
 zoom-control="true" zoom-control-options="{position:'TOP_RIGHT', style: 'LARGE'}"
@@ -44,11 +44,11 @@ zoom-control="true" zoom-control-options="{position:'TOP_RIGHT', style: 'LARGE'}
     </div>
 <div id="mapbottombar">
 
-    <div class="bottombar_button" ng-click="togglegraph()">
+    <div class="bottombar_button hidegraph" ng-click="togglegraph()">
         <i class="bar chart white icon"></i>
     </div>
     
-    <div class="bottombar_button" ng-click="backToSearch()">
+    <div class="bottombar_button killdata" ng-click="backToSearch()">
         <i class="remove white icon"></i>
     </div>
 
@@ -65,7 +65,7 @@ zoom-control="true" zoom-control-options="{position:'TOP_RIGHT', style: 'LARGE'}
 <div id="channelsmapmover">
 
 
-    <div class="bottombar_button" style="display:block !important;" ng-click="IncrementHeatmap()">
+    <div class="bottombar_button" id="bbb_top_right" style="display:block !important;" ng-click="IncrementHeatmap()">
         <i class="long arrow right white icon"></i>
     </div>
 
@@ -74,7 +74,7 @@ zoom-control="true" zoom-control-options="{position:'TOP_RIGHT', style: 'LARGE'}
         <p style="position:relative; top:5px;">Normalised Heatmap Of Channel {{ChannelLookup[displaychannel]}}</p>
     </div>
 
-    <div class="bottombar_button" style="display:block !important;" ng-click="DecrementHeatmap()">
+    <div class="bottombar_button"  id="bbb_top_left"  style="display:block !important;" ng-click="DecrementHeatmap()">
         <i class="long arrow left white icon"></i>
     </div>
 

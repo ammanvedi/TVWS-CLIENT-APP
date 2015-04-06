@@ -1,10 +1,9 @@
 
 /**
- * @ngdoc function
- * @name clientAngularApp.controller:HomeCtrl
+ * @ngdoc controller
+ * @name clientAngularApp.controller.RegisterCtrl
  * @description
- * # HomeCtrl
- * Controller of the clientAngularApp
+ * Controller to mediate creation of user accounts and login to existing accounts
  */
 angular.module('clientAngularApp')
   .controller('RegisterCtrl', ['$location', '$rootScope', '$scope','MeasureSpaceAPIService', 'CookieService' ,function ($location, $rootScope, $scope, MeasureSpaceAPIService, CookieService) {

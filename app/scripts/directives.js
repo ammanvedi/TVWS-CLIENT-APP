@@ -14,11 +14,7 @@ app.directive('mapsidebar', [ 'SidebarHelper', 'StateManager', "GraphHelper" , f
 
       link: function(scope, elem, attrs, ctrl) {
 
-            SidebarHelper.PIECHART = new Highcharts.Chart(SidebarHelper.sidebarChartConfig);
-
-
-        //console.log(google.maps
-
+        SidebarHelper.PIECHART = new Highcharts.Chart(SidebarHelper.sidebarChartConfig);
         SidebarHelper.utility.dbounds = new google.maps.LatLngBounds(new google.maps.LatLng(-33.8902, 151.1759),
                                                                      new google.maps.LatLng(-33.8474, 151.2631)
                                                                     );
@@ -26,8 +22,6 @@ app.directive('mapsidebar', [ 'SidebarHelper', 'StateManager', "GraphHelper" , f
         SidebarHelper.utility.autocomplete = new google.maps.places.Autocomplete(document.getElementById('pac-input'),
                                                                                  SidebarHelper.utility.placesoptions
                                                                                 );
-
-
         google.maps.event.addListener(SidebarHelper.utility.autocomplete, 'place_changed', function () {
             
             SidebarHelper.deleteOverlays();
@@ -40,8 +34,6 @@ app.directive('mapsidebar', [ 'SidebarHelper', 'StateManager', "GraphHelper" , f
             SidebarHelper.showDatasetsNear();
 
         });
-
-
       },
       replace: false,
       templateUrl: 'views/MapSidebar.html'
@@ -133,16 +125,8 @@ app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' ,
         $scope.UploadTableData[fnametopass].rowclass = "positive";
       }
 
-
-
-      //$scope.UploadTableData["x"] = {filename: "file1.json", status : "-", progress : 20, completedon: "2:37pm", access: "urldata"};
-
-
       $scope.progress = 0;
       $scope.sendFile = function(el) {
-
-        //file is selected, add a new default data row to the table
-        //save the filename in the scope
 
         $scope.adddefaultupload($("#fip").val().replace("C:\\fakepath\\", ''));
 
@@ -199,7 +183,7 @@ app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' ,
 
 
 
-        console.log(angular.element('.progress'));
+        //console.log(angular.element('.progress'));
         angular.element('#example1').progress();
 
         var Status;

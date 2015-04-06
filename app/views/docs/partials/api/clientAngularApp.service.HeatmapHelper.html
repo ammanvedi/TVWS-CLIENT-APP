@@ -1,0 +1,35 @@
+<h1><code ng:non-bindable="">HeatmapHelper</code>
+<div><span class="hint">service in module <code ng:non-bindable="">clientAngularApp.service</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="clientangularapp-service-heatmaphelper-page"><p>Service that stores data for the display of the heatmap on-screen. Includes the storage of;
+HEATMAPCACHE : stores normalised and raw data related to downloaded heatmaps so they do not have to be re downloaded
+rawReadings  : stores raw readings so they do hot have to be reloaded
+fulldataset  : stores normalised representation of rawReadings
+graphvisible : keeps track of visibility / interactability of the power vs channel graph
+and the map controller</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_cacheandremoveheatmap">cacheAndRemoveHeatmap()</h3>
+<div class="cacheandremoveheatmap"><div class="cacheandremoveheatmap-page"><p>take the heatmap that is currently being displayed and save it in a dictionary with its uniqe
+id as a a key</p>
+</div></div>
+</li>
+<li><h3 id="methods_togglegraphnodata">toggleGraphNodata()</h3>
+<div class="togglegraphnodata"><div class="togglegraphnodata-page"><p>depending on its current state show/hide the graph overlay as well as the 
+sidebar overlays that block user interaction when no data is present</p>
+</div></div>
+</li>
+<li><h3 id="methods_togglegraphnodata">toggleGraphNodata(thresh)</h3>
+<div class="togglegraphnodata"><div class="togglegraphnodata-page"><p>depending on the provided threshold consider all data points within each channel. calculate the percentage
+of the channels within each band whose power is above this threshold (indicating occupied relative to threshold)</p>
+</div><h5 id="methods_togglegraphnodata_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>thresh</td><td><a href="" class="label type-hint type-hint-float">float</a></td><td><div class="togglegraphnodata-page"><ul>
+<li>threshold to consider</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

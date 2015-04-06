@@ -1,0 +1,43 @@
+<h1><code ng:non-bindable="">CookieService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">clientAngularApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="clientangularapp-cookieservice-page"><p>Maintains the login and logout functions across the application. Manages the retrieval of cookie data
+performs an initial check on creation to load cookie data if it is present</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_logout">Logout()</h3>
+<div class="logout"><div class="logout-page"><p>clear the local cookie data representing the user and also remove in-app references to this data</p>
+</div></div>
+</li>
+<li><h3 id="methods_gettoken">getToken()</h3>
+<div class="gettoken"><div class="gettoken-page"><p>Get the unique token that was issued to the user at login from the internal application state</p>
+</div><h5 id="methods_gettoken_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="gettoken-page"><p>Issued token</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_isloggedin">isLoggedIn()</h3>
+<div class="isloggedin"><div class="isloggedin-page"><p>Determine if a user is logged in by returning internal state variable that denotes this</p>
+</div><h5 id="methods_isloggedin_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="isloggedin-page"><p>returns a bool indicating the state</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_setloggedin">setLoggedIn()</h3>
+<div class="setloggedin"><div class="setloggedin-page"><p>method utilised on any re-access of the site, when the service is instantiated this method is used
+to reinstate the local data from the cookie</p>
+</div></div>
+</li>
+<li><h3 id="methods_setloggedout">setLoggedOut()</h3>
+<div class="setloggedout"><div class="setloggedout-page"><p>clear the local data representing the user, called by the logout function</p>
+</div></div>
+</li>
+<li><h3 id="methods_storeuserdata">storeUserData(usrdata)</h3>
+<div class="storeuserdata"><div class="storeuserdata-page"><p>Upon successful login store the user data in a local cookie</p>
+</div><h5 id="methods_storeuserdata_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>usrdata</td><td><a href="" class="label type-hint type-hint-json">JSON</a></td><td><div class="storeuserdata-page"><ul>
+<li>data returned from api call to /login</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

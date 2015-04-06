@@ -1,0 +1,138 @@
+<h1><code ng:non-bindable="">MeasureSpaceAPIService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">clientAngularApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="clientangularapp-measurespaceapiservice-page"><p>Mediate basic queries to the api service at <a href="https://api.measurespace.io">https://api.measurespace.io</a></p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getdatasetbyid">getDatasetByID(dsid, complete(data), failure(data))</h3>
+<div class="getdatasetbyid"><div class="getdatasetbyid-page"><p>Get the metadata for a dataset</p>
+</div><h5 id="methods_getdatasetbyid_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dsid</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getdatasetbyid-page"><ul>
+<li>DatasetID to retrieve</li>
+</ul>
+</div></td></tr><tr><td>complete(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdatasetbyid-page"><ul>
+<li>callback to call if dataset was found</li>
+</ul>
+</div></td></tr><tr><td>failure(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdatasetbyid-page"><ul>
+<li>callback to call if there was an error (no corresponding dataset)</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getdatasetbyid">getDatasetByID(pemail, ppassword, pfname, psname, success(data), failure(data))</h3>
+<div class="getdatasetbyid"><div class="getdatasetbyid-page"><p>Register a User account. Parameters are combined in a post body and passed over SSL to the
+API server to maintain security</p>
+</div><h5 id="methods_getdatasetbyid_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>pemail</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getdatasetbyid-page"><ul>
+<li>User email</li>
+</ul>
+</div></td></tr><tr><td>ppassword</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getdatasetbyid-page"><ul>
+<li>User&#39;s password</li>
+</ul>
+</div></td></tr><tr><td>pfname</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getdatasetbyid-page"><ul>
+<li>User forenam</li>
+</ul>
+</div></td></tr><tr><td>psname</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getdatasetbyid-page"><ul>
+<li>User Lastname</li>
+</ul>
+</div></td></tr><tr><td>success(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdatasetbyid-page"><ul>
+<li>callback to call if channels were found</li>
+</ul>
+</div></td></tr><tr><td>failure(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdatasetbyid-page"><ul>
+<li>callback to call if there was an error (user already exists)</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getdatasetreadings">getDatasetReadings(dsid, complete(data), failure(data))</h3>
+<div class="getdatasetreadings"><div class="getdatasetreadings-page"><p>get the individual readings that relate to a dataset id</p>
+</div><h5 id="methods_getdatasetreadings_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dsid</td><td><a href="" class="label type-hint type-hint-number">Number</a></td><td><div class="getdatasetreadings-page"><ul>
+<li>DatasetID to retrieve readings for</li>
+</ul>
+</div></td></tr><tr><td>complete(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdatasetreadings-page"><ul>
+<li>callback to call if datasets were found</li>
+</ul>
+</div></td></tr><tr><td>failure(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdatasetreadings-page"><ul>
+<li>callback to call if there was an error (no corresponding dataset)</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getdatasetsforuser">getDatasetsForUser(userid, complete(data), failure(data))</h3>
+<div class="getdatasetsforuser"><div class="getdatasetsforuser-page"><p>Get a user&#39;s datasets </p>
+</div><h5 id="methods_getdatasetsforuser_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>userid</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getdatasetsforuser-page"><ul>
+<li>User id for whom to retireve datasets</li>
+</ul>
+</div></td></tr><tr><td>complete(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdatasetsforuser-page"><ul>
+<li>callback to call if channels were found</li>
+</ul>
+</div></td></tr><tr><td>failure(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdatasetsforuser-page"><ul>
+<li>callback to call if there was an error (user entered incorrect details)</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getdatasetsnear">getDatasetsNear(nearlon, nearlat, complete(data), failure(data))</h3>
+<div class="getdatasetsnear"><div class="getdatasetsnear-page"><p>using a latitude and longitide find any datsets that are near the point</p>
+</div><h5 id="methods_getdatasetsnear_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>nearlon</td><td><a href="" class="label type-hint type-hint-float">float</a></td><td><div class="getdatasetsnear-page"><ul>
+<li>Longitude to search</li>
+</ul>
+</div></td></tr><tr><td>nearlat</td><td><a href="" class="label type-hint type-hint-float">float</a></td><td><div class="getdatasetsnear-page"><ul>
+<li>Latitude to search</li>
+</ul>
+</div></td></tr><tr><td>complete(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdatasetsnear-page"><ul>
+<li>callback to call if datasets were found</li>
+</ul>
+</div></td></tr><tr><td>failure(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdatasetsnear-page"><ul>
+<li>callback to call if there was an error</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getregionchannelset">getRegionChannelSet(lon, lat, complete(data), failure(data))</h3>
+<div class="getregionchannelset"><div class="getregionchannelset-page"><p>Get the active channels that relate to a geographic region</p>
+</div><h5 id="methods_getregionchannelset_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>lon</td><td><a href="" class="label type-hint type-hint-float">float</a></td><td><div class="getregionchannelset-page"><ul>
+<li>longitude to search</li>
+</ul>
+</div></td></tr><tr><td>lat</td><td><a href="" class="label type-hint type-hint-float">float</a></td><td><div class="getregionchannelset-page"><ul>
+<li>latitude to search</li>
+</ul>
+</div></td></tr><tr><td>complete(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getregionchannelset-page"><ul>
+<li>callback to call if channels were found</li>
+</ul>
+</div></td></tr><tr><td>failure(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getregionchannelset-page"><ul>
+<li>callback to call if there was an error (no corresponding channels)</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getuploadstatus">getUploadStatus(trackid, comp(data), fail(data), inprogress(data))</h3>
+<div class="getuploadstatus"><div class="getuploadstatus-page"><p>using a tracking id, check the status of a submitted upload</p>
+</div><h5 id="methods_getuploadstatus_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>trackid</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getuploadstatus-page"><ul>
+<li>the trackingid to access</li>
+</ul>
+</div></td></tr><tr><td>comp(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getuploadstatus-page"><ul>
+<li>callback to call if the upload is complete</li>
+</ul>
+</div></td></tr><tr><td>fail(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getuploadstatus-page"><ul>
+<li>callback to call if the upload failed</li>
+</ul>
+</div></td></tr><tr><td>inprogress(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getuploadstatus-page"><ul>
+<li>callback to call if the upload is still in progress</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_loginuser">loginUser(username, password, success(data), failure(data))</h3>
+<div class="loginuser"><div class="loginuser-page"><p>Pass username and password to API server and determine if user has provided correct credentials</p>
+</div><h5 id="methods_loginuser_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>username</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="loginuser-page"><ul>
+<li>User email</li>
+</ul>
+</div></td></tr><tr><td>password</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="loginuser-page"><ul>
+<li>User&#39;s password</li>
+</ul>
+</div></td></tr><tr><td>success(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="loginuser-page"><ul>
+<li>callback to call if channels were found</li>
+</ul>
+</div></td></tr><tr><td>failure(data)</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="loginuser-page"><ul>
+<li>callback to call if there was an error (user entered incorrect details)</li>
+</ul>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

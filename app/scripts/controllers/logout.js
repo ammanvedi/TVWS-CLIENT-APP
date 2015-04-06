@@ -1,11 +1,10 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name clientAngularApp.controller:HomeCtrl
+ * @ngdoc controller
+ * @name clientAngularApp.controller.LogoutCtrl
  * @description
- * # HomeCtrl
- * Controller of the clientAngularApp
+ * Controller to mediate the logout operation and redirect user to the homepage
  */
 angular.module('clientAngularApp')
   .controller('LogoutCtrl', [ '$scope','MeasureSpaceAPIService', 'CookieService', '$location',function ($scope, MeasureSpaceAPIService, CookieService, $location) {
