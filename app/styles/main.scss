@@ -87,6 +87,7 @@ text-align: left;
 padding-left: 10px;
   overflow: hidden;
   position: relative;
+  display: block;
 }
 
 
@@ -96,6 +97,7 @@ padding-left: 10px;
 padding-left: 10px;
 position: relative;
 overflow: hidden;
+display: block;
 }
 
 .pointmetadata p
@@ -144,6 +146,11 @@ overflow: hidden;
   padding-left: 10px;
 }
 
+.thslider
+{
+  display: block;
+}
+
 .sidebarheader p
 {
   width: 50%;
@@ -173,6 +180,7 @@ overflow: hidden;
 {
   position: relative;
   overflow: hidden;
+  display: block;
 }
 
 .fchannelreading{
@@ -312,6 +320,7 @@ overflow: hidden;
  height: 180px;
 position: relative;
 overflow: hidden;
+display: block;
 
 }
 
