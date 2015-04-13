@@ -1,33 +1,14 @@
 // Generated on 2015-01-26 using generator-angular 0.10.0
 'use strict';
 
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// use this if you want to recursively match all subfolders:
-// 'test/spec/**/*.js'
+
 
 module.exports = function (grunt) {
 
-  // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
-
-  // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
-  // Configurable paths for the application
-  var appConfig = {
-    app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
-  };
-
-  // Define the configuration for all the tasks
   grunt.initConfig({
-
-    // Project settings
-    yeoman: appConfig,
-
-    // Watches files for changes and runs tasks based on the changed files
     watch: {
       css: {
         files: ['**/*.scss'],
@@ -35,8 +16,23 @@ module.exports = function (grunt) {
       },
       scripts: {
         files: ['app/scripts/**/*.js'],
-        tasks: ['concat:dist', 'concat:lib', 'uglify:target'] 
+        tasks: ['concat:dist', 'concat:lib', 'uglify:target', 'ngdocs'] 
       }
+    },
+    ngdocs: {
+       options: {
+           dest: 'app/views/docs',
+           html5Mode: true,
+           scripts: [
+               'app/bower_components/angular/angular.js',
+               'app/bower_components/angular-animate/angular-animate.js',
+
+           ]
+       },
+       api: {
+           src: ['app/scripts/services.js', 'app/scripts/controllers/*.js'],
+           title: 'Code Documentation - Measurespace'
+       }
     },
 
     imagemin: {
@@ -46,10 +42,10 @@ module.exports = function (grunt) {
 
         },
         files: [{
-          expand: true,                  // Enable dynamic expansion
-          cwd: 'app/images/',                   // Src matches are relative to this path
-          src: ['**/*.{png,jpg,gif}', '!build/*'],   // Actual patterns to match
-          dest: 'app/images/build/'                  // Destination path prefix
+          expand: true,  
+          cwd: 'app/images/',
+          src: ['**/*.{png,jpg,gif}', '!build/*'],
+          dest: 'app/images/build/'
         }]
       }
     },
@@ -94,17 +90,13 @@ module.exports = function (grunt) {
         dest: 'app/scripts/build/lib/lib.concat.js'
       }
     },
-
-
-
-    // Compiles Sass to CSS and generates necessary files if requested
     compass: {
       options: {
       },
       dist: {
         options: {
-          sassDir: '<%= yeoman.app %>/styles',
-          cssDir: '<%= yeoman.app %>/styles/build'
+          sassDir: 'app/styles',
+          cssDir: 'app/styles/build'
         }
       },
       server: {
@@ -115,40 +107,13 @@ module.exports = function (grunt) {
     },
 
 
-
-
-
-    htmlmin: {
-      dist: {
-        options: {
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
-          dest: '<%= yeoman.dist %>'
-        }]
-      }
-    },
-
   });
 
-
-
-  grunt.registerTask('builddev', [
-  'compass:dist', 'concat:dist'
+  grunt.registerTask('buildsite', [
+  'concat:dist', 'concat:lib', 'uglify:target', 'ngdocs', 'compass:dist'
   ]);
 
-
-
-  grunt.registerTask('default', [
-    'newer:jshint',
-    'test',
-    'build'
+    grunt.registerTask('buildsiteimg', [
+  'concat:dist', 'concat:lib', 'uglify:target', 'ngdocs', 'imagemin:dist', 'compass:dist'
   ]);
 };

@@ -356,6 +356,69 @@ describe('MapCtrl : preloaded map', function() {
 
 
 
+describe('RegisterCtrl : registration page', function() {
+    var scope, $location, createController, mockHH, mockAPI, controller, loadurl;
+    beforeEach(module('clientAngularApp'));
+
+
+    beforeEach(module(function($provide){
+
+      mockAPI = {
+          registerUser: function(email, pass, fname, sname, success, failure){
+            success({"QueryStatus" : "Success, should try login" });
+          }
+      };
+
+          $provide.value('MeasureSpaceAPIService', mockAPI);
+
+    }));
+
+  var roots;
+
+      beforeEach(inject(function (_$location_, $rootScope, CookieService, $controller,SidebarHelper,StateManager,GraphHelper) {
+        $location = _$location_;
+        scope = $rootScope.$new();
+
+
+        roots = $rootScope
+        controller = $controller('RegisterCtrl', {
+                '$scope': scope,
+                'CookieService' : CookieService,
+            });
+
+        }));
+
+
+        it('should be able to accept correct email, password and non blank names', function() {
+          expect(scope.validateform("amman.vedi@gmail.com", "1234amman", "1234amman", "Amman", "Vedi")).to.be.equal(false)
+          });
+        it('should be able to reject malformed email', function() {
+          expect(scope.validateform("amman.vedi@.com", "1234amman", "1234amman", "Amman", "Vedi")).to.be.equal(true)
+          expect(scope.validateform("amman.vedi@gmail.", "1234amman", "1234amman", "Amman", "Vedi")).to.be.equal(true)
+          expect(scope.validateform("amman.vedigmail.com", "1234amman", "1234amman", "Amman", "Vedi")).to.be.equal(true)
+          expect(scope.validateform("", "1234amman", "1234amman", "Amman", "Vedi")).to.be.equal(true)
+        });
+
+        it('should be able to reject mismatched passwords', function() {
+          expect(scope.validateform("", "1234ammand", "1234amman", "Amman", "Vedi")).to.be.equal(true)
+          expect(scope.validateform("", "1234amman", "1234ammand", "Amman", "Vedi")).to.be.equal(true)
+        });
+
+        it('should be able to reject empty fields', function() {
+          expect(scope.validateform("amman.vedi@gmail.com", "1234ammand", "1234amman", "", "")).to.be.equal(true)
+          expect(scope.validateform("amman.vedi@gmail.com", "1234amman", "1234amman", "", "Vedi")).to.be.equal(true)
+          expect(scope.validateform("amman.vedi@gmail.com", "1234amman", "1234amman", "Amman", "")).to.be.equal(true)
+          expect(scope.validateform("amman.vedi@gmail.com", "", "1234amman", "Amman", "Vedi")).to.be.equal(true)
+        });
+
+        it('should call api to register User', function() {
+         scope.apiRegister("amman.vedi@gmail.com", "1234amman", "1234amman", "Amman", "Vedi")
+         expect(scope.DIDREGISTER).to.be.equal(true);
+        });
+
+
+
+});
 
 
 

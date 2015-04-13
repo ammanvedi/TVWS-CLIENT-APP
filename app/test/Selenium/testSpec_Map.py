@@ -15,6 +15,7 @@ class TestUI(unittest.TestCase):
 		self.driver.get("http://localhost/#/map/92/")
 		from selenium.webdriver import ActionChains
 		self.action_chains = ActionChains(self.driver)
+		self.driver.set_window_size(1049, 680)
 		time.sleep(5)
 		
 
@@ -23,8 +24,14 @@ class TestUI(unittest.TestCase):
 		element = self.driver.find_element_by_class_name("container")
 		ActionChains(self.driver).move_to_element_with_offset(element, 525, 368).click_and_hold().move_by_offset(-29, -2).release().perform()
 		time.sleep(3)
-		sidebar = self.driver.find_element_by_class_name("sidebarcontent")
-		ActionChains(self.driver).move_to_element_with_offset(sidebar, 10, 10).click().perform()
+		#self.driver.set_window_size(1500, 960)
+		sidebar = self.driver.find_element_by_id("mapsidebar")
+		ActionChains(self.driver).move_to_element_with_offset(sidebar, 60, 60).click().perform()
+		time.sleep(2)
+		slider= self.driver.find_element_by_id("thslider")
+		ActionChains(self.driver).move_to_element_with_offset(sidebar, 70, 46).click_and_hold().move_by_offset(50, 0).release().perform()
+		time.sleep(2)
+
 		self.driver.quit()
 
 	def test_clearheatmap(self):

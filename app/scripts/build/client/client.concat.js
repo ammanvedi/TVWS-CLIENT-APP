@@ -2557,7 +2557,7 @@ angular.module('clientAngularApp')
 angular.module('clientAngularApp')
   .controller('RegisterCtrl', ['$location', '$rootScope', '$scope','MeasureSpaceAPIService', 'CookieService' ,function ($location, $rootScope, $scope, MeasureSpaceAPIService, CookieService) {
 
-
+    $scope.DIDREGISTER = false;
 
 
   	$scope.loginUser = function()
@@ -2589,7 +2589,6 @@ angular.module('clientAngularApp')
 
   	$scope.registerUser = function()
   	{
-  		console.log("HAHHA");
   		if(!$scope.validateform(
 			 				$('input[name="email"]').val(),
 							$('input[name="password"]').val(),
@@ -2611,6 +2610,15 @@ angular.module('clientAngularApp')
 
 
   	}
+
+    $scope.apiRegister = function(email, pass, fname, sname)
+    {
+                    MeasureSpaceAPIService.registerUser(
+                        email, pass, fname, sname,
+                        $scope.successregistration,
+                        $scope.failedregistration
+                        );
+    }
 
   	$scope.validateform = function(email, pass1, pass2, fname, sname)
   	{
@@ -2682,13 +2690,15 @@ angular.module('clientAngularApp')
 
   	$scope.successregistration = function(data)
   	{
-  		console.log(data);
+      $scope.DIDREGISTER = true;
   		
   		//allow user to log in
   		//hide the sign up box
   		$(".signupbox").css("width", "0px");
   		$(".signupbox").css("opacity", "0");
   		$(".vertdivider").css("opacity", "0");
+
+      return data;
   		
   	}
 
