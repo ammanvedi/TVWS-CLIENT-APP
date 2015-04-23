@@ -69,6 +69,14 @@
 }
 
 /* line 84, ../main.scss */
+.thresholdlabel {
+  width: 100%;
+  color: white;
+  font-weight: bolder;
+  text-align: center;
+}
+
+/* line 92, ../main.scss */
 .metadata {
   text-align: left;
   padding-left: 10px;
@@ -76,31 +84,31 @@
   position: relative;
   display: block;
   width: 100%;
-  height: 180px;
+  height: 130px;
   position: relative;
   overflow: hidden;
   display: block;
 }
 
-/* line 101, ../main.scss */
+/* line 109, ../main.scss */
 .pointmetadata {
   padding-left: 10px;
   position: relative;
   overflow: hidden;
   display: block;
   width: 100%;
-  height: 180px;
+  height: 130px;
   position: relative;
   overflow: hidden;
   display: block;
 }
 
-/* line 115, ../main.scss */
+/* line 123, ../main.scss */
 .pointmetadata p {
   color: white;
 }
 
-/* line 120, ../main.scss */
+/* line 128, ../main.scss */
 .cranimate.ng-enter {
   -webkit-transition: 0.5s linear all;
   -moz-transition: 0.5s linear all;
@@ -113,7 +121,7 @@
   max-height: 0px !important;
 }
 
-/* line 134, ../main.scss */
+/* line 142, ../main.scss */
 .cranimate.ng-enter-active {
   -webkit-animation: fadeInRight 1s;
   -moz-animation: fadeInRight 1s;
@@ -122,7 +130,7 @@
   max-height: 50px !important;
 }
 
-/* line 143, ../main.scss */
+/* line 151, ../main.scss */
 .cranimate.ng-leave {
   -webkit-animation: 0.5s my_animation;
   -moz-animation: 0.5s my_animation;
@@ -130,7 +138,7 @@
   animation: 0.5s my_animation;
 }
 
-/* line 151, ../main.scss */
+/* line 159, ../main.scss */
 .sidebarheader {
   width: 100%;
   height: 35px;
@@ -141,7 +149,7 @@
   display: block;
 }
 
-/* line 162, ../main.scss */
+/* line 170, ../main.scss */
 .thslider {
   display: block;
   width: 100%;
@@ -151,7 +159,7 @@
   display: block;
 }
 
-/* line 173, ../main.scss */
+/* line 181, ../main.scss */
 .sidebarheader p {
   width: 50%;
   float: left;
@@ -161,7 +169,7 @@
   margin-bottom: 0px;
 }
 
-/* line 183, ../main.scss */
+/* line 191, ../main.scss */
 .sidebarheader .optionsbox {
   width: 30%;
   float: right;
@@ -169,13 +177,13 @@
   padding-right: 10px;
 }
 
-/* line 193, ../main.scss */
+/* line 201, ../main.scss */
 .sidebarheader .optionsbox i {
   cursor: pointer;
   float: right;
 }
 
-/* line 199, ../main.scss */
+/* line 207, ../main.scss */
 .fchannels {
   position: relative;
   overflow: hidden;
@@ -186,7 +194,7 @@
   display: block;
 }
 
-/* line 211, ../main.scss */
+/* line 219, ../main.scss */
 .fchannelreading {
   min-height: 50px !important;
   height: 70px !important;
@@ -196,14 +204,14 @@
   margin-top: 5px;
 }
 
-/* line 220, ../main.scss */
+/* line 228, ../main.scss */
 .channelnumholder {
   width: 20%;
   float: left;
   height: 100%;
 }
 
-/* line 227, ../main.scss */
+/* line 235, ../main.scss */
 .channelnum {
   text-align: center;
   background-color: #15A89D;
@@ -217,7 +225,7 @@
   margin-left: 10px;
 }
 
-/* line 242, ../main.scss */
+/* line 250, ../main.scss */
 .channelnum p {
   font-weight: bold;
   position: relative;
@@ -226,7 +234,7 @@
   color: white;
 }
 
-/* line 252, ../main.scss */
+/* line 260, ../main.scss */
 .rangeholder {
   width: 70%;
   float: left;
@@ -238,20 +246,20 @@
   margin-left: 10px;
 }
 
-/* line 264, ../main.scss */
+/* line 272, ../main.scss */
 .rangestop {
   width: 40%;
   float: left;
   text-align: center;
 }
 
-/* line 271, ../main.scss */
+/* line 279, ../main.scss */
 .rangestop p {
   margin: 0;
   font-weight: bold;
 }
 
-/* line 277, ../main.scss */
+/* line 285, ../main.scss */
 .rangearrow {
   width: 20%;
   float: left;
@@ -259,30 +267,30 @@
   opacity: 0.8;
 }
 
-/* line 286, ../main.scss */
+/* line 294, ../main.scss */
 .rangearrow i {
   display: inline-block;
 }
 
-/* line 291, ../main.scss */
+/* line 299, ../main.scss */
 .sidebarcontent {
   z-index: 100;
 }
 
-/* line 299, ../main.scss */
+/* line 307, ../main.scss */
 .sidebarcollapse {
   height: 0px !important;
   overflow: hidden;
   padding: 0px !important;
 }
 
-/* line 307, ../main.scss */
+/* line 315, ../main.scss */
 .searchbox {
   padding: 20px;
   padding-left: 15px;
 }
 
-/* line 313, ../main.scss */
+/* line 321, ../main.scss */
 #thresholdslider {
   display: block;
   width: 200px;
@@ -291,7 +299,7 @@
   padding-bottom: 10px;
 }
 
-/* line 322, ../main.scss */
+/* line 330, ../main.scss */
 .percenttext {
   color: white;
   font-size: 40px;
@@ -301,7 +309,7 @@
   border-radius: 5px;
 }
 
-/* line 332, ../main.scss */
+/* line 340, ../main.scss */
 .percentdetailtext {
   height: 50px;
   width: 80%;
@@ -309,7 +317,7 @@
   margin: 0 auto;
 }
 
-/* line 342, ../main.scss */
+/* line 350, ../main.scss */
 .piechartholder {
   width: 100%;
   height: 180px;
@@ -318,7 +326,7 @@
   display: block;
 }
 
-/* line 352, ../main.scss */
+/* line 360, ../main.scss */
 .cholder {
   width: 100px;
   overflow: hidden;
@@ -326,21 +334,21 @@
   float: left;
 }
 
-/* line 360, ../main.scss */
+/* line 368, ../main.scss */
 .ptextholder {
   text-align: center;
   width: 100%;
   display: block;
 }
 
-/* line 368, ../main.scss */
+/* line 376, ../main.scss */
 #piechart {
   width: 100px;
   height: 100px;
   float: left;
 }
 
-/* line 378, ../main.scss */
+/* line 386, ../main.scss */
 #chart1 {
   width: calc(100% - 280px);
   height: 200px;
@@ -351,7 +359,7 @@
   transition: 1s;
 }
 
-/* line 389, ../main.scss */
+/* line 397, ../main.scss */
 .sidebarnodata {
   width: calc(100% + 10px);
   position: absolute;
@@ -364,7 +372,7 @@
   text-align: center;
 }
 
-/* line 402, ../main.scss */
+/* line 410, ../main.scss */
 .sidebarnodata p {
   top: 40px;
   font-family: "Gotham";
@@ -381,7 +389,7 @@
   padding-bottom: 7px;
 }
 
-/* line 419, ../main.scss */
+/* line 427, ../main.scss */
 .graphnodata {
   width: calc(100% - 280px);
   height: 150px;
@@ -407,7 +415,7 @@
   transition: 1s;
 }
 
-/* line 440, ../main.scss */
+/* line 448, ../main.scss */
 #channelsmapmover {
   position: absolute;
   top: 0px;
@@ -419,24 +427,24 @@
   z-index: 1000;
 }
 
-/* line 453, ../main.scss */
+/* line 461, ../main.scss */
 #channelsmapmover .bottombar_button {
   margin-top: 0px;
 }
 
-/* line 460, ../main.scss */
+/* line 468, ../main.scss */
 .bottombar_button p {
   font-size: 10px;
   margin-top: 3px;
 }
 
-/* line 466, ../main.scss */
+/* line 474, ../main.scss */
 .ui .blue .inverted .menu {
   position: fixed;
   width: 100%;
 }
 
-/* line 471, ../main.scss */
+/* line 479, ../main.scss */
 .graphnodata p {
   font-family: "Gotham";
   font-size: 12px;
@@ -452,7 +460,7 @@
   padding-bottom: 7px;
 }
 
-/* line 487, ../main.scss */
+/* line 495, ../main.scss */
 #mapbottombar {
   background-color: #3B83C0;
   width: 100%;
@@ -462,7 +470,7 @@
   z-index: 99;
 }
 
-/* line 495, ../main.scss */
+/* line 503, ../main.scss */
 #mapsidebar {
   background-color: #2B212F;
   width: 285px;
@@ -476,7 +484,7 @@
   overflow-y: scroll;
 }
 
-/* line 508, ../main.scss */
+/* line 516, ../main.scss */
 .marker {
   width: 30px;
   height: 30px;
@@ -489,29 +497,29 @@
   box-shadow: 0px 0px 13px 0px rgba(50, 50, 50, 0.7);
 }
 
-/* line 523, ../main.scss */
+/* line 531, ../main.scss */
 .marker #datasetinfo {
   pointer-events: none;
   background-color: #000;
 }
 
-/* line 529, ../main.scss */
+/* line 537, ../main.scss */
 #titlespan {
   opacity: 0.8;
 }
 
-/* line 534, ../main.scss */
+/* line 542, ../main.scss */
 #datespan {
   font-weight: bold;
   font-size: 20px;
 }
 
-/* line 540, ../main.scss */
+/* line 548, ../main.scss */
 #rangespan {
   padding-top: 5px;
 }
 
-/* line 555, ../main.scss */
+/* line 563, ../main.scss */
 #datasetinfo {
   background-color: #34495E;
   border-radius: 5px;
@@ -521,12 +529,12 @@
   border-left: 3px solid #0E72BF;
 }
 
-/* line 565, ../main.scss */
+/* line 573, ../main.scss */
 #xicon {
   transition: 1s;
 }
 
-/* line 570, ../main.scss */
+/* line 578, ../main.scss */
 .tilted {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -535,7 +543,7 @@
   transform: rotate(45deg);
 }
 
-/* line 579, ../main.scss */
+/* line 587, ../main.scss */
 .loadbox {
   height: 100px;
   text-align: center;
@@ -547,7 +555,7 @@
   width: 100%;
 }
 
-/* line 596, ../main.scss */
+/* line 604, ../main.scss */
 .vcenter {
   position: absolute;
   top: 50%;
@@ -556,18 +564,18 @@
   transform: translateY(-50%);
 }
 
-/* line 606, ../main.scss */
+/* line 614, ../main.scss */
 .sidebarspacer {
   height: 200px;
   width: 100%;
 }
 
-/* line 613, ../main.scss */
+/* line 621, ../main.scss */
 .loadbox i {
   display: inline-block;
 }
 
-/* line 619, ../main.scss */
+/* line 627, ../main.scss */
 #pageloading {
   height: 100vh;
   position: absolute;
@@ -577,7 +585,7 @@
   z-index: 150;
 }
 
-/* line 630, ../main.scss */
+/* line 638, ../main.scss */
 .sidebar_button {
   cursor: pointer;
   width: 30px;
@@ -590,7 +598,7 @@
   margin-top: 10px;
 }
 
-/* line 642, ../main.scss */
+/* line 650, ../main.scss */
 .sidebar_button i {
   margin: 0 auto;
   display: inline-block;
@@ -598,7 +606,7 @@
   top: 20%;
 }
 
-/* line 651, ../main.scss */
+/* line 659, ../main.scss */
 .bottombar_button {
   cursor: pointer;
   width: 30px;
@@ -612,7 +620,7 @@
   margin-right: 10px;
 }
 
-/* line 664, ../main.scss */
+/* line 672, ../main.scss */
 .bottombar_button i {
   margin: 0 auto;
   display: inline-block;
@@ -620,7 +628,7 @@
   top: 20%;
 }
 
-/* line 674, ../main.scss */
+/* line 682, ../main.scss */
 #mapsidetoolbar {
   background-color: #2F6EB2;
   width: 50px;
@@ -630,20 +638,20 @@
   z-index: 100;
 }
 
-/* line 683, ../main.scss */
+/* line 691, ../main.scss */
 map {
   height: 100%;
   cursor: pointer;
 }
 
-/* line 688, ../main.scss */
+/* line 696, ../main.scss */
 br {
   display: block;
   height: 2px;
   line-height: 2px;
 }
 
-/* line 695, ../main.scss */
+/* line 703, ../main.scss */
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -651,12 +659,12 @@ br {
   padding: 0.2em 0;
 }
 
-/* line 702, ../main.scss */
+/* line 710, ../main.scss */
 .row {
   padding-bottom: 0px !important;
 }
 
-/* line 707, ../main.scss */
+/* line 715, ../main.scss */
 .navmenu a {
   height: 100% !important;
   max-height: 70px !important;
@@ -666,7 +674,7 @@ br {
   text-align: center;
 }
 
-/* line 718, ../main.scss */
+/* line 726, ../main.scss */
 #biglogobox {
   background-image: url("/images/biglogo.png");
   width: 50%;
@@ -678,7 +686,7 @@ br {
   position: relative;
 }
 
-/* line 732, ../main.scss */
+/* line 740, ../main.scss */
 #logobox {
   background-image: url("/images/smalllogo.png");
   width: 40px;
@@ -692,17 +700,17 @@ br {
   display: inline-block;
 }
 
-/* line 746, ../main.scss */
+/* line 754, ../main.scss */
 .toppaddedrow {
   padding-top: 60px !important;
 }
 
-/* line 751, ../main.scss */
+/* line 759, ../main.scss */
 .bottompaddedrow {
   padding-bottom: 60px !important;
 }
 
-/* line 756, ../main.scss */
+/* line 764, ../main.scss */
 #userdrop {
   padding-top: 28px;
   margin-right: 20px;
@@ -711,7 +719,7 @@ br {
   max-height: 70px !important;
 }
 
-/* line 766, ../main.scss */
+/* line 774, ../main.scss */
 .navmenu {
   height: 70px !important;
   margin: 0px !important;
@@ -724,14 +732,14 @@ br {
 }
 
 /* Space out content a bit */
-/* line 782, ../main.scss */
+/* line 790, ../main.scss */
 body {
   width: 100%;
   overflow-x: hidden;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-/* line 789, ../main.scss */
+/* line 797, ../main.scss */
 .header,
 .marketing,
 .footer {
@@ -740,12 +748,12 @@ body {
 }
 
 /* Custom page header */
-/* line 797, ../main.scss */
+/* line 805, ../main.scss */
 .header {
   border-bottom: 1px solid #e5e5e5;
   /* Make the masthead heading the same height as the navigation */
 }
-/* line 801, ../main.scss */
+/* line 809, ../main.scss */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -753,7 +761,7 @@ body {
   padding-bottom: 19px;
 }
 
-/* line 809, ../main.scss */
+/* line 817, ../main.scss */
 .container {
   width: 100%;
   margin: 0px;
@@ -762,57 +770,57 @@ body {
 }
 
 /* Custom page footer */
-/* line 817, ../main.scss */
+/* line 825, ../main.scss */
 .footer {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 823, ../main.scss */
+/* line 831, ../main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
-/* line 828, ../main.scss */
+/* line 836, ../main.scss */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 832, ../main.scss */
+/* line 840, ../main.scss */
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-/* line 839, ../main.scss */
+/* line 847, ../main.scss */
 .marketing {
   margin: 40px 0;
 }
-/* line 842, ../main.scss */
+/* line 850, ../main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
-/* line 847, ../main.scss */
+/* line 855, ../main.scss */
 .padder {
   width: 100%;
   height: 40px;
 }
 
-/* line 855, ../main.scss */
+/* line 863, ../main.scss */
 .lightbluecol {
   background-color: #3A9EDB;
 }
 
-/* line 860, ../main.scss */
+/* line 868, ../main.scss */
 .darkbluecol {
   background-color: #3769C0;
 }
 
-/* line 865, ../main.scss */
+/* line 873, ../main.scss */
 .realdarkblue {
   background-color: #4083B8;
 }
@@ -820,7 +828,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
-  /* line 876, ../main.scss */
+  /* line 884, ../main.scss */
   .header,
   .marketing,
   .footer {
@@ -829,13 +837,13 @@ body {
   }
 
   /* Space out the masthead */
-  /* line 883, ../main.scss */
+  /* line 891, ../main.scss */
   .header {
     margin-bottom: 30px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 887, ../main.scss */
+  /* line 895, ../main.scss */
   .jumbotron {
     border-bottom: 0;
   }

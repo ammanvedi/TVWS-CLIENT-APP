@@ -18,7 +18,8 @@ angular
     'angularFileUpload',
     'ngMap',
     'highcharts-ng',
-    'angularMoment'
+    'angularMoment',
+    'cgNotify'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -109,7 +110,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
 
             }).
             error(function(data, status, headers, config) {
-                console.log("Angular Http get failed");
+                fail({httperr: "HTTP : error accessing the api"});
             });
         },
         /**
@@ -138,6 +139,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 console.log("Angular Http get failed");
+                failure({httperr: "HTTP : error accessing the api"});
             });
         },
           /**
@@ -166,6 +168,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 //console.log("Angular Http get failed");
+                failure({httperr: "HTTP : error accessing the api"});
             });
 
         },
@@ -195,6 +198,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 console.log("Angular Http get failed");
+                failure({httperr: "HTTP : error accessing the api"});
             });
         },
           /**
@@ -212,6 +216,8 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             $http.get(this.APIURL + '/datasets/' + dsid + '/meta').
             success(function(data, status, headers, config) {
 
+
+              //handle the data error
                 if (data.QueryError) {
                     failure(data);
                     return;
@@ -222,8 +228,9 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
 
             }).
             error(function(data, status, headers, config) {
+              //handle the http error
                 console.log("Angular Http get failed");
-                failure(data);
+                failure({httperr: "HTTP : error accessing the api"});
             });
         },
           /**
@@ -266,7 +273,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 console.log("Angular Http get failed");
-                failure(data);
+                failure({httperr: "HTTP : error accessing the api"});
             });
         },
           /**
@@ -304,7 +311,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 console.log("Angular Http get failed");
-                failure(data);
+                failure({httperr: "HTTP : error accessing the api"});
             });
         },
           /**
@@ -332,6 +339,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 console.log("Angular Http get failed");
+                failure({httperr: "HTTP : error accessing the api"});
             });
         }
     }
@@ -744,6 +752,9 @@ app.service("GraphHelper", [function() {
                     spacingRight: 30,
                     selectionMarkerFill: "RGBA(78, 191, 155, 0.5)"
                 },
+                exporting: {
+                  enabled: true
+                },
                 plotOptions: {
                     area: {
                         fillColor: {
@@ -800,7 +811,7 @@ app.service("GraphHelper", [function() {
                     style: {
                         "color": "#fff"
                     },
-                    text: "ITU Channel"
+                    text: "TV Channel Number"
                 }
             },
             yAxis: {
@@ -901,7 +912,7 @@ app.service("GraphHelper", [function() {
  * instance that represtents the occupancy pie chart. 
  */
 
-app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "HeatmapHelper", "GraphHelper", function(MeasureSpaceAPIService, StateManager, HeatmapHelper, GraphHelper) {
+app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "HeatmapHelper", "GraphHelper", 'notify', function(MeasureSpaceAPIService, StateManager, HeatmapHelper, GraphHelper, notify) {
 
     var svc = {
         MAP: {},
@@ -910,6 +921,7 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
         OVERLAYS: [],
         PIECHART: {},
         PERCENTOCCUPIED: 0,
+
         sidebarChartConfig: {
             chart: {
                 renderTo: 'piechart',
@@ -919,6 +931,10 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
                 backgroundColor: '',
                 colors: ['#000', '#fff']
             },
+            exporting: {
+              enabled: false
+                
+              },
             colors: ['#e74c3c', '#2ecc71'],
             credits: {
                 enabled: false
@@ -1060,6 +1076,12 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
         failedDrawing: function(errdata) {
             console.log("ERROR : Failed To Draw Heatmaps");
             console.log(errdata);
+            if(errdata.httperr != undefined)
+            {
+              notify("Could not contact the API : " + errdata.httperr)
+              return
+            }
+            notify("Could not contact the API : " + errdata.QueryError)
         },
       /**
       * @ngdoc method
@@ -1245,7 +1267,7 @@ app.directive('mapsidebar', [ 'SidebarHelper', 'StateManager', "GraphHelper" , f
 
 
 
-app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' , function($rootScope, MeasureSpaceAPIService, $interval)  {
+app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' , 'notify',function($rootScope, MeasureSpaceAPIService, $interval, notify)  {
 
     return {
       restrict: 'E',
@@ -1362,6 +1384,10 @@ app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' ,
           error: function(event, statusText, responseText, form) {
             $form.removeAttr('action');
             $scope.makeButtonUnload();
+            $scope.updateUploadStatusTable($scope.workingfname, "Failed");
+          $scope.updateUploadMessageTable($scope.workingfname, "There was a http error");
+          $scope.failrow($scope.workingfname);
+            console.log('fail2')
           },
           success: function(responseText, statusText, xhr, form) {
 
@@ -1430,7 +1456,9 @@ app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' ,
           scope.updateUploadStatusTable(scope.workingfname, "Failed");
           scope.updateUploadMessageTable(scope.workingfname, data.Message);
           scope.failrow(scope.workingfname);
+          console.log('failed1');
           $interval.cancel(Status);
+
         }
 
         scope.inProcessing = function(data)
@@ -1775,8 +1803,7 @@ angular.module('clientAngularApp')
  * Controller to mediate display of the visualisation
  */
 angular.module('clientAngularApp')
-    .controller('MapCtrl', ["MeasureSpaceAPIService", "SidebarHelper", "StateManager", "HeatmapHelper", "GraphHelper", '$scope', "$routeParams", '$location', 'CookieService', function(MeasureSpaceAPIService, SidebarHelper, StateManager, HeatmapHelper, GraphHelper, $scope, $routeParams, $location, CookieService) {
-
+    .controller('MapCtrl', ["MeasureSpaceAPIService", "SidebarHelper", "StateManager", "HeatmapHelper", "GraphHelper", '$scope', "$routeParams", '$location', 'CookieService', 'notify' ,function(MeasureSpaceAPIService, SidebarHelper, StateManager, HeatmapHelper, GraphHelper, $scope, $routeParams, $location, CookieService, notify) {
 
 
         $scope.HMCACHE = {}
@@ -1824,8 +1851,12 @@ angular.module('clientAngularApp')
         }, function() {
             $scope.PERCENTOCCUPIED = SidebarHelper.PERCENTOCCUPIED
         });
-
-        /**
+ 
+        $scope.getCsv = function() {
+            console.log("get the csv");
+           console.log($('#chart1').highcharts());
+        }
+        /** 
          * @ngdoc method
          * @name togglesidebar
          * @methodOf clientAngularApp.controller.MapCtrl
@@ -2127,7 +2158,16 @@ angular.module('clientAngularApp')
                 $scope.HMCACHE[$scope.displaychannel] = new google.maps.MVCArray(hmdata[$scope.displaychannel]);
                 HeatmapHelper.heatmap = new google.maps.visualization.HeatmapLayer({
                     data: $scope.HMCACHE[$scope.displaychannel],
-                    radius: 25
+                    radius: 25,
+                    gradient: [
+                             'rgba(0,0,0,0)', 
+                                      'rgba(0,0,255,1)', 
+                                     'rgba(0,255,255,1)', 
+                                              'rgba(0,255,0,1)', 
+                                                       'rgba(255,255,0,1)', 
+                                                             'rgba(255,0,0,0.7)', 
+                                'rgba(255,0,0,1)'
+       ]
                 });
                 $scope.map.setCenter(new google.maps.LatLng($scope.DATASET.Lat, $scope.DATASET.Lon));
                 $scope.map.markers[0].setPosition(new google.maps.LatLng($scope.DATASET.Lat, $scope.DATASET.Lon));
@@ -2219,6 +2259,12 @@ angular.module('clientAngularApp')
          */
         $scope.gotReadingsFail = function(readingserror) {
                 console.log("ERROR :: Getting readings Failed");
+                if(readingserror.httperr == undefined)
+                {
+                    notify('Failed to contact API : ' + readingserror.QueryError);
+                     return
+                }
+                notify('Failed to contact API : ' + readingserror.httperr);
             }
         /**
          * @ngdoc method
@@ -2231,6 +2277,12 @@ angular.module('clientAngularApp')
          */
         $scope.gotDatasetFail = function(datas) {
                 console.log("ERROR :: Getting dataset Failed");
+                if(datas.httperr == undefined)
+                {
+                    notify('Failed to contact API : ' + datas.QueryError);
+                     return
+                }
+                notify('Failed to contact API : ' + datas.httperr); 
             }
         /**
          * @ngdoc method
@@ -2260,8 +2312,15 @@ angular.module('clientAngularApp')
          * Failure callback function if the api failed to get channel for the local region
          *
          */
-        $scope.gotRegionFail = function() {
+        $scope.gotRegionFail = function(err) {
             console.log("ERROR :: Getting region Failed");
+                if(err.httperr == undefined)
+                {
+                    notify('Failed to contact API : ' + err.QueryError);
+                     return
+
+                }
+                notify('Failed to contact API : ' + err.httperr);
         }
 
         /**
@@ -2487,6 +2546,12 @@ angular.module('clientAngularApp')
          */
 
         $scope.failedLoadURLDataset = function(data) {
+                if(data.httperr == undefined)
+                {
+                    notify('Failed to contact API : ' + data.QueryError);
+                    return
+                }
+                notify('Failed to contact API : ' + data.httperr);
 
         }
 

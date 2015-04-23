@@ -44,7 +44,7 @@ app.directive('mapsidebar', [ 'SidebarHelper', 'StateManager', "GraphHelper" , f
 
 
 
-app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' , function($rootScope, MeasureSpaceAPIService, $interval)  {
+app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' , 'notify',function($rootScope, MeasureSpaceAPIService, $interval, notify)  {
 
     return {
       restrict: 'E',
@@ -161,6 +161,10 @@ app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' ,
           error: function(event, statusText, responseText, form) {
             $form.removeAttr('action');
             $scope.makeButtonUnload();
+            $scope.updateUploadStatusTable($scope.workingfname, "Failed");
+          $scope.updateUploadMessageTable($scope.workingfname, "There was a http error");
+          $scope.failrow($scope.workingfname);
+            console.log('fail2')
           },
           success: function(responseText, statusText, xhr, form) {
 
@@ -229,7 +233,9 @@ app.directive('uploader', [ '$rootScope', 'MeasureSpaceAPIService','$interval' ,
           scope.updateUploadStatusTable(scope.workingfname, "Failed");
           scope.updateUploadMessageTable(scope.workingfname, data.Message);
           scope.failrow(scope.workingfname);
+          console.log('failed1');
           $interval.cancel(Status);
+
         }
 
         scope.inProcessing = function(data)

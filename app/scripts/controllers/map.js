@@ -5,8 +5,7 @@
  * Controller to mediate display of the visualisation
  */
 angular.module('clientAngularApp')
-    .controller('MapCtrl', ["MeasureSpaceAPIService", "SidebarHelper", "StateManager", "HeatmapHelper", "GraphHelper", '$scope', "$routeParams", '$location', 'CookieService', function(MeasureSpaceAPIService, SidebarHelper, StateManager, HeatmapHelper, GraphHelper, $scope, $routeParams, $location, CookieService) {
-
+    .controller('MapCtrl', ["MeasureSpaceAPIService", "SidebarHelper", "StateManager", "HeatmapHelper", "GraphHelper", '$scope', "$routeParams", '$location', 'CookieService', 'notify' ,function(MeasureSpaceAPIService, SidebarHelper, StateManager, HeatmapHelper, GraphHelper, $scope, $routeParams, $location, CookieService, notify) {
 
 
         $scope.HMCACHE = {}
@@ -54,8 +53,12 @@ angular.module('clientAngularApp')
         }, function() {
             $scope.PERCENTOCCUPIED = SidebarHelper.PERCENTOCCUPIED
         });
-
-        /**
+ 
+        $scope.getCsv = function() {
+            console.log("get the csv");
+           console.log($('#chart1').highcharts());
+        }
+        /** 
          * @ngdoc method
          * @name togglesidebar
          * @methodOf clientAngularApp.controller.MapCtrl
@@ -357,7 +360,16 @@ angular.module('clientAngularApp')
                 $scope.HMCACHE[$scope.displaychannel] = new google.maps.MVCArray(hmdata[$scope.displaychannel]);
                 HeatmapHelper.heatmap = new google.maps.visualization.HeatmapLayer({
                     data: $scope.HMCACHE[$scope.displaychannel],
-                    radius: 25
+                    radius: 25,
+                    gradient: [
+                             'rgba(0,0,0,0)', 
+                                      'rgba(0,0,255,1)', 
+                                     'rgba(0,255,255,1)', 
+                                              'rgba(0,255,0,1)', 
+                                                       'rgba(255,255,0,1)', 
+                                                             'rgba(255,0,0,0.7)', 
+                                'rgba(255,0,0,1)'
+       ]
                 });
                 $scope.map.setCenter(new google.maps.LatLng($scope.DATASET.Lat, $scope.DATASET.Lon));
                 $scope.map.markers[0].setPosition(new google.maps.LatLng($scope.DATASET.Lat, $scope.DATASET.Lon));
@@ -449,6 +461,12 @@ angular.module('clientAngularApp')
          */
         $scope.gotReadingsFail = function(readingserror) {
                 console.log("ERROR :: Getting readings Failed");
+                if(readingserror.httperr == undefined)
+                {
+                    notify('Failed to contact API : ' + readingserror.QueryError);
+                     return
+                }
+                notify('Failed to contact API : ' + readingserror.httperr);
             }
         /**
          * @ngdoc method
@@ -461,6 +479,12 @@ angular.module('clientAngularApp')
          */
         $scope.gotDatasetFail = function(datas) {
                 console.log("ERROR :: Getting dataset Failed");
+                if(datas.httperr == undefined)
+                {
+                    notify('Failed to contact API : ' + datas.QueryError);
+                     return
+                }
+                notify('Failed to contact API : ' + datas.httperr); 
             }
         /**
          * @ngdoc method
@@ -490,8 +514,15 @@ angular.module('clientAngularApp')
          * Failure callback function if the api failed to get channel for the local region
          *
          */
-        $scope.gotRegionFail = function() {
+        $scope.gotRegionFail = function(err) {
             console.log("ERROR :: Getting region Failed");
+                if(err.httperr == undefined)
+                {
+                    notify('Failed to contact API : ' + err.QueryError);
+                     return
+
+                }
+                notify('Failed to contact API : ' + err.httperr);
         }
 
         /**
@@ -717,6 +748,12 @@ angular.module('clientAngularApp')
          */
 
         $scope.failedLoadURLDataset = function(data) {
+                if(data.httperr == undefined)
+                {
+                    notify('Failed to contact API : ' + data.QueryError);
+                    return
+                }
+                notify('Failed to contact API : ' + data.httperr);
 
         }
 

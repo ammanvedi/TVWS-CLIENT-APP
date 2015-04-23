@@ -36,12 +36,12 @@
 
 	<div class="metaitem">
 		<h1>MIN POWER</h1>
-		<p>{{overallmin}}&nbsp;Dbm</p>
+		<p>{{overallmin}}&nbsp;dBm</p>
 	</div>
 
 	<div class="metaitem">
 		<h1>MAX POWER</h1>
-		<p>{{overallmax}}&nbsp;Dbm</p>
+		<p>{{overallmax}}&nbsp;dBm</p>
 	</div>
 
 	<div class="metaitem">
@@ -77,17 +77,18 @@
 
 	<div class="metaitem">
 		<h1>LATITUDE </h1>
-		<p>{{markeratlat.toFixed(3)}}</p>
+		<p>{{markeratlat.toFixed(3)}} °N</p>
 	</div>
 
 	<div class="metaitem">
 		<h1>LONGITUDE</h1>
-		<p>{{markeratlon.toFixed(3)}}</p>
+		<p>{{markeratlon.toFixed(3)}} °W</p>
 	</div>
+
 
 	<div class="metaitem">
 		<h1>NEAREST DATA POINT</h1>
-		<p>{{nearestpointofreference.toFixed(3)}}m</p>
+		<p>{{nearestpointofreference.toFixed(0)}}m</p>
 	</div>
 
 </div>
@@ -132,7 +133,11 @@
 
 
 <div class="thslider">
-	<input id="thresholdslider" type="range" min="{{overallmin}}" max="{{overallmax}}" ng-model="ThresholdVal" ng-change="ThresholdUpdate()" step="0.5"/>
+
+	<input id="thresholdslider" type="range" min="-120" max="0" ng-model="ThresholdVal" ng-change="ThresholdUpdate()" step="0.5"/>
+	<p class="thresholdlabel">
+	<input style="display:inline-block; color:black;" type="text" ng-model="ThresholdVal" value="{{ThresholdVal}}"/>dBm
+	</p>
 </div>
 <!--
 <div style="color:white;">

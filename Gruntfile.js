@@ -84,7 +84,9 @@ module.exports = function (grunt) {
         'app/bower_components/ng-file-upload/angular-file-upload-shim.min.js',
         'app/bower_components/ng-file-upload/angular-file-upload.min.js',
         'app/bower_components/ngmap/build/scripts/ng-map.min.js',
-        'app/bower_components/highcharts-ng/dist/highcharts-ng.min.js'
+        'app/bower_components/highcharts-ng/dist/highcharts-ng.min.js',
+        'app/bower_components/highcharts-ng/dist/exporting.js',
+        'app/bower_components/angular-notify/dist/angular-notify.min.js'
 
         ],
         dest: 'app/scripts/build/lib/lib.concat.js'

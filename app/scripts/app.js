@@ -18,7 +18,8 @@ angular
     'angularFileUpload',
     'ngMap',
     'highcharts-ng',
-    'angularMoment'
+    'angularMoment',
+    'cgNotify'
   ])
   .config(function ($routeProvider) {
     $routeProvider

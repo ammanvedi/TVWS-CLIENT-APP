@@ -47,7 +47,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
 
             }).
             error(function(data, status, headers, config) {
-                console.log("Angular Http get failed");
+                fail({httperr: "HTTP : error accessing the api"});
             });
         },
         /**
@@ -76,6 +76,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 console.log("Angular Http get failed");
+                failure({httperr: "HTTP : error accessing the api"});
             });
         },
           /**
@@ -104,6 +105,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 //console.log("Angular Http get failed");
+                failure({httperr: "HTTP : error accessing the api"});
             });
 
         },
@@ -133,6 +135,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 console.log("Angular Http get failed");
+                failure({httperr: "HTTP : error accessing the api"});
             });
         },
           /**
@@ -150,6 +153,8 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             $http.get(this.APIURL + '/datasets/' + dsid + '/meta').
             success(function(data, status, headers, config) {
 
+
+              //handle the data error
                 if (data.QueryError) {
                     failure(data);
                     return;
@@ -160,8 +165,9 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
 
             }).
             error(function(data, status, headers, config) {
+              //handle the http error
                 console.log("Angular Http get failed");
-                failure(data);
+                failure({httperr: "HTTP : error accessing the api"});
             });
         },
           /**
@@ -204,7 +210,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 console.log("Angular Http get failed");
-                failure(data);
+                failure({httperr: "HTTP : error accessing the api"});
             });
         },
           /**
@@ -242,7 +248,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 console.log("Angular Http get failed");
-                failure(data);
+                failure({httperr: "HTTP : error accessing the api"});
             });
         },
           /**
@@ -270,6 +276,7 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
             }).
             error(function(data, status, headers, config) {
                 console.log("Angular Http get failed");
+                failure({httperr: "HTTP : error accessing the api"});
             });
         }
     }
@@ -682,6 +689,9 @@ app.service("GraphHelper", [function() {
                     spacingRight: 30,
                     selectionMarkerFill: "RGBA(78, 191, 155, 0.5)"
                 },
+                exporting: {
+                  enabled: true
+                },
                 plotOptions: {
                     area: {
                         fillColor: {
@@ -738,7 +748,7 @@ app.service("GraphHelper", [function() {
                     style: {
                         "color": "#fff"
                     },
-                    text: "ITU Channel"
+                    text: "TV Channel Number"
                 }
             },
             yAxis: {
@@ -839,7 +849,7 @@ app.service("GraphHelper", [function() {
  * instance that represtents the occupancy pie chart. 
  */
 
-app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "HeatmapHelper", "GraphHelper", function(MeasureSpaceAPIService, StateManager, HeatmapHelper, GraphHelper) {
+app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "HeatmapHelper", "GraphHelper", 'notify', function(MeasureSpaceAPIService, StateManager, HeatmapHelper, GraphHelper, notify) {
 
     var svc = {
         MAP: {},
@@ -848,6 +858,7 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
         OVERLAYS: [],
         PIECHART: {},
         PERCENTOCCUPIED: 0,
+
         sidebarChartConfig: {
             chart: {
                 renderTo: 'piechart',
@@ -857,6 +868,10 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
                 backgroundColor: '',
                 colors: ['#000', '#fff']
             },
+            exporting: {
+              enabled: false
+                
+              },
             colors: ['#e74c3c', '#2ecc71'],
             credits: {
                 enabled: false
@@ -998,6 +1013,12 @@ app.service('SidebarHelper', ['MeasureSpaceAPIService', 'StateManager', "Heatmap
         failedDrawing: function(errdata) {
             console.log("ERROR : Failed To Draw Heatmaps");
             console.log(errdata);
+            if(errdata.httperr != undefined)
+            {
+              notify("Could not contact the API : " + errdata.httperr)
+              return
+            }
+            notify("Could not contact the API : " + errdata.QueryError)
         },
       /**
       * @ngdoc method
