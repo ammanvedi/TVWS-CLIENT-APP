@@ -56,6 +56,10 @@ angular
         templateUrl: '/views/docs/index.html',
         controller: ''
       })
+      .when('/all', {
+        templateUrl: '/views/alldata.html',
+        controller: 'AllDataCtrl'
+      })
       .otherwise({
         redirectTo: '/'
 

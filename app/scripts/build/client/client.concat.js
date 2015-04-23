@@ -56,6 +56,10 @@ angular
         templateUrl: '/views/docs/index.html',
         controller: ''
       })
+      .when('/all', {
+        templateUrl: '/views/alldata.html',
+        controller: 'AllDataCtrl'
+      })
       .otherwise({
         redirectTo: '/'
 
@@ -327,6 +331,23 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
           */
         getDatasetsForUser: function(userid, complete, failure) {
             $http.get(this.APIURL + '/user/' + userid + '/datasets').
+            success(function(data, status, headers, config) {
+
+                if (data.QueryError) {
+                    failure(data);
+                    return;
+                }
+
+                complete(data);
+
+            }).
+            error(function(data, status, headers, config) {
+                console.log("Angular Http get failed");
+                failure({httperr: "HTTP : error accessing the api"});
+            });
+        },
+        getAllDatasets: function(userid, complete, failure) {
+            $http.get(this.APIURL + '/datasets/all').
             success(function(data, status, headers, config) {
 
                 if (data.QueryError) {
@@ -1572,7 +1593,38 @@ angular.module('clientAngularApp')
   .controller('HomeCtrl', ['CookieService',function (CookieService) {
 
   }]);
-;
+;/**
+ * @ngdoc controller
+ * @name clientAngularApp.controller.UserHomeCtrl
+ * @description
+ * Controller to mediate display of the user's homepage   
+ */
+angular.module('clientAngularApp')
+  .controller('AllDataCtrl', ['$rootScope', '$scope', '$location', 'CookieService', 'MeasureSpaceAPIService',function ($rootScope, $scope, $location, CookieService, MeasureSpaceAPIService) {
+    console.log("this is being called from user homectrl");
+    console.log($rootScope);
+
+    $scope.userDatasets = [];
+    $scope.date = new Date();
+    $scope.moment = moment;
+
+
+    $scope.gotUserDatasets = function(data)
+    {
+        $scope.userDatasets = data;
+
+    }
+
+    $scope.failedUserDatsets = function(data)
+    {
+        
+    }
+            //get the users datasets so they can be displayed
+        MeasureSpaceAPIService.getAllDatasets($rootScope.UserID, $scope.gotUserDatasets, $scope.failedUserDatasets);
+
+
+
+  }]);;
 
 /**
  * @ngdoc controller

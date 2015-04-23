@@ -68,6 +68,15 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "clientAngularApp.controller.UserHomeCtrl",
+      "shortName": "clientAngularApp.controller.UserHomeCtrl",
+      "type": "controller",
+      "moduleName": "clientAngularApp.controller",
+      "shortDescription": "Controller to mediate display of the user&#39;s homepage   ",
+      "keywords": "api clientangularapp controller display homepage mediate user userhomectrl"
+    },
+    {
+      "section": "api",
       "id": "clientAngularApp.service.CookieService",
       "shortName": "clientAngularApp.service.CookieService",
       "type": "service",

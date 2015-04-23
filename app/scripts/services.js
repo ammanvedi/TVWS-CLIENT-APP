@@ -278,6 +278,23 @@ app.service('MeasureSpaceAPIService', ['$http', function($http) {
                 console.log("Angular Http get failed");
                 failure({httperr: "HTTP : error accessing the api"});
             });
+        },
+        getAllDatasets: function(userid, complete, failure) {
+            $http.get(this.APIURL + '/datasets/all').
+            success(function(data, status, headers, config) {
+
+                if (data.QueryError) {
+                    failure(data);
+                    return;
+                }
+
+                complete(data);
+
+            }).
+            error(function(data, status, headers, config) {
+                console.log("Angular Http get failed");
+                failure({httperr: "HTTP : error accessing the api"});
+            });
         }
     }
 
